@@ -1,0 +1,120 @@
+package channel_manager;
+
+message DriverTimings {
+        required uint32     rot_run = 1             [default = 1000];
+        required uint32     adc_set_params1 = 2     [default = 500];
+        required uint32     adc_set_params2 = 3     [default = 100];
+        required uint32     adc_set_params3 = 4     [default = 100];
+        required uint32     adc_run = 5             [default = 100];
+        required uint32     adc_run_sync = 6        [default = 100];
+    }
+
+message ADCTimeOffsets {
+    repeated uint32     offset = 1;
+    required sint32     error_code = 2              [default = 0];
+}
+
+message AvailableChannels {
+    required sint32     error_code = 1;
+    repeated uint32     channel_idx = 2;
+    repeated uint32     rot_idx = 3;
+}
+
+message MultiplexerInitParams {
+    required string     dev_name = 1;
+    required uint32     speed = 2;
+    required string     params = 3                  [default = "8N1"];
+}
+
+message ServerVersion {
+    required sint32     error_code = 1;
+    required uint32     major = 2;
+    required uint32     minor = 3;
+    required string     build = 4;
+}
+
+//-------------------------------------------------------------------------------t_channel_manager_init_params
+message ChannelManagerInitParams {
+    //manager logging
+    required uint32     log_level_file = 1          [default = 0];
+    required uint32     log_level_console = 2       [default = 1];
+    required uint32     log_level_daemon = 3        [default = 0];
+    //dsp helper logging
+    required uint32     dsph_level_file = 4         [default = 0];
+    required uint32     dsph_level_console = 5      [default = 1];
+    required uint32     dsph_level_daemon = 6       [default = 0];
+    //initial parameters
+    required uint32     base_timing = 7             [default = 1000];
+    required uint32     drv_buf_size = 8            [default = 32768];
+    required uint32     usr_proc_len = 9            [default = 32768];
+    required uint32     spi_speed_hz = 10           [default = 93750];
+    required uint32     main_sleep_us = 11          [default = 500];
+    required uint32     idle_sleep_us = 12          [default = 1000];
+
+    required string     daemon_ipc_path = 13        [default = "/mnt/share"];
+    required uint32     daemon_ipc_key = 14         [default = 45];
+    required bool       reset_at_open = 15          [default = true];
+
+    //channel parameters
+    repeated uint32     chan_level_file = 16        [packed = true];
+    repeated uint32     chan_level_console = 17     [packed = true];
+    repeated uint32     chan_level_daemon = 18      [packed = true];
+
+    required DriverTimings    driver_timings = 19;
+}
+
+//-------------------------------------------------------------------------------t_adc_channel_init_params
+message ADCParams { //old values are unsigned short
+    required uint32 control1 = 1;
+    required uint32 control2 = 2;
+    required uint32 offset = 3;
+    required uint32 gain = 4;
+    required uint32 overrange = 5;
+    required uint32 ch_settings = 6;
+}
+
+message ADCChannelInitParams {
+    required uint32     ch_idx = 1          [default=0];        //unsigned char
+    required uint32     rot_idx = 2         [default=0];
+    required uint32     drv_buf_size = 3    [default=32768];    //int
+    required uint32     usr_proc_len = 4    [default=32768];    //int
+    required uint32     usr_proc_cnt = 5    [default=0];        //int
+    required uint32     sen_filter_id = 6   [default=0];        //int
+
+    required ADCParams  ap=7;
+}
+
+//-------------------------------------------------------------------------------t_synctask_channels
+message SynctaskChannels {
+    required uint32     adc_ch_cnt = 1      [default=0];
+    repeated uint32     adc_ch_idx = 2;
+    required uint32     sync_reg = 3;
+};
+
+//-------------------------------------------------------------------------------t_rot_channel_init_params
+message RotChannelInitParams {
+    required uint32     rot_idx = 1         [default=0];
+    required uint32     av_num = 2          [default=1];
+    required uint32     pw_min_us = 3       [default=25];
+    required uint32     period_min_us = 4   [default=8333];
+    required uint32     period_max_us = 5   [default=1000000];
+}
+
+//-------------------------------------------------------------------------------t_rot_data;
+message RotData {
+    required sint32     error_code = 1      [default = 0];
+    optional bool       running = 2         [default=false];
+    optional uint32     pos = 3             [default=0];
+    optional uint32     min = 4;
+    optional uint32     max = 5;
+    optional uint32     avr = 6;
+    optional double     sum = 7;
+    optional uint32     cnt = 8;
+    //recalc to freq (Hz)
+    optional double     freq_min = 9;
+    optional double     freq_max = 10;
+    optional double     freq_avr = 11;
+    //flags
+    optional bool       overhigh = 12       [default=false];
+    optional bool       underlow = 13       [default=false];
+}

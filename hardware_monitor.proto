@@ -1,0 +1,90 @@
+package hardware_monitor;
+
+message BatteryInformation {
+    required sint32     error_code = 1;
+    //------------------------------------------------------------//Information flags
+    optional bool       is_bm_connected = 2;    //Battery monitor connection
+    optional bool       is_charging = 3;        //FULLCHG or FASTCHG low
+    optional bool       is_fault = 4;           //FAULT pin low
+    optional bool       shdn_state = 5;         //state of ~shutdown pin
+    optional bool       battery_presense = 6;   //Battery presense
+    optional bool       outer_power_presense = 7;   //Outer power supply detected
+    optional bool       alarm_low_voltage = 8;      //Battery low voltage alarm
+    //------------------------------------------//Battery monitor data
+    optional uint32     no_connect_counter = 9      [default=0];
+    optional sint32     val_base_charge_uAh = 10;
+    optional sint32     val_current_charge_uAh = 11;
+    optional sint32     val_icharge_uA = 12;
+    optional uint32     val_ucharge_mV = 13;
+    optional bool       fullchg_bit = 14;
+    optional bool       fastchg_bit = 15;
+    optional uint32     hex_current_charge = 16;
+    //------------------------------------------//Forecast
+    optional uint32     charge_percent = 17;     //0..100
+    optional uint32     minutes_left = 18;       //worktime_forecast
+}
+
+message TemperatureInformation {
+    required sint32     error_code = 1;
+    required double     t_min = 2;
+    required double     t_max = 3;
+}
+
+message ButtonInformation {
+    required sint32     error_code = 1;
+    required bool       is_pressed = 2;
+}
+
+/*
+message BatteryMonitorParams {
+    //------------------------------------------//Very important battery parameters
+    required uint32     voltage_multiplier = 1;             //Used for battery set (4000x by default)
+    required uint32     max_battery_charge_uAh = 2;         //Nominal battery charge capacity
+    required uint32     minimum_possible_battery_voltage_mV = 3;    //Voltage limit for battery presense detection
+    required uint32     critical_battery_voltage_mV = 4;        //Critical minimum of battery voltage for turning system OFF
+    //-----------------------------------------
+    required uint32     low_battery_voltage_mV = 5; //When U<low_battery_voltage_mV, we should turn charger ON
+    required uint32     alarm_battery_voltage_mV = 6;
+    required uint32     full_battery_voltage_mV = 7;    //Set charge_base=max when U>=full
+    required uint32     minimum_charge_current_uA = 8;  //Shutdown charger when I<minimum and U>=full
+    required uint32     half_battery_voltage_mV = 9;
+    //------------------------------------------
+    required uint32     b_alarm_percent = 10;        //Turn alarm ON when % is low than this value
+    required uint32     b_mincharge_percent = 11;        //Turn charger ON when % is low than this value
+}
+ */
+
+message HardwareMonitoringClientInitParams {
+    required uint32     srv_conn_wait_msec = 1      [default = 500];
+    required uint32     srv_conn_retry_cnt = 2      [default = 4];
+    optional string     journal_ipc_path = 3        [default = "/mnt/share"];
+    optional uint32     journal_ipc_key = 4         [default = 45];
+    optional string     hwserver_ipc_path = 5       [default = "/mnt/share"];
+    optional uint32     hwserver_ipc_key = 6        [default = 44];
+    optional string     own_ipc_path = 7            [default = "/etc"];
+    optional uint32     own_ipc_key = 8             [default = 22];
+}
+
+message HwmonLoggingParams {
+    required uint32     hwclient_console_level = 1;
+    required uint32     hwclient_file_level = 2;
+    required uint32     hwclientdaemon_level = 3;
+    required uint32     main_console_level = 7;
+    required uint32     main_file_level = 8;
+    required uint32     main_daemon_level = 9;
+}
+
+message SubscriptionMask {
+    required sint32     error_code = 1;
+    optional bool       battery = 2;
+    optional bool       cpu_temperature = 3;
+    optional bool       pbutton_info = 4;
+    optional bool       pbutton_action = 5;
+}
+
+message ServerVersion {
+    required sint32     error_code = 1;
+    required uint32     major = 2;
+    required uint32     minor = 3;
+    required string     build = 4;
+}

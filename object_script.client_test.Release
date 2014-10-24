@@ -1,0 +1,17 @@
+INPUT(
+./release/main.o
+./release/task_manager_pb.o
+./release/channel_manager_pb.o
+./release/hardware_monitor_pb.o
+./release/client_wrapper.o
+./release/hwmon_client_wrapper.o
+./release/uki_log.o
+./release/syncobjs.o
+./release/thread.o
+./release/qt_client_wrapper.o
+./release/qt_hwmon_wrapper.o
+./release/list.o
+./release/qrc_qml.o
+./release/moc_qt_client_wrapper.o
+./release/moc_qt_hwmon_wrapper.o
+);
