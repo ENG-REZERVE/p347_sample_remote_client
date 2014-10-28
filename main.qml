@@ -182,6 +182,7 @@ ApplicationWindow {
                         anchors.leftMargin: 2
                         anchors.rightMargin: 2
                     }
+
                    /*
                     Button {
                         id: sr_button_create_dspemul
@@ -605,6 +606,28 @@ ApplicationWindow {
                         anchors.leftMargin: 2
                         anchors.rightMargin: 2
                     }
+                    Button {
+                        id: sr_gttp
+                        text: "getTotalTasksProgress"
+                        enabled: !clientWrapper.isAsyncRunning
+                        onClicked: {
+                            rett_gttp.text = clientWrapper.qt_getTotalTasksProgress(sr_async_cb.checked, adc_idx_val.value);
+                        }
+                    }
+                    Text {
+                        id: rett_gttp
+                        text: "-"
+                        anchors.leftMargin: 2
+                        anchors.rightMargin: 2
+                    }
+                    /*
+                    Text {
+                        id: val_gttp
+                        text: clientWrapper.totalTasksProgress
+                        anchors.leftMargin: 2
+                        anchors.rightMargin: 2
+                    }
+                    */
                 }
             }
 

@@ -113,8 +113,8 @@ int main(int argc, char *argv[])
 	
 	RCF::init();
 	QClientWrapper* cw = new QClientWrapper();
-	//cw->setConsoleLevel(LOG_LEVEL_FULL);
-	cw->setConsoleLevel(LOG_LEVEL_MAIN);
+	cw->setConsoleLevel(LOG_LEVEL_FULL);
+	//cw->setConsoleLevel(LOG_LEVEL_MAIN);
 
 	QHwmonWrapper* hw = new QHwmonWrapper();
 	hw->setConsoleLevel(LOG_LEVEL_MAIN);

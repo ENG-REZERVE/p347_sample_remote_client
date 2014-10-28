@@ -131,7 +131,11 @@ bool QClientWrapper::isAnyAR() {
 bool QClientWrapper::isAsyncRunning() {
 	return is_async_running;
 }
-
+/*
+int QClientWrapper::totalTasksProgress() {
+	return total_tasks_progress;
+}
+*/
 QString QClientWrapper::getOffstring() {
 	QString rets = "";
 	int errc = adcto.error_code();
@@ -480,3 +484,9 @@ int QClientWrapper::qt_doMuxChannel(bool async) {
 	return doMuxChannel(async,1,5);
 };
 
+//-------------------
+
+int QClientWrapper::qt_getTotalTasksProgress(bool async, int ch_idx) {
+	UPDATE_BUSY
+	return getTotalTasksProgress(async,ch_idx,false);
+};

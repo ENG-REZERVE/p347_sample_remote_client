@@ -313,7 +313,7 @@ int p347ClientWrapper::setTaskListState(bool async, int emu_idx, const task_mana
 	return _executeFunction(async, CW_IF_SETTASKLISTSTATE, emu_idx, &task_idx_list, new_state);
 }
 
-int p347ClientWrapper::getTotalTasksProgress(bool async, int emu_idx,bool AExceptMonitoring) {
+int p347ClientWrapper::getTotalTasksProgress(bool async, int emu_idx, bool AExceptMonitoring) {
 	return _executeFunction(async, CW_IF_GETTOTALTASKPROGRESS, emu_idx, AExceptMonitoring);
 }
 
@@ -588,7 +588,9 @@ int p347ClientWrapper::_processResult(int if_code) {
 				}					
 			break; }
 			default: { //supposed int return value, and nothing more
+				
 				ret = *fRet_int;
+				//printf("Int result=%d for if_code=%d\n",ret,if_code);
 			break; }
 		};		
 	return ret;
@@ -1135,8 +1137,8 @@ int p347ClientWrapper::_executeFunction(bool async, int if_code, ...) {
 				va_start(ap,if_code);
 				int emu_idx = va_arg(ap,int);
 				int task_idx = va_arg(ap,int);
-				bool clr_off = va_arg(ap,bool);
-				bool clr_res = va_arg(ap,bool);
+				bool clr_off = static_cast<bool>(va_arg(ap,int));
+				bool clr_res = static_cast<bool>(va_arg(ap,int));
 				va_end(ap);
 				if (async) {
 					fRet_int = client->clearTaskData(CALLBACK_FUNC,emu_idx,task_idx,clr_off,clr_res);
@@ -1163,8 +1165,8 @@ int p347ClientWrapper::_executeFunction(bool async, int if_code, ...) {
 			case CW_IF_CLEARTASKLISTDATA: {
 				va_start(ap,if_code);
 				int emu_idx = va_arg(ap,int);
-				bool clr_off = va_arg(ap,bool);
-				bool clr_res = va_arg(ap,bool);
+				bool clr_off = static_cast<bool>(va_arg(ap,int));
+				bool clr_res = static_cast<bool>(va_arg(ap,int));
 				va_end(ap);
 				if (async) {
 					fRet_int = client->clearTaskListData(CALLBACK_FUNC,emu_idx,clr_off,clr_res);
@@ -1306,9 +1308,10 @@ int p347ClientWrapper::_executeFunction(bool async, int if_code, ...) {
 			break; }
 			case CW_IF_GETTOTALTASKPROGRESS: {
 				va_start(ap,if_code);
-				int emu_idx = va_arg(ap,int);
-				bool mon_flag = va_arg(ap,bool);
+				int emu_idx = va_arg(ap,int);		
+				bool mon_flag = static_cast<bool>(va_arg(ap,int));
 				va_end(ap);
+				
 				if (async) {
 					fRet_int = client->getTotalTasksProgress(CALLBACK_FUNC,emu_idx,mon_flag);
 					logMessage(LOG_LEVEL_FULL,"async getTotalTasksProgress called\n");
@@ -1349,7 +1352,7 @@ int p347ClientWrapper::_executeFunction(bool async, int if_code, ...) {
 			case CW_IF_GETTOTALTASKSLEC: {
 				va_start(ap,if_code);
 				int emu_idx = va_arg(ap,int);
-				bool mon_flag = va_arg(ap,bool);
+				bool mon_flag = static_cast<bool>(va_arg(ap,int));
 				va_end(ap);
 				if (async) {
 					fRet_int = client->getTotalTasksLastErrorCode(CALLBACK_FUNC,emu_idx,mon_flag);
@@ -1526,7 +1529,7 @@ int p347ClientWrapper::_executeFunction(bool async, int if_code, ...) {
 			case CW_IF_SETRMFROMSIG: {
 				va_start(ap,if_code);
 				int emu_idx = va_arg(ap,int);
-				bool value = va_arg(ap,bool);
+				bool value = static_cast<bool>(va_arg(ap,int));
 				va_end(ap);
 				if (async) {
 					fRet_int = client->setRotMetkasFromSig(CALLBACK_FUNC,emu_idx,value);
@@ -1738,7 +1741,7 @@ int p347ClientWrapper::_executeFunction(bool async, int if_code, ...) {
 			case CW_IF_SETVIBEG: {
 				va_start(ap,if_code);
 				int emu_idx = va_arg(ap,int);
-				bool value = va_arg(ap,bool);
+				bool value = static_cast<bool>(va_arg(ap,int));
 				va_end(ap);
 				if (async) {
 					fRet_int = client->setVibeg(CALLBACK_FUNC,emu_idx,value);
@@ -1810,7 +1813,9 @@ int p347ClientWrapper::_executeFunction(bool async, int if_code, ...) {
 		} else {
 			//connection_fails_counter.store(0);
 			int ret = _processResult(if_code);
+			
 			sigSyncFunctionComplete(if_code,0,ret);
+			
 			return ret;
 		}
 	} else {

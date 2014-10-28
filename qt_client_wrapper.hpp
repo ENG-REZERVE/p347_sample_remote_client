@@ -27,6 +27,7 @@ public:
 	bool is_channels_created;
 	int last_alarm_code;
 	int last_ping_code;
+	//int total_tasks_progress;
 	
 	Q_PROPERTY(bool isAsyncRunning READ isAsyncRunning NOTIFY isAsyncRunningChanged)
 	Q_PROPERTY(int alarmCode READ alarmCode NOTIFY isAlarmCodeChanged)
@@ -44,9 +45,12 @@ public:
 	Q_PROPERTY(QString serverVersion READ serverVersion NOTIFY svChanged)
 	Q_PROPERTY(QString avChannelsStr READ avChannelsStr NOTIFY avChanged)
 	
+	//Q_PROPERTY(int totalTasksProgress READ totalTasksProgress NOTIFY ttpChanged)
+	
 	double	lastFreq();
 	int alarmCode();
 	int pingCode();
+	//int totalTasksProgress();
 	
 	bool isCHAV();
 	bool isCHAC();
@@ -78,6 +82,7 @@ signals:
 	void avChanged();
 	void isCHAVChanged();
 	void isCHACChanged();
+	void ttpChanged();
 public slots:
 	//----------------------------------------------------------
 	int 	qt_connectToTcpServer(QString ip,int port);
@@ -119,6 +124,8 @@ public slots:
 	int  	qt_switchCommutatorOff(bool async);
 	int  	qt_unmuxAll(bool async);
 	int  	qt_doMuxChannel(bool async);
+	//-----------------------------------------------------------
+	int 	qt_getTotalTasksProgress(bool async, int ch_idx);
 private:
 	boost::signals2::connection		connection_async_complete;
 	boost::signals2::connection		connection_sync_complete;
