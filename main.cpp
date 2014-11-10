@@ -5,6 +5,9 @@
 
 #include "qt_client_wrapper.hpp"
 #include "qt_hwmon_wrapper.hpp"
+#include "p347_conf_json_file.hpp"
+
+#define CONF_PATH	"C:\\Qt\\Qt5.3.1\\Tools\\QtCreator\\bin\\test123\\release\\"
 /*
 class DeviceSubscriber {
 public:
@@ -116,6 +119,14 @@ int main(int argc, char *argv[])
 	cw->setConsoleLevel(LOG_LEVEL_FULL);
 	//cw->setConsoleLevel(LOG_LEVEL_MAIN);
 
+	p347JSONFileConf cnf;
+	cnf.setFilenameConf(CONF_PATH"wconf.json");
+	cnf.setFilenameBearings(CONF_PATH"bearings.json");
+	cnf.setFilenameReducers(CONF_PATH"reducers.json");
+	cnf.setConsoleLevel(LOG_LEVEL_FULL);
+	
+	cw->configurator = &cnf;
+	
 	QHwmonWrapper* hw = new QHwmonWrapper();
 	hw->setConsoleLevel(LOG_LEVEL_MAIN);
 	
@@ -128,6 +139,7 @@ int main(int argc, char *argv[])
 
 	delete cw;
 	delete hw;
+	
 	rc = RCF::getInitRefCount();
 	printf("after destructor: init ref count = %d\n",rc);
 	if (rc > 0) {

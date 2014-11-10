@@ -393,16 +393,16 @@ void protobuf_AddDesc_channel_5fmanager_2eproto() {
     "\014\n\004gain\030\004 \002(\r\022\021\n\toverrange\030\005 \002(\r\022\023\n\013ch_s"
     "ettings\030\006 \002(\r\"\322\001\n\024ADCChannelInitParams\022\021"
     "\n\006ch_idx\030\001 \002(\r:\0010\022\022\n\007rot_idx\030\002 \002(\r:\0010\022\033\n"
-    "\014drv_buf_size\030\003 \002(\r:\00532768\022\033\n\014usr_proc_l"
-    "en\030\004 \002(\r:\00532768\022\027\n\014usr_proc_cnt\030\005 \002(\r:\0010"
-    "\022\030\n\rsen_filter_id\030\006 \002(\r:\0010\022&\n\002ap\030\007 \002(\0132\032"
+    "\014drv_buf_size\030\003 \001(\r:\00532768\022\033\n\014usr_proc_l"
+    "en\030\004 \001(\r:\00532768\022\027\n\014usr_proc_cnt\030\005 \001(\r:\0010"
+    "\022\030\n\rsen_filter_id\030\006 \001(\r:\0010\022&\n\002ap\030\007 \001(\0132\032"
     ".channel_manager.ADCParams\"O\n\020SynctaskCh"
     "annels\022\025\n\nadc_ch_cnt\030\001 \002(\r:\0010\022\022\n\nadc_ch_"
-    "idx\030\002 \003(\r\022\020\n\010sync_reg\030\003 \002(\r\"\221\001\n\024RotChann"
+    "idx\030\002 \003(\r\022\020\n\010sync_reg\030\003 \001(\r\"\221\001\n\024RotChann"
     "elInitParams\022\022\n\007rot_idx\030\001 \002(\r:\0010\022\021\n\006av_n"
-    "um\030\002 \002(\r:\0011\022\025\n\tpw_min_us\030\003 \002(\r:\00225\022\033\n\rpe"
-    "riod_min_us\030\004 \002(\r:\0048333\022\036\n\rperiod_max_us"
-    "\030\005 \002(\r:\0071000000\"\361\001\n\007RotData\022\025\n\nerror_cod"
+    "um\030\002 \001(\r:\0011\022\025\n\tpw_min_us\030\003 \001(\r:\00225\022\033\n\rpe"
+    "riod_min_us\030\004 \001(\r:\0048333\022\036\n\rperiod_max_us"
+    "\030\005 \001(\r:\0071000000\"\361\001\n\007RotData\022\025\n\nerror_cod"
     "e\030\001 \002(\021:\0010\022\026\n\007running\030\002 \001(\010:\005false\022\016\n\003po"
     "s\030\003 \001(\r:\0010\022\013\n\003min\030\004 \001(\r\022\013\n\003max\030\005 \001(\r\022\013\n\003"
     "avr\030\006 \001(\r\022\013\n\003sum\030\007 \001(\001\022\013\n\003cnt\030\010 \001(\r\022\020\n\010f"
@@ -3789,7 +3789,7 @@ bool ADCChannelInitParams::MergePartialFromCodedStream(
         break;
       }
 
-      // required uint32 drv_buf_size = 3 [default = 32768];
+      // optional uint32 drv_buf_size = 3 [default = 32768];
       case 3: {
         if (tag == 24) {
          parse_drv_buf_size:
@@ -3804,7 +3804,7 @@ bool ADCChannelInitParams::MergePartialFromCodedStream(
         break;
       }
 
-      // required uint32 usr_proc_len = 4 [default = 32768];
+      // optional uint32 usr_proc_len = 4 [default = 32768];
       case 4: {
         if (tag == 32) {
          parse_usr_proc_len:
@@ -3819,7 +3819,7 @@ bool ADCChannelInitParams::MergePartialFromCodedStream(
         break;
       }
 
-      // required uint32 usr_proc_cnt = 5 [default = 0];
+      // optional uint32 usr_proc_cnt = 5 [default = 0];
       case 5: {
         if (tag == 40) {
          parse_usr_proc_cnt:
@@ -3834,7 +3834,7 @@ bool ADCChannelInitParams::MergePartialFromCodedStream(
         break;
       }
 
-      // required uint32 sen_filter_id = 6 [default = 0];
+      // optional uint32 sen_filter_id = 6 [default = 0];
       case 6: {
         if (tag == 48) {
          parse_sen_filter_id:
@@ -3849,7 +3849,7 @@ bool ADCChannelInitParams::MergePartialFromCodedStream(
         break;
       }
 
-      // required .channel_manager.ADCParams ap = 7;
+      // optional .channel_manager.ADCParams ap = 7;
       case 7: {
         if (tag == 58) {
          parse_ap:
@@ -3897,27 +3897,27 @@ void ADCChannelInitParams::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->rot_idx(), output);
   }
 
-  // required uint32 drv_buf_size = 3 [default = 32768];
+  // optional uint32 drv_buf_size = 3 [default = 32768];
   if (has_drv_buf_size()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->drv_buf_size(), output);
   }
 
-  // required uint32 usr_proc_len = 4 [default = 32768];
+  // optional uint32 usr_proc_len = 4 [default = 32768];
   if (has_usr_proc_len()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->usr_proc_len(), output);
   }
 
-  // required uint32 usr_proc_cnt = 5 [default = 0];
+  // optional uint32 usr_proc_cnt = 5 [default = 0];
   if (has_usr_proc_cnt()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->usr_proc_cnt(), output);
   }
 
-  // required uint32 sen_filter_id = 6 [default = 0];
+  // optional uint32 sen_filter_id = 6 [default = 0];
   if (has_sen_filter_id()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(6, this->sen_filter_id(), output);
   }
 
-  // required .channel_manager.ADCParams ap = 7;
+  // optional .channel_manager.ADCParams ap = 7;
   if (has_ap()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       7, this->ap(), output);
@@ -3943,27 +3943,27 @@ void ADCChannelInitParams::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->rot_idx(), target);
   }
 
-  // required uint32 drv_buf_size = 3 [default = 32768];
+  // optional uint32 drv_buf_size = 3 [default = 32768];
   if (has_drv_buf_size()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->drv_buf_size(), target);
   }
 
-  // required uint32 usr_proc_len = 4 [default = 32768];
+  // optional uint32 usr_proc_len = 4 [default = 32768];
   if (has_usr_proc_len()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->usr_proc_len(), target);
   }
 
-  // required uint32 usr_proc_cnt = 5 [default = 0];
+  // optional uint32 usr_proc_cnt = 5 [default = 0];
   if (has_usr_proc_cnt()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->usr_proc_cnt(), target);
   }
 
-  // required uint32 sen_filter_id = 6 [default = 0];
+  // optional uint32 sen_filter_id = 6 [default = 0];
   if (has_sen_filter_id()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(6, this->sen_filter_id(), target);
   }
 
-  // required .channel_manager.ADCParams ap = 7;
+  // optional .channel_manager.ADCParams ap = 7;
   if (has_ap()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -3996,35 +3996,35 @@ int ADCChannelInitParams::ByteSize() const {
           this->rot_idx());
     }
 
-    // required uint32 drv_buf_size = 3 [default = 32768];
+    // optional uint32 drv_buf_size = 3 [default = 32768];
     if (has_drv_buf_size()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->drv_buf_size());
     }
 
-    // required uint32 usr_proc_len = 4 [default = 32768];
+    // optional uint32 usr_proc_len = 4 [default = 32768];
     if (has_usr_proc_len()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->usr_proc_len());
     }
 
-    // required uint32 usr_proc_cnt = 5 [default = 0];
+    // optional uint32 usr_proc_cnt = 5 [default = 0];
     if (has_usr_proc_cnt()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->usr_proc_cnt());
     }
 
-    // required uint32 sen_filter_id = 6 [default = 0];
+    // optional uint32 sen_filter_id = 6 [default = 0];
     if (has_sen_filter_id()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->sen_filter_id());
     }
 
-    // required .channel_manager.ADCParams ap = 7;
+    // optional .channel_manager.ADCParams ap = 7;
     if (has_ap()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -4096,7 +4096,7 @@ void ADCChannelInitParams::CopyFrom(const ADCChannelInitParams& from) {
 }
 
 bool ADCChannelInitParams::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000007f) != 0x0000007f) return false;
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
 
   if (has_ap()) {
     if (!this->ap().IsInitialized()) return false;
@@ -4254,7 +4254,7 @@ bool SynctaskChannels::MergePartialFromCodedStream(
         break;
       }
 
-      // required uint32 sync_reg = 3;
+      // optional uint32 sync_reg = 3;
       case 3: {
         if (tag == 24) {
          parse_sync_reg:
@@ -4305,7 +4305,7 @@ void SynctaskChannels::SerializeWithCachedSizes(
       2, this->adc_ch_idx(i), output);
   }
 
-  // required uint32 sync_reg = 3;
+  // optional uint32 sync_reg = 3;
   if (has_sync_reg()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->sync_reg(), output);
   }
@@ -4331,7 +4331,7 @@ void SynctaskChannels::SerializeWithCachedSizes(
       WriteUInt32ToArray(2, this->adc_ch_idx(i), target);
   }
 
-  // required uint32 sync_reg = 3;
+  // optional uint32 sync_reg = 3;
   if (has_sync_reg()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->sync_reg(), target);
   }
@@ -4355,7 +4355,7 @@ int SynctaskChannels::ByteSize() const {
           this->adc_ch_cnt());
     }
 
-    // required uint32 sync_reg = 3;
+    // optional uint32 sync_reg = 3;
     if (has_sync_reg()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
@@ -4423,7 +4423,7 @@ void SynctaskChannels::CopyFrom(const SynctaskChannels& from) {
 }
 
 bool SynctaskChannels::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000005) != 0x00000005) return false;
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
   return true;
 }
@@ -4551,7 +4551,7 @@ bool RotChannelInitParams::MergePartialFromCodedStream(
         break;
       }
 
-      // required uint32 av_num = 2 [default = 1];
+      // optional uint32 av_num = 2 [default = 1];
       case 2: {
         if (tag == 16) {
          parse_av_num:
@@ -4566,7 +4566,7 @@ bool RotChannelInitParams::MergePartialFromCodedStream(
         break;
       }
 
-      // required uint32 pw_min_us = 3 [default = 25];
+      // optional uint32 pw_min_us = 3 [default = 25];
       case 3: {
         if (tag == 24) {
          parse_pw_min_us:
@@ -4581,7 +4581,7 @@ bool RotChannelInitParams::MergePartialFromCodedStream(
         break;
       }
 
-      // required uint32 period_min_us = 4 [default = 8333];
+      // optional uint32 period_min_us = 4 [default = 8333];
       case 4: {
         if (tag == 32) {
          parse_period_min_us:
@@ -4596,7 +4596,7 @@ bool RotChannelInitParams::MergePartialFromCodedStream(
         break;
       }
 
-      // required uint32 period_max_us = 5 [default = 1000000];
+      // optional uint32 period_max_us = 5 [default = 1000000];
       case 5: {
         if (tag == 40) {
          parse_period_max_us:
@@ -4641,22 +4641,22 @@ void RotChannelInitParams::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->rot_idx(), output);
   }
 
-  // required uint32 av_num = 2 [default = 1];
+  // optional uint32 av_num = 2 [default = 1];
   if (has_av_num()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->av_num(), output);
   }
 
-  // required uint32 pw_min_us = 3 [default = 25];
+  // optional uint32 pw_min_us = 3 [default = 25];
   if (has_pw_min_us()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->pw_min_us(), output);
   }
 
-  // required uint32 period_min_us = 4 [default = 8333];
+  // optional uint32 period_min_us = 4 [default = 8333];
   if (has_period_min_us()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->period_min_us(), output);
   }
 
-  // required uint32 period_max_us = 5 [default = 1000000];
+  // optional uint32 period_max_us = 5 [default = 1000000];
   if (has_period_max_us()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->period_max_us(), output);
   }
@@ -4676,22 +4676,22 @@ void RotChannelInitParams::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->rot_idx(), target);
   }
 
-  // required uint32 av_num = 2 [default = 1];
+  // optional uint32 av_num = 2 [default = 1];
   if (has_av_num()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->av_num(), target);
   }
 
-  // required uint32 pw_min_us = 3 [default = 25];
+  // optional uint32 pw_min_us = 3 [default = 25];
   if (has_pw_min_us()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->pw_min_us(), target);
   }
 
-  // required uint32 period_min_us = 4 [default = 8333];
+  // optional uint32 period_min_us = 4 [default = 8333];
   if (has_period_min_us()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->period_min_us(), target);
   }
 
-  // required uint32 period_max_us = 5 [default = 1000000];
+  // optional uint32 period_max_us = 5 [default = 1000000];
   if (has_period_max_us()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->period_max_us(), target);
   }
@@ -4715,28 +4715,28 @@ int RotChannelInitParams::ByteSize() const {
           this->rot_idx());
     }
 
-    // required uint32 av_num = 2 [default = 1];
+    // optional uint32 av_num = 2 [default = 1];
     if (has_av_num()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->av_num());
     }
 
-    // required uint32 pw_min_us = 3 [default = 25];
+    // optional uint32 pw_min_us = 3 [default = 25];
     if (has_pw_min_us()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->pw_min_us());
     }
 
-    // required uint32 period_min_us = 4 [default = 8333];
+    // optional uint32 period_min_us = 4 [default = 8333];
     if (has_period_min_us()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->period_min_us());
     }
 
-    // required uint32 period_max_us = 5 [default = 1000000];
+    // optional uint32 period_max_us = 5 [default = 1000000];
     if (has_period_max_us()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
@@ -4802,7 +4802,7 @@ void RotChannelInitParams::CopyFrom(const RotChannelInitParams& from) {
 }
 
 bool RotChannelInitParams::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000001f) != 0x0000001f) return false;
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
   return true;
 }

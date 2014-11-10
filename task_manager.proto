@@ -1,0 +1,356 @@
+package task_manager;
+
+//-------------------------------------------------------------------------------BASIC
+message DSPEmulInitParams {
+    required uint32     ATSDTC = 1;
+    required uint32     AInitSigBufferLength = 2;
+    required uint32     ASigBufferIncrement = 3;
+    required uint32     AInitRotBufferLength = 4;
+    required uint32     ARotBufferIncrement = 5;
+    //required uint32     AChannelsCount = 6;
+}
+
+message IntArray {
+    repeated int32      values = 1 [packed = true];
+}
+
+//structures converted from DSPEmul.h
+//-------------------------------------------------------------------------------FILTERS
+
+//Low-pass filter
+message LPFilter {
+    required int32      Index = 1;
+    required double     MFreq = 2;
+    required int32      RFreq = 3;
+}
+
+message LPFilter_params {
+    required int32      LPFilterIndex = 1;
+    required uint32     LPFilterDecim = 2;
+    required int32      LPFilterType = 3;
+    required bool       LPFilterUsualW = 4;
+}
+
+//Band-pass filter
+message BPFilter {
+    required int32      Index = 1;
+    required int32      CFreq = 2;
+    required int32      Width = 3;
+    required int32      Oct = 4;
+    required int32      Dec = 5;
+    required int32      PreDec = 6;
+    required int32      BPDec = 7;
+    required int32      EnvType = 8;
+}
+
+message BPFilter_params {
+    required int32      BPFilterIndex = 1;
+    required int32      BPFilterType = 2;
+    required bool       BPFilterUsualW = 3;
+}
+
+//Resampling filter
+message RSMPFilter {
+    required int32      Index = 1;
+    required int32      Interp = 2;
+    required int32      Dec = 3;
+    required double     Rel = 4;
+    required int32      ResampleType = 5;
+}
+
+message RSMPFilter_params {
+    required int32      RSMPFilterIndex = 1;
+    required int32      RSMPFilterType = 2;
+    required bool       RSMPFilterUsualW = 3;
+}
+
+//High-pass filter
+message HPFilter {
+    required int32      Index = 1;
+    required double     SFreq = 2;
+    required double     MFreq = 3;
+    required int32      RFreq = 4;
+    required int32      HPFType = 5;
+}
+
+message HPFilter_params {
+    required int32      HPFilterIndex = 1;
+    required int32      HPFilterType = 2;
+    required double     HPFilterParam1 = 3;
+}
+
+//Special filter
+message SPFilter {
+    required int32      Index = 1;
+    required int32      RFreq = 2;
+    required int32      SPFType = 3;
+}
+
+message SPFilter_params {
+    required int32      SPFilterIndex = 1;
+    required int32      SPFilterType = 2;
+    required bool       SPFilterUsualW = 3;
+}
+
+//Integration filter
+message INTGFilter {
+    required int32      Index = 1;
+    required int32      INTGFType = 2;
+}
+
+message INTGFilter_params {
+    required int32      INTGFilterIndex = 1;
+    required int32      INTGFilterType = 2;
+}
+
+message FParams {
+    required int32              Type = 1;
+    optional LPFilter_params    LPF = 2;
+    optional BPFilter_params    BPF = 3;
+    optional RSMPFilter_params  RSMPF = 4;
+    optional HPFilter_params    HPF = 5;
+    optional SPFilter_params    SPF = 6;
+    optional INTGFilter_params  INTGF = 7;
+}
+
+//-------------------------------------------------------------------------------DATA STRUCTS
+
+message TStatRot {
+    required int32      AvgCnt = 1;
+    required double     Avg = 2;
+    required double     Min = 3;
+    required double     Max = 4;
+}
+
+message TOffset {
+    required int32      Type = 1;
+    required int64      Value = 2;
+}
+
+message TFrotLimits {
+    required double     Frot_min = 1;
+    required double     Frot_max = 2;
+    required double     DeltaFrotOneMeas = 3;
+    required double     DeltaFrotAllMeas = 4;
+}
+
+message RBitem {
+    required double     ValueY = 1;
+    required double     ValueX = 2;
+    required bool       ValidExtern = 3;
+    required bool       Valid = 4;
+    required bool       ValidRough = 5;
+}
+
+//-------------------------------------------------------------------------------TASK RESULTS
+
+message Spectr_data { //TSimpleSpectr
+    required uint32     FType = 1;
+    required LPFilter   FLPFilter = 2;
+    required BPFilter   FBPFilter = 3;
+    required TStatRot   FStatRot = 4;
+    required uint32     FAvgCount = 5;
+    required double     FBegFreq = 6;
+    required double     FFreqStep = 7;
+    required uint32     FLinesCnt = 8;
+    required uint32     FAmpUnit = 9;
+    repeated double     FAmp = 10 [packed = true];
+    repeated double     FSIAmp = 11 [packed = true];
+}
+
+message Vharmonic_data { // = vharmonic_t
+    required double     amp = 1;
+    required double     ph = 2;
+    required double     freq = 3;
+    required TStatRot   StatRot = 4;
+    required uint32     AvgCount = 5;
+}
+
+message StatKurtosis_data { // = statkurtosis_t
+    required double     min = 1;
+    required double     max = 2;
+    required double     mean = 3;
+    required double     std = 4;
+    required double     kurtosis = 5;
+    required double     peak_factor = 6;
+    required TStatRot   StatRot = 7;
+    required uint32     AvgCount = 8;
+}
+
+message StatTimeSig_data { // = stattimesig_t
+    required double     min = 1;
+    required double     max = 2;
+    required double     mean = 3;
+    required double     std = 4;
+    required double     kurtosis = 5;
+    required double     peak_factor = 6;
+    required TStatRot   StatRot = 7;
+    required uint32     AvgCount = 8;
+}
+
+message QualityTimeSig_data { // = qualitytimesig_t
+    required bool       SigOverFlow = 1;
+    required bool       SigTooLow = 2;
+    required bool       SigTooHigh = 3;
+    required double     AmpPeakToPeakCalc = 4;
+    required double     AmpStdCalc = 5;
+    required int32      SigOverFlowCount = 6;
+    required TStatRot   StatRot = 7;
+    required uint32     AvgCount = 8;
+}
+
+message SaveTimeSig_data { // = savetimesig_t
+    required TStatRot   StatRot = 1;
+    required uint32     AvgCount = 2;
+}
+
+message VsensorFrot_data { // = vsensorfrot_t
+    required RBitem     Frot = 1;
+    required TStatRot   StatRot = 2;
+    required uint32     AvgCount = 3;
+}
+
+message DecimTimeSig_data { // = decimtimesig_t
+    required TStatRot   StatRot = 1;
+    required uint32     AvgCount = 2;
+}
+
+message AnyTaskResult {
+    required int32                 error_code = 1;
+    optional Vharmonic_data        harmonic_res = 2;
+    optional StatKurtosis_data     kurtosis_res = 3;
+    optional StatTimeSig_data      stattimesig_res = 4;
+    optional QualityTimeSig_data   quality_res = 5;
+    optional SaveTimeSig_data      savetimesig_res = 6;
+    optional VsensorFrot_data      vsensorfrot_res = 7;
+    optional DecimTimeSig_data     decim_res = 8;
+    optional Spectr_data           spectr_res = 9;
+}
+
+//-------------------------------------------------------------------------------TASK PARAMS
+
+message CommonTaskParams {
+    required TOffset    OffSet = 1;
+    required TOffset    DeltaOffSet = 2;
+    required bool       Monitoring = 3;
+    required int32      TimesigType = 4;        // = SpectrType
+    required int32      LPFilterIndex = 5;
+    required uint32     LPFilterDecim = 6;
+    required int32      LPFilterType = 7;
+    required bool       LPFilterUsualW = 8;     // = LPFilterGenW
+    required int32      BPFilterIndex = 9;
+    required int32      BPFilterType = 10;
+    required bool       BPFilterUsualW = 11;
+    required int32      RSMPFilterIndex = 12;
+    required int32      RSMPFilterType = 13;
+    required bool       RSMPFilterUsualW = 14;  // = RSMPFilterGenW
+    required int32      HPFilterIndex = 15;
+    required int32      HPFilterType = 16;
+    required double     HPFilterParam1 = 17;
+    repeated FParams    FParamsList = 18;
+    required int32      FParamsCount = 19;
+    required int32      AvgCount = 20;          // = SpectAvgCount
+    required TFrotLimits    FrotLimits = 21;
+    required bool       FrotLimitsActive = 22;
+    required bool       StabControl = 23;
+    required bool       RotControl = 24;
+    required double     WaitPeriodForRotMetka = 25;
+    required int32      TimeSigSrcType = 26;
+    required int32      TimeSigID = 27;
+    required int32      InitTaskState = 28;
+    required int32      FinalTaskState = 29;
+    required int32      TSDTC = 30;
+    required int32      CalcTypeTSDTC = 31;
+    required int32      TDE = 32;
+}
+
+message SpectrTaskParams {
+    required CommonTaskParams   CMN = 1;
+    required int32      SpectrClassCode = 2;
+    required int32      SpectLinesArrIndex = 3;
+    required uint32     SpectAmpUnit = 4;
+    required bool       RemoveAvgLine = 5;
+}
+
+message VharmonicTaskParams {
+     optional SpectrTaskParams  STP = 1;
+     required CommonTaskParams  CMN = 2;
+     required int32             VHarmonicsCount = 3;
+     optional int32             VHarmonicsAvgCount = 4;
+     required int32             SpectLinesArrIndex = 5;
+}
+
+message StatKurtosisTaskParams {
+    required CommonTaskParams   CMN = 1;
+    required int32      OneMeasTimeSigLength = 2;
+    required int32      MeasCount = 3;
+    required double     CoefCover = 4;
+}
+
+message StatTimeSigTaskParams {
+    required CommonTaskParams   CMN = 1;
+    required int32      OneMeasTimeSigLength = 2;
+    required uint32     AmpUnit = 3;
+    required bool       IntegrateInTimeDomain = 4;
+}
+
+message PlayerTimeSigTaskParams {
+    required CommonTaskParams   CMN = 1;
+}
+
+message VibegTaskParams {
+    required CommonTaskParams   CMN = 1;
+    required double     Frot_base = 2;
+    required uint32     FrotAvgMetkasCount = 3;
+}
+
+message QualityTimeSigTaskParams {
+    required CommonTaskParams   CMN = 1;
+    required int32      OneMeasTimeSigLength = 2;
+    required double     AmpPeakToPeakMin = 3;
+    required double     AmpPeakToPeakMax = 4;
+    required double     AmpStdMin = 5;
+    required double     AmpStdMax = 6;
+}
+
+message SaveTimeSigTaskParams {
+    required CommonTaskParams   CMN = 1;
+    required string     FileName = 2;
+    required uint32     OnePartTimeSigLength = 3;
+    required uint32     TotalTimeSigLength = 4;
+    required bool       SigLengthWithFsSrc = 5;
+    required uint32     TSDTC = 6;
+}
+
+message VsensorFrotTaskParams {
+    optional CommonTaskParams  CMN = 1;
+    optional SpectrTaskParams  STP = 2;
+    required double     DeltaOffSetInSec = 3;
+    required uint32     ScaleKoeffFFt = 4;
+    required double     FrotMin = 5;
+    required double     FrotMax = 6;
+    required double     FrotAccelMax = 7;
+    required double     AmpModulMin = 8;
+    required double     STDMin = 9;
+    required int32      RBFilterLength = 10;
+}
+
+message DecimTimeSigTaskParams {
+    required CommonTaskParams   CMN = 1;
+    required uint32     OnePartTimeSigLength = 2;
+    required bool       ForgetFsSrc = 3;
+}
+
+message AnyTaskParams {
+    required int32                      error_code = 1;
+    optional SpectrTaskParams           spect_par = 2;
+    optional VharmonicTaskParams        harmonic_par = 3;
+    optional StatKurtosisTaskParams     kurtosis_par = 4;
+    optional StatTimeSigTaskParams      stattimesig_par = 5;
+    optional PlayerTimeSigTaskParams    player_par = 6;
+    optional VibegTaskParams            vibeg_par = 7;
+    optional QualityTimeSigTaskParams   quality_par = 8;
+    optional SaveTimeSigTaskParams      savetimesig_par = 9;
+    optional VsensorFrotTaskParams      vsensorfrot_par = 10;
+    optional DecimTimeSigTaskParams     decim_par = 11;
+}

@@ -11,8 +11,9 @@
 #include <RCF/RCF.hpp>
 //#include <RCFProto.hpp>
 //#include "channel_manager.hpp"
-#include "channel_manager.pb.h"
-#include "task_manager.pb.h"
+//#include "channel_manager.pb.h"
+//#include "task_manager.pb.h"
+#include "p347_conf.pb.h"
 
 #define EMUL_TASK_TYPE_NONE				0
 #define EMUL_TASK_TYPE_SPECTR			1
@@ -28,18 +29,20 @@
 
 RCF_BEGIN(CM_connection,"CM_connection")
 	//---test
-	RCF_METHOD_R1(int,remoteSleep, int)
+	//RCF_METHOD_R1(int,remoteSleep, int)
 	//------------------------------------------------------------------------------CHANNEL MANAGER
-	RCF_METHOD_R2(int, createChannelManager, const channel_manager::ChannelManagerInitParams &, const task_manager::DSPEmulInitParams &)
-	RCF_METHOD_R0(int, deleteChannelManager)
+	RCF_METHOD_R1(int, initDevice, const p347_conf::DeviceInitParams &)
+	RCF_METHOD_R0(int, deinitDevice)
+	//RCF_METHOD_R2(int, createChannelManager, const channel_manager::ChannelManagerInitParams &, const task_manager::DSPEmulInitParams &)
+	//RCF_METHOD_R0(int, deleteChannelManager)
 
 	RCF_METHOD_R0(channel_manager::ServerVersion,getServerVersion)
 	RCF_METHOD_R0(channel_manager::AvailableChannels,getAvailableChannels)
 	RCF_METHOD_R1(bool,isChannelAvailable,int)
 	RCF_METHOD_R0(bool,isChannelsCreated)
 	//---
-	RCF_METHOD_R1(int,initMultiplexer, const channel_manager::MultiplexerInitParams &)
-	RCF_METHOD_R0(int,deinitMultiplexer)
+	//RCF_METHOD_R1(int,initMultiplexer, const channel_manager::MultiplexerInitParams &)
+	//RCF_METHOD_R0(int,deinitMultiplexer)
 	//RCF_METHOD_R1(int,initChannelManager,const channel_manager::ChannelManagerInitParams &)
 	//RCF_METHOD_R0(int,exitChannelManager)
 	RCF_METHOD_R2(int,FPGADriverReload,const std::string &,const std::string &)
@@ -68,8 +71,6 @@ RCF_BEGIN(CM_connection,"CM_connection")
 	RCF_METHOD_R2(int,doMuxChannel,int,int)
 	//------------------------------------------------------------------------------DSPEMUL
 
-
-
 	RCF_METHOD_R2(int,addTask,int,task_manager::AnyTaskParams &)
 	RCF_METHOD_R2(int,delTask,int,int)
 	RCF_METHOD_R4(int,clearTaskData,int,int,bool,bool)
@@ -97,7 +98,7 @@ RCF_BEGIN(CM_connection,"CM_connection")
 	RCF_METHOD_R1(double,getGain,int)
 	RCF_METHOD_R2(int,setSensitivity,int,double)
 	RCF_METHOD_R2(int,setGain,int,double)
-	//TODO: check, is it common for all channels or not
+
 	RCF_METHOD_R2(int,setRotLabelsCount,int,int)
 	RCF_METHOD_R1(int,getRotLabelsCount,int)
 	//
@@ -118,6 +119,9 @@ RCF_BEGIN(CM_connection,"CM_connection")
 	RCF_METHOD_R2(int,setSrcSamplingFreq,int,int)
 	RCF_METHOD_R1(int,getDecim,int)
 	RCF_METHOD_R1(int,getInterp,int)
+
+	//setBegSigOffSet, setRotMetkasFromSig, setBegRotOffSet, setSrcSamplingFreq, setGain, setSensitivity
+	RCF_METHOD_R1(int,setDefaultDSPEmulParams,int)
 
 	//TODO: common?
 	RCF_METHOD_R1(bool,getVibeg,int)

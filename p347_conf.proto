@@ -1,0 +1,247 @@
+import "channel_manager.proto";
+import "task_manager.proto";
+
+package p347_conf;
+
+//------------------------------------------------------------------------------------------------
+message MapElement {
+    required uint32			poi_idx = 1; // "poi" = "point of interest"
+    required uint32			dot_type = 2;
+    required string			poi_name = 3;
+}
+
+message ObjectMap {
+    required uint32			map_id = 1;
+    required uint32			object_type = 2;
+    required string			object_name = 3;
+    repeated MapElement			poi_list = 4;
+}
+
+//------------------------------------------------------------------------------------------------
+message DeviceInitParams {
+    optional channel_manager.ChannelManagerInitParams		cm_init = 1;
+    optional channel_manager.MultiplexerInitParams          mux_init = 2;
+    optional task_manager.DSPEmulInitParams			        dspemul_init = 3;
+}
+
+message DefaultDSPEmulParamsPack {
+    required uint32 emu_idx = 1;
+    required uint32 ABegSigOffSet = 2;
+    required bool   ARotMetkasFromSig = 3;
+    required uint32 ABegRotOffSet = 4;
+    required uint32 ASrcSamplingFreq = 5;
+    required double AGain = 6;
+    required double ASensitivity = 7;
+}
+
+message ServerConfPack {
+    optional channel_manager.ChannelManagerInitParams       cm_init_conf = 1;
+    optional channel_manager.MultiplexerInitParams          mux_init_conf = 2;
+    optional task_manager.DSPEmulInitParams                 dspemul_init_conf = 3;
+    repeated DefaultDSPEmulParamsPack                       dspemul_params_conf = 4;
+    optional uint32                                         sync_reg = 5;
+    repeated channel_manager.ADCChannelInitParams           adc_init_conf = 6;
+    repeated channel_manager.RotChannelInitParams           rot_init_conf = 7;
+    optional uint32                                         reg_settings_for_warm = 8;
+}
+
+//------------------------------------------------------------------------------------------------
+message DotConf {
+    required uint32			poi_idx = 1; // index from map
+
+    optional uint32			dot_vibro_idx = 2; //idx to search from dots_vibro_list
+    optional uint32			dot_rot_idx = 3;
+    optional uint32			dot_press_idx = 4;
+    optional uint32			dot_temp_idx = 5;
+    
+    //optional uint32			sens_vibro_idx = 6; //idx to search from sens_vibro_list
+    //optional uint32			sens_rot_idx = 7;
+    //optional uint32			sens_press_idx = 8;
+    //optional uint32			sens_temp_idx = 9;
+}
+
+message DotGroup {
+    required string			group_name = 1;
+    repeated DotConf		dot_configs = 2;
+}
+
+message DotChain {
+    required string			chain_name = 1;
+    repeated DotGroup		dot_groups = 2;
+}
+
+//------------------------------------------------------------------------------------------------
+message KdrInParams {
+    required uint32         typepoint = 1; //typepoint_t typePoint
+    optional uint32         drive_p = 2;
+    optional uint32         drive_z = 3;
+    optional uint32         drive_c = 4;
+    required uint32         resursworkbearing = 5;
+    required uint32         main_bearing_id = 6;
+    required uint32         pair_bearing_id = 7;
+    required uint32         reducer_id = 8;
+    repeated uint32         env_porog = 9;
+    repeated uint32         dir_porog = 10;
+    required double         kurtosisporog = 11;
+    required double         errorfrot = 12;
+    required double         maxerrorfrot = 13;
+    required double         koeffrotation = 14;
+}
+
+//------------------------------------------------------------------------------------------------
+message DotVibro {
+    required uint32						dot_idx = 1;
+    //-------------physical channel
+    optional uint32                     rot_poi = 2;
+    //required channel_manager.ADCChannelInitParams		 adc_setup = 2;
+    //required uint32						phys_idx = 3; - it must be taken from adc_setup
+    //required uint32						mux_idx = 3;
+    //optional uint32						reg_settings_for_warm = 4;
+    //optional uint32						reg_sync_for_group_start = 5;
+    //-------------dspemul
+    repeated task_manager.AnyTaskParams				     task_list = 3;
+    //required double						sensitivity = 7;
+    //required double						gain = 8;
+    required uint32						beg_sig_offset = 4;
+    required uint32						beg_rot_offset = 5;
+    //required uint32						src_sampling_freq = 11;
+    required bool						vibeg = 6;
+    //-------------ckdr
+    required KdrInParams                kdr_inparams = 7;
+}
+
+message DotRot {
+    required uint32                     dot_idx = 1;
+    //required channel_manager.RotChannelInitParams      rot_setup = 2;
+}
+
+message DotPress {
+    required uint32                     dot_idx = 1;
+}
+
+message DotTemp {
+    required uint32                     dot_idx = 1;
+}
+/*
+message SensorVibro {
+    required uint32                     sensor_idx = 1;
+}
+
+message SensorRot {
+    required uint32                     sensor_idx = 1;
+}
+
+message SensorPress {
+    required uint32                     sensor_idx = 1;
+}
+
+message SensorTemp {
+    required uint32                     sensor_idx = 1;
+}
+*/
+//------------------------------------------------------------------------------------------------
+message WorkConfiguration { //Partially same as "TPrototype" in old terms
+    required uint32			    conf_id = 1;
+    required uint32             object_type = 2;
+    //-------------
+    required ObjectMap          object_map = 3;
+    //required DeviceInitParams	dip = 4;
+    repeated DotChain			dot_chains = 5;
+    //-------------
+    repeated DotVibro			dots_vibro_list = 6;
+    repeated DotRot             dots_rot_list   = 7;
+    repeated DotPress			dots_press_list = 8;
+    repeated DotTemp			dots_temp_list  = 9;
+/*
+    //-------------
+    repeated SensorVibro		sens_vibro_list = 10;
+    repeated SensorRot			sens_rot_list = 11;
+    repeated SensorPress		sens_press_list = 12;
+    repeated SensorTemp			sens_temp_list = 13;
+*/
+}
+
+//-----------------------------------------------------------------------------------------------------
+
+//TODO: maybe add "available objects for current bearing"
+message Bearing {
+    required uint32             bearing_idx = 1;
+    required string             bearing_name = 2;
+    //kdrBearing_t;
+    required double             din = 3;
+    required double             dout = 4;
+    required double             angl = 5;
+    required double             drol = 6;
+    required uint32             nrol = 7;
+    required uint32             dnrol = 8;
+}
+
+message Reducer {
+    required uint32             reducer_idx = 1;
+    required string             reducer_name = 2;
+    //kdrReducer_t;
+    required uint32             axis = 3;
+    required uint32             z12 = 4;
+    required uint32             z21 = 5;
+    required uint32             z23 = 6;
+    required uint32             z32 = 7;
+    required uint32             z34 = 8;
+    required uint32             z43 = 9;
+    required uint32             z45 = 10;
+    required uint32             z54 = 11;
+}
+
+message ReducerList {
+    repeated Reducer            rd = 1;
+}
+
+message BearingList {
+    repeated Bearing            br = 1;
+}
+
+//-----------------------------------------------------------------------------------------------------Porogs
+
+message FrqTab { //kdrMNTRFrq_t;
+    required uint32             L = 1;
+    required uint32             R = 2;
+}
+
+message SpLevel { //kdrSpLevel_t;
+    repeated double             lv = 1;
+}
+
+message MNTRLevels { //kdrMNTRLevels_t;
+    required uint32             nch = 1;
+    repeated FrqTab             freq_tab = 2; //kdrMNTRFrqTab_t;
+    repeated SpLevel            sp_levels = 3;
+}
+
+message PorogDirData { //kdrPorogDirData_t;
+    required uint32             mpgroup = 1;
+    required uint32             dirnline = 2;
+    required double             dirfs = 3;
+    required MNTRLevels         m_levels = 4;
+}
+
+//-----------------------------------------------------------------------------------------------------Etalon
+
+message EnvEtalon {
+    required double             FirstLineMO = 1;
+}
+
+message DirEtalon {
+    required uint32             nMidlValue = 1;
+    required uint32             nBeginMidleSp = 2;
+    required uint32             CountMidleSp = 3;
+    repeated double             level = 4 [packed = true];
+    repeated uint32             levelOpt = 5 [packed = true];
+}
+
+message KdrEtalonData {
+    required uint32             SIZE = 1;
+    required uint32             version = 2;
+    required uint32             mpType = 3;
+    required uint32             mpSubType = 4;
+    required DirEtalon          dir_etalon = 5;
+    required EnvEtalon          env_etalon = 6;
+}

@@ -52,6 +52,7 @@ class TStatRot;
 class TOffset;
 class TFrotLimits;
 class RBitem;
+class Spectr_data;
 class Vharmonic_data;
 class StatKurtosis_data;
 class StatTimeSig_data;
@@ -247,7 +248,7 @@ class IntArray : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated int32 values = 1;
+  // repeated int32 values = 1 [packed = true];
   inline int values_size() const;
   inline void clear_values();
   static const int kValuesFieldNumber = 1;
@@ -267,6 +268,7 @@ class IntArray : public ::google::protobuf::Message {
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::google::protobuf::RepeatedField< ::google::protobuf::int32 > values_;
+  mutable int _values_cached_byte_size_;
   friend void  protobuf_AddDesc_task_5fmanager_2eproto();
   friend void protobuf_AssignDesc_task_5fmanager_2eproto();
   friend void protobuf_ShutdownFile_task_5fmanager_2eproto();
@@ -2121,6 +2123,199 @@ class RBitem : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
+class Spectr_data : public ::google::protobuf::Message {
+ public:
+  Spectr_data();
+  virtual ~Spectr_data();
+
+  Spectr_data(const Spectr_data& from);
+
+  inline Spectr_data& operator=(const Spectr_data& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Spectr_data& default_instance();
+
+  void Swap(Spectr_data* other);
+
+  // implements Message ----------------------------------------------
+
+  Spectr_data* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const Spectr_data& from);
+  void MergeFrom(const Spectr_data& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required uint32 FType = 1;
+  inline bool has_ftype() const;
+  inline void clear_ftype();
+  static const int kFTypeFieldNumber = 1;
+  inline ::google::protobuf::uint32 ftype() const;
+  inline void set_ftype(::google::protobuf::uint32 value);
+
+  // required .task_manager.LPFilter FLPFilter = 2;
+  inline bool has_flpfilter() const;
+  inline void clear_flpfilter();
+  static const int kFLPFilterFieldNumber = 2;
+  inline const ::task_manager::LPFilter& flpfilter() const;
+  inline ::task_manager::LPFilter* mutable_flpfilter();
+  inline ::task_manager::LPFilter* release_flpfilter();
+  inline void set_allocated_flpfilter(::task_manager::LPFilter* flpfilter);
+
+  // required .task_manager.BPFilter FBPFilter = 3;
+  inline bool has_fbpfilter() const;
+  inline void clear_fbpfilter();
+  static const int kFBPFilterFieldNumber = 3;
+  inline const ::task_manager::BPFilter& fbpfilter() const;
+  inline ::task_manager::BPFilter* mutable_fbpfilter();
+  inline ::task_manager::BPFilter* release_fbpfilter();
+  inline void set_allocated_fbpfilter(::task_manager::BPFilter* fbpfilter);
+
+  // required .task_manager.TStatRot FStatRot = 4;
+  inline bool has_fstatrot() const;
+  inline void clear_fstatrot();
+  static const int kFStatRotFieldNumber = 4;
+  inline const ::task_manager::TStatRot& fstatrot() const;
+  inline ::task_manager::TStatRot* mutable_fstatrot();
+  inline ::task_manager::TStatRot* release_fstatrot();
+  inline void set_allocated_fstatrot(::task_manager::TStatRot* fstatrot);
+
+  // required uint32 FAvgCount = 5;
+  inline bool has_favgcount() const;
+  inline void clear_favgcount();
+  static const int kFAvgCountFieldNumber = 5;
+  inline ::google::protobuf::uint32 favgcount() const;
+  inline void set_favgcount(::google::protobuf::uint32 value);
+
+  // required double FBegFreq = 6;
+  inline bool has_fbegfreq() const;
+  inline void clear_fbegfreq();
+  static const int kFBegFreqFieldNumber = 6;
+  inline double fbegfreq() const;
+  inline void set_fbegfreq(double value);
+
+  // required double FFreqStep = 7;
+  inline bool has_ffreqstep() const;
+  inline void clear_ffreqstep();
+  static const int kFFreqStepFieldNumber = 7;
+  inline double ffreqstep() const;
+  inline void set_ffreqstep(double value);
+
+  // required uint32 FLinesCnt = 8;
+  inline bool has_flinescnt() const;
+  inline void clear_flinescnt();
+  static const int kFLinesCntFieldNumber = 8;
+  inline ::google::protobuf::uint32 flinescnt() const;
+  inline void set_flinescnt(::google::protobuf::uint32 value);
+
+  // required uint32 FAmpUnit = 9;
+  inline bool has_fampunit() const;
+  inline void clear_fampunit();
+  static const int kFAmpUnitFieldNumber = 9;
+  inline ::google::protobuf::uint32 fampunit() const;
+  inline void set_fampunit(::google::protobuf::uint32 value);
+
+  // repeated double FAmp = 10 [packed = true];
+  inline int famp_size() const;
+  inline void clear_famp();
+  static const int kFAmpFieldNumber = 10;
+  inline double famp(int index) const;
+  inline void set_famp(int index, double value);
+  inline void add_famp(double value);
+  inline const ::google::protobuf::RepeatedField< double >&
+      famp() const;
+  inline ::google::protobuf::RepeatedField< double >*
+      mutable_famp();
+
+  // repeated double FSIAmp = 11 [packed = true];
+  inline int fsiamp_size() const;
+  inline void clear_fsiamp();
+  static const int kFSIAmpFieldNumber = 11;
+  inline double fsiamp(int index) const;
+  inline void set_fsiamp(int index, double value);
+  inline void add_fsiamp(double value);
+  inline const ::google::protobuf::RepeatedField< double >&
+      fsiamp() const;
+  inline ::google::protobuf::RepeatedField< double >*
+      mutable_fsiamp();
+
+  // @@protoc_insertion_point(class_scope:task_manager.Spectr_data)
+ private:
+  inline void set_has_ftype();
+  inline void clear_has_ftype();
+  inline void set_has_flpfilter();
+  inline void clear_has_flpfilter();
+  inline void set_has_fbpfilter();
+  inline void clear_has_fbpfilter();
+  inline void set_has_fstatrot();
+  inline void clear_has_fstatrot();
+  inline void set_has_favgcount();
+  inline void clear_has_favgcount();
+  inline void set_has_fbegfreq();
+  inline void clear_has_fbegfreq();
+  inline void set_has_ffreqstep();
+  inline void clear_has_ffreqstep();
+  inline void set_has_flinescnt();
+  inline void clear_has_flinescnt();
+  inline void set_has_fampunit();
+  inline void clear_has_fampunit();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::task_manager::LPFilter* flpfilter_;
+  ::task_manager::BPFilter* fbpfilter_;
+  ::google::protobuf::uint32 ftype_;
+  ::google::protobuf::uint32 favgcount_;
+  ::task_manager::TStatRot* fstatrot_;
+  double fbegfreq_;
+  double ffreqstep_;
+  ::google::protobuf::uint32 flinescnt_;
+  ::google::protobuf::uint32 fampunit_;
+  ::google::protobuf::RepeatedField< double > famp_;
+  mutable int _famp_cached_byte_size_;
+  ::google::protobuf::RepeatedField< double > fsiamp_;
+  mutable int _fsiamp_cached_byte_size_;
+  friend void  protobuf_AddDesc_task_5fmanager_2eproto();
+  friend void protobuf_AssignDesc_task_5fmanager_2eproto();
+  friend void protobuf_ShutdownFile_task_5fmanager_2eproto();
+
+  void InitAsDefaultInstance();
+  static Spectr_data* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class Vharmonic_data : public ::google::protobuf::Message {
  public:
   Vharmonic_data();
@@ -3103,6 +3298,15 @@ class AnyTaskResult : public ::google::protobuf::Message {
   inline ::task_manager::DecimTimeSig_data* release_decim_res();
   inline void set_allocated_decim_res(::task_manager::DecimTimeSig_data* decim_res);
 
+  // optional .task_manager.Spectr_data spectr_res = 9;
+  inline bool has_spectr_res() const;
+  inline void clear_spectr_res();
+  static const int kSpectrResFieldNumber = 9;
+  inline const ::task_manager::Spectr_data& spectr_res() const;
+  inline ::task_manager::Spectr_data* mutable_spectr_res();
+  inline ::task_manager::Spectr_data* release_spectr_res();
+  inline void set_allocated_spectr_res(::task_manager::Spectr_data* spectr_res);
+
   // @@protoc_insertion_point(class_scope:task_manager.AnyTaskResult)
  private:
   inline void set_has_error_code();
@@ -3121,6 +3325,8 @@ class AnyTaskResult : public ::google::protobuf::Message {
   inline void clear_has_vsensorfrot_res();
   inline void set_has_decim_res();
   inline void clear_has_decim_res();
+  inline void set_has_spectr_res();
+  inline void clear_has_spectr_res();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -3133,6 +3339,7 @@ class AnyTaskResult : public ::google::protobuf::Message {
   ::task_manager::SaveTimeSig_data* savetimesig_res_;
   ::task_manager::VsensorFrot_data* vsensorfrot_res_;
   ::task_manager::DecimTimeSig_data* decim_res_;
+  ::task_manager::Spectr_data* spectr_res_;
   ::google::protobuf::int32 error_code_;
   friend void  protobuf_AddDesc_task_5fmanager_2eproto();
   friend void protobuf_AssignDesc_task_5fmanager_2eproto();
@@ -5058,7 +5265,7 @@ inline void DSPEmulInitParams::set_arotbufferincrement(::google::protobuf::uint3
 
 // IntArray
 
-// repeated int32 values = 1;
+// repeated int32 values = 1 [packed = true];
 inline int IntArray::values_size() const {
   return values_.size();
 }
@@ -6844,6 +7051,337 @@ inline void RBitem::set_validrough(bool value) {
 
 // -------------------------------------------------------------------
 
+// Spectr_data
+
+// required uint32 FType = 1;
+inline bool Spectr_data::has_ftype() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void Spectr_data::set_has_ftype() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void Spectr_data::clear_has_ftype() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void Spectr_data::clear_ftype() {
+  ftype_ = 0u;
+  clear_has_ftype();
+}
+inline ::google::protobuf::uint32 Spectr_data::ftype() const {
+  // @@protoc_insertion_point(field_get:task_manager.Spectr_data.FType)
+  return ftype_;
+}
+inline void Spectr_data::set_ftype(::google::protobuf::uint32 value) {
+  set_has_ftype();
+  ftype_ = value;
+  // @@protoc_insertion_point(field_set:task_manager.Spectr_data.FType)
+}
+
+// required .task_manager.LPFilter FLPFilter = 2;
+inline bool Spectr_data::has_flpfilter() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void Spectr_data::set_has_flpfilter() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void Spectr_data::clear_has_flpfilter() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void Spectr_data::clear_flpfilter() {
+  if (flpfilter_ != NULL) flpfilter_->::task_manager::LPFilter::Clear();
+  clear_has_flpfilter();
+}
+inline const ::task_manager::LPFilter& Spectr_data::flpfilter() const {
+  // @@protoc_insertion_point(field_get:task_manager.Spectr_data.FLPFilter)
+  return flpfilter_ != NULL ? *flpfilter_ : *default_instance_->flpfilter_;
+}
+inline ::task_manager::LPFilter* Spectr_data::mutable_flpfilter() {
+  set_has_flpfilter();
+  if (flpfilter_ == NULL) flpfilter_ = new ::task_manager::LPFilter;
+  // @@protoc_insertion_point(field_mutable:task_manager.Spectr_data.FLPFilter)
+  return flpfilter_;
+}
+inline ::task_manager::LPFilter* Spectr_data::release_flpfilter() {
+  clear_has_flpfilter();
+  ::task_manager::LPFilter* temp = flpfilter_;
+  flpfilter_ = NULL;
+  return temp;
+}
+inline void Spectr_data::set_allocated_flpfilter(::task_manager::LPFilter* flpfilter) {
+  delete flpfilter_;
+  flpfilter_ = flpfilter;
+  if (flpfilter) {
+    set_has_flpfilter();
+  } else {
+    clear_has_flpfilter();
+  }
+  // @@protoc_insertion_point(field_set_allocated:task_manager.Spectr_data.FLPFilter)
+}
+
+// required .task_manager.BPFilter FBPFilter = 3;
+inline bool Spectr_data::has_fbpfilter() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void Spectr_data::set_has_fbpfilter() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void Spectr_data::clear_has_fbpfilter() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void Spectr_data::clear_fbpfilter() {
+  if (fbpfilter_ != NULL) fbpfilter_->::task_manager::BPFilter::Clear();
+  clear_has_fbpfilter();
+}
+inline const ::task_manager::BPFilter& Spectr_data::fbpfilter() const {
+  // @@protoc_insertion_point(field_get:task_manager.Spectr_data.FBPFilter)
+  return fbpfilter_ != NULL ? *fbpfilter_ : *default_instance_->fbpfilter_;
+}
+inline ::task_manager::BPFilter* Spectr_data::mutable_fbpfilter() {
+  set_has_fbpfilter();
+  if (fbpfilter_ == NULL) fbpfilter_ = new ::task_manager::BPFilter;
+  // @@protoc_insertion_point(field_mutable:task_manager.Spectr_data.FBPFilter)
+  return fbpfilter_;
+}
+inline ::task_manager::BPFilter* Spectr_data::release_fbpfilter() {
+  clear_has_fbpfilter();
+  ::task_manager::BPFilter* temp = fbpfilter_;
+  fbpfilter_ = NULL;
+  return temp;
+}
+inline void Spectr_data::set_allocated_fbpfilter(::task_manager::BPFilter* fbpfilter) {
+  delete fbpfilter_;
+  fbpfilter_ = fbpfilter;
+  if (fbpfilter) {
+    set_has_fbpfilter();
+  } else {
+    clear_has_fbpfilter();
+  }
+  // @@protoc_insertion_point(field_set_allocated:task_manager.Spectr_data.FBPFilter)
+}
+
+// required .task_manager.TStatRot FStatRot = 4;
+inline bool Spectr_data::has_fstatrot() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void Spectr_data::set_has_fstatrot() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void Spectr_data::clear_has_fstatrot() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void Spectr_data::clear_fstatrot() {
+  if (fstatrot_ != NULL) fstatrot_->::task_manager::TStatRot::Clear();
+  clear_has_fstatrot();
+}
+inline const ::task_manager::TStatRot& Spectr_data::fstatrot() const {
+  // @@protoc_insertion_point(field_get:task_manager.Spectr_data.FStatRot)
+  return fstatrot_ != NULL ? *fstatrot_ : *default_instance_->fstatrot_;
+}
+inline ::task_manager::TStatRot* Spectr_data::mutable_fstatrot() {
+  set_has_fstatrot();
+  if (fstatrot_ == NULL) fstatrot_ = new ::task_manager::TStatRot;
+  // @@protoc_insertion_point(field_mutable:task_manager.Spectr_data.FStatRot)
+  return fstatrot_;
+}
+inline ::task_manager::TStatRot* Spectr_data::release_fstatrot() {
+  clear_has_fstatrot();
+  ::task_manager::TStatRot* temp = fstatrot_;
+  fstatrot_ = NULL;
+  return temp;
+}
+inline void Spectr_data::set_allocated_fstatrot(::task_manager::TStatRot* fstatrot) {
+  delete fstatrot_;
+  fstatrot_ = fstatrot;
+  if (fstatrot) {
+    set_has_fstatrot();
+  } else {
+    clear_has_fstatrot();
+  }
+  // @@protoc_insertion_point(field_set_allocated:task_manager.Spectr_data.FStatRot)
+}
+
+// required uint32 FAvgCount = 5;
+inline bool Spectr_data::has_favgcount() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void Spectr_data::set_has_favgcount() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void Spectr_data::clear_has_favgcount() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void Spectr_data::clear_favgcount() {
+  favgcount_ = 0u;
+  clear_has_favgcount();
+}
+inline ::google::protobuf::uint32 Spectr_data::favgcount() const {
+  // @@protoc_insertion_point(field_get:task_manager.Spectr_data.FAvgCount)
+  return favgcount_;
+}
+inline void Spectr_data::set_favgcount(::google::protobuf::uint32 value) {
+  set_has_favgcount();
+  favgcount_ = value;
+  // @@protoc_insertion_point(field_set:task_manager.Spectr_data.FAvgCount)
+}
+
+// required double FBegFreq = 6;
+inline bool Spectr_data::has_fbegfreq() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void Spectr_data::set_has_fbegfreq() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void Spectr_data::clear_has_fbegfreq() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void Spectr_data::clear_fbegfreq() {
+  fbegfreq_ = 0;
+  clear_has_fbegfreq();
+}
+inline double Spectr_data::fbegfreq() const {
+  // @@protoc_insertion_point(field_get:task_manager.Spectr_data.FBegFreq)
+  return fbegfreq_;
+}
+inline void Spectr_data::set_fbegfreq(double value) {
+  set_has_fbegfreq();
+  fbegfreq_ = value;
+  // @@protoc_insertion_point(field_set:task_manager.Spectr_data.FBegFreq)
+}
+
+// required double FFreqStep = 7;
+inline bool Spectr_data::has_ffreqstep() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void Spectr_data::set_has_ffreqstep() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void Spectr_data::clear_has_ffreqstep() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void Spectr_data::clear_ffreqstep() {
+  ffreqstep_ = 0;
+  clear_has_ffreqstep();
+}
+inline double Spectr_data::ffreqstep() const {
+  // @@protoc_insertion_point(field_get:task_manager.Spectr_data.FFreqStep)
+  return ffreqstep_;
+}
+inline void Spectr_data::set_ffreqstep(double value) {
+  set_has_ffreqstep();
+  ffreqstep_ = value;
+  // @@protoc_insertion_point(field_set:task_manager.Spectr_data.FFreqStep)
+}
+
+// required uint32 FLinesCnt = 8;
+inline bool Spectr_data::has_flinescnt() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void Spectr_data::set_has_flinescnt() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void Spectr_data::clear_has_flinescnt() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void Spectr_data::clear_flinescnt() {
+  flinescnt_ = 0u;
+  clear_has_flinescnt();
+}
+inline ::google::protobuf::uint32 Spectr_data::flinescnt() const {
+  // @@protoc_insertion_point(field_get:task_manager.Spectr_data.FLinesCnt)
+  return flinescnt_;
+}
+inline void Spectr_data::set_flinescnt(::google::protobuf::uint32 value) {
+  set_has_flinescnt();
+  flinescnt_ = value;
+  // @@protoc_insertion_point(field_set:task_manager.Spectr_data.FLinesCnt)
+}
+
+// required uint32 FAmpUnit = 9;
+inline bool Spectr_data::has_fampunit() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void Spectr_data::set_has_fampunit() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void Spectr_data::clear_has_fampunit() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void Spectr_data::clear_fampunit() {
+  fampunit_ = 0u;
+  clear_has_fampunit();
+}
+inline ::google::protobuf::uint32 Spectr_data::fampunit() const {
+  // @@protoc_insertion_point(field_get:task_manager.Spectr_data.FAmpUnit)
+  return fampunit_;
+}
+inline void Spectr_data::set_fampunit(::google::protobuf::uint32 value) {
+  set_has_fampunit();
+  fampunit_ = value;
+  // @@protoc_insertion_point(field_set:task_manager.Spectr_data.FAmpUnit)
+}
+
+// repeated double FAmp = 10 [packed = true];
+inline int Spectr_data::famp_size() const {
+  return famp_.size();
+}
+inline void Spectr_data::clear_famp() {
+  famp_.Clear();
+}
+inline double Spectr_data::famp(int index) const {
+  // @@protoc_insertion_point(field_get:task_manager.Spectr_data.FAmp)
+  return famp_.Get(index);
+}
+inline void Spectr_data::set_famp(int index, double value) {
+  famp_.Set(index, value);
+  // @@protoc_insertion_point(field_set:task_manager.Spectr_data.FAmp)
+}
+inline void Spectr_data::add_famp(double value) {
+  famp_.Add(value);
+  // @@protoc_insertion_point(field_add:task_manager.Spectr_data.FAmp)
+}
+inline const ::google::protobuf::RepeatedField< double >&
+Spectr_data::famp() const {
+  // @@protoc_insertion_point(field_list:task_manager.Spectr_data.FAmp)
+  return famp_;
+}
+inline ::google::protobuf::RepeatedField< double >*
+Spectr_data::mutable_famp() {
+  // @@protoc_insertion_point(field_mutable_list:task_manager.Spectr_data.FAmp)
+  return &famp_;
+}
+
+// repeated double FSIAmp = 11 [packed = true];
+inline int Spectr_data::fsiamp_size() const {
+  return fsiamp_.size();
+}
+inline void Spectr_data::clear_fsiamp() {
+  fsiamp_.Clear();
+}
+inline double Spectr_data::fsiamp(int index) const {
+  // @@protoc_insertion_point(field_get:task_manager.Spectr_data.FSIAmp)
+  return fsiamp_.Get(index);
+}
+inline void Spectr_data::set_fsiamp(int index, double value) {
+  fsiamp_.Set(index, value);
+  // @@protoc_insertion_point(field_set:task_manager.Spectr_data.FSIAmp)
+}
+inline void Spectr_data::add_fsiamp(double value) {
+  fsiamp_.Add(value);
+  // @@protoc_insertion_point(field_add:task_manager.Spectr_data.FSIAmp)
+}
+inline const ::google::protobuf::RepeatedField< double >&
+Spectr_data::fsiamp() const {
+  // @@protoc_insertion_point(field_list:task_manager.Spectr_data.FSIAmp)
+  return fsiamp_;
+}
+inline ::google::protobuf::RepeatedField< double >*
+Spectr_data::mutable_fsiamp() {
+  // @@protoc_insertion_point(field_mutable_list:task_manager.Spectr_data.FSIAmp)
+  return &fsiamp_;
+}
+
+// -------------------------------------------------------------------
+
 // Vharmonic_data
 
 // required double amp = 1;
@@ -8183,6 +8721,47 @@ inline void AnyTaskResult::set_allocated_decim_res(::task_manager::DecimTimeSig_
     clear_has_decim_res();
   }
   // @@protoc_insertion_point(field_set_allocated:task_manager.AnyTaskResult.decim_res)
+}
+
+// optional .task_manager.Spectr_data spectr_res = 9;
+inline bool AnyTaskResult::has_spectr_res() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void AnyTaskResult::set_has_spectr_res() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void AnyTaskResult::clear_has_spectr_res() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void AnyTaskResult::clear_spectr_res() {
+  if (spectr_res_ != NULL) spectr_res_->::task_manager::Spectr_data::Clear();
+  clear_has_spectr_res();
+}
+inline const ::task_manager::Spectr_data& AnyTaskResult::spectr_res() const {
+  // @@protoc_insertion_point(field_get:task_manager.AnyTaskResult.spectr_res)
+  return spectr_res_ != NULL ? *spectr_res_ : *default_instance_->spectr_res_;
+}
+inline ::task_manager::Spectr_data* AnyTaskResult::mutable_spectr_res() {
+  set_has_spectr_res();
+  if (spectr_res_ == NULL) spectr_res_ = new ::task_manager::Spectr_data;
+  // @@protoc_insertion_point(field_mutable:task_manager.AnyTaskResult.spectr_res)
+  return spectr_res_;
+}
+inline ::task_manager::Spectr_data* AnyTaskResult::release_spectr_res() {
+  clear_has_spectr_res();
+  ::task_manager::Spectr_data* temp = spectr_res_;
+  spectr_res_ = NULL;
+  return temp;
+}
+inline void AnyTaskResult::set_allocated_spectr_res(::task_manager::Spectr_data* spectr_res) {
+  delete spectr_res_;
+  spectr_res_ = spectr_res;
+  if (spectr_res) {
+    set_has_spectr_res();
+  } else {
+    clear_has_spectr_res();
+  }
+  // @@protoc_insertion_point(field_set_allocated:task_manager.AnyTaskResult.spectr_res)
 }
 
 // -------------------------------------------------------------------

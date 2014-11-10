@@ -17,6 +17,8 @@ public:
 	channel_manager::ServerVersion s_version;
 	channel_manager::AvailableChannels av_channels;
 	
+	task_manager::AnyTaskResult anyres;
+	
 	//bool last_bool;
 	bool is_rr;
 	bool is_anyrr;
@@ -88,11 +90,13 @@ public slots:
 	int 	qt_connectToTcpServer(QString ip,int port);
 	int 	qt_disconnectFromTcpServer();
 	//----------------------------------------------------------
-	int 	qt_createChannelManager(bool async);
-	int 	qt_deleteChannelManager(bool async);
+	//int 	qt_createChannelManager(bool async);
+	//int 	qt_deleteChannelManager(bool async);
+	int 	qt_initDevice(bool async);
+	int		qt_deInitDevice(bool async);
 	//int 	qt_createDSPEmul(bool async);
 	//int 	qt_deleteDSPEmul(bool async);
-	int		qt_sleepTest(bool async);
+	//int		qt_sleepTest(bool async);
 	//----------------------------------------------------------
 	int 	qt_getAvailableChannels(bool async);
 	int 	qt_isChannelAvailable(bool async, int ch_idx);
@@ -118,14 +122,20 @@ public slots:
 	int 	qt_doStopSyncChannels(bool async);
 	int 	qt_readADCTimeOffsets(bool async);
 	//-----------------------------------------------------------
-	int 	qt_initMultiplexer(bool async);
-	int  	qt_deinitMultiplexer(bool async);	
+	//int 	qt_initMultiplexer(bool async);
+	//int  	qt_deinitMultiplexer(bool async);	
 	int  	qt_switchCommutatorOn(bool async);
 	int  	qt_switchCommutatorOff(bool async);
 	int  	qt_unmuxAll(bool async);
 	int  	qt_doMuxChannel(bool async);
 	//-----------------------------------------------------------
 	int 	qt_getTotalTasksProgress(bool async, int ch_idx);
+	int 	qt_getTaskResult(bool async, int ch_idx, int task_idx);
+	int 	qt_addQualityTask(bool async, int ch_idx);
+	int 	qt_timesigOpen(bool async, int ch_idx);
+	int 	qt_timesigClose(bool async, int ch_idx);
+	//-----------------------------------------------------------
+	int		qt_loadConfiguration(int conf_id);
 private:
 	boost::signals2::connection		connection_async_complete;
 	boost::signals2::connection		connection_sync_complete;

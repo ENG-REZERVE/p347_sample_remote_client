@@ -5,10 +5,10 @@
 #include <stdarg.h>
 
 #include "p347_fpga_user.h"
-#include "channel_manager.pb.h"
+//#include "channel_manager.pb.h"
 #include "rcf_bind_channel_manager.hpp"
 #include "thread.hpp"
-#include "uki_log.hpp"
+#include "p347_conf_abstract.hpp"
 
 #include <boost/signals2.hpp>
 
@@ -29,23 +29,19 @@
 
 //internal functions codes
 enum client_functions {
-	CW_IF_CREATE_CM = 1,
-	CW_IF_DELETE_CM,			
-	//CW_IF_CREATE_DE,			
-	//CW_IF_DELETE_DE,			
+	//CW_IF_CREATE_CM = 1,
+	//CW_IF_DELETE_CM,
+	CW_IF_INIT_DEVICE = 1,
+	CW_IF_DEINIT_DEVICE,
 	//-------------------
 	CW_IF_GET_AVCHANNELS,
 	CW_IF_ISCHANNELAV,
 	CW_IF_ISCHANNELSCR,
-	CW_IF_GETSERVERVER,
-	//CW_IF_INIT_CM,		
-	//CW_IF_EXIT_CM,			
-	CW_IF_TEST_SLEEP,		
-	CW_IF_INIT_MUX,		
-	CW_IF_DEINIT_MUX,		
+	CW_IF_GETSERVERVER,	
+	//CW_IF_INIT_MUX,		
+	//CW_IF_DEINIT_MUX,		
 	CW_IF_FPGA_DRELOAD,		
 	CW_IF_CHECKFPGA,	
-	//CW_IF_BINDCHEMUL,
 	//-------------------
 	CW_IF_READROT,			
 	CW_IF_STARTROT,			
@@ -119,6 +115,7 @@ enum client_functions {
 	CW_IF_SETVIBEG,
 	CW_IF_GETVIBEGTP,
 	CW_IF_SETVIBEGTP,
+	CW_IF_SETDEFAULTDSPPARAMS,
 };
 
 class pubSigHolder {
@@ -153,7 +150,7 @@ public:
 	p347ClientWrapper();
 	~p347ClientWrapper();
 	//------------------------------------------------------test
-	int callRemoteSleepTest(bool async);
+	//int callRemoteSleepTest(bool async);
 	//int callTestString(bool async);
 	//------------------------------------------------------connectionManaging
 	bool getConnectionState();
@@ -170,20 +167,15 @@ public:
 	//getDSPEmulState();
 	//getMUXManagerState();
 	//------------------------------------------------------remoteDeConstructors
-	//INFO: reserved parameter would be needed for different memory allocating
-	//when we would create channel number-specific allocations
-	int createChannelManager(bool async, const channel_manager::ChannelManagerInitParams & cmip, const task_manager::DSPEmulInitParams & dspeip);
-	//int createDSPEmul(bool async, const task_manager::DSPEmulInitParams & dspeip);
-	int deleteChannelManager(bool async);
-	//int deleteDSPEmul(bool async);
+	//int createChannelManager(bool async, const channel_manager::ChannelManagerInitParams & cmip, const task_manager::DSPEmulInitParams & dspeip);
+	//int deleteChannelManager(bool async);
+	int initDevice(bool async, const p347_conf::DeviceInitParams & dip);
+	int deInitDevice(bool async);
 	//-------------------------------------------------------init-deinit
-	int initMultiplexer(bool async, const channel_manager::MultiplexerInitParams & mip);
-	int deinitMultiplexer(bool async);
-	//int initChannelManager(bool async, const channel_manager::ChannelManagerInitParams & cmip);
-	//int exitChannelManager(bool async);
+	//int initMultiplexer(bool async, const channel_manager::MultiplexerInitParams & mip);
+	//int deinitMultiplexer(bool async);
 	int FPGADriverReload(bool async, const std::string & old_name,const std::string & new_path);
 	int checkFPGAStatus(bool async);	
-	//int bindChannelToEmul(bool async, int ch_idx, int emu_idx);
 	//------------------------------------------------------rot
 	int readRotData(bool async, unsigned char ch_idx, channel_manager::RotData* ret_value);
 	int doStartRotChannel(bool async, const channel_manager::RotChannelInitParams & rcip);
@@ -255,6 +247,7 @@ public:
 	int setVibeg(bool async, int emu_idx, bool AVibeg);
 	int getVibegTaskParams(bool async, int emu_idx, task_manager::AnyTaskParams* ret_value);
 	int setVibegTaskParams(bool async, int emu_idx, task_manager::VibegTaskParams & avtp);
+	int setDefaultDSPEmulParams(bool async, int emu_idx);
 	//-------------------------------------------------------
 	void getErrorString(int error_code, std::string* dst_string);
 	int getLastExceptionInfo(std::string* dst_string);
@@ -287,6 +280,8 @@ public:
 	RCF::Future<channel_manager::ServerVersion>		fRet_version;
 	
 	DeviceSubscriber			subDev;
+
+	p347AbstractConfigurator*	configurator;
 private:
 	//---------------------------------------------------------------
 	void*						some_result_pointer;

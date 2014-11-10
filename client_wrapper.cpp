@@ -88,7 +88,7 @@ int p347ClientWrapper::getConnectionError() {
 //----------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------
-
+/*
 int p347ClientWrapper::callRemoteSleepTest(bool async) {
 	int ret;
 	for (int i=0; i<10; i++) {
@@ -97,7 +97,7 @@ int p347ClientWrapper::callRemoteSleepTest(bool async) {
 	}
 	return ret;
 }
-
+*/
 int p347ClientWrapper::getAvailableChannels(bool async, channel_manager::AvailableChannels* ret_value) {
 	return _executeFunction(async, CW_IF_GET_AVCHANNELS,ret_value);
 }
@@ -116,39 +116,24 @@ int p347ClientWrapper::getServerVersion(bool async, channel_manager::ServerVersi
 	
 //--------------------------------------------------------------------------------Create Basics
 
+int p347ClientWrapper::initDevice(bool async, const p347_conf::DeviceInitParams & dip) {
+	return _executeFunction(async, CW_IF_INIT_DEVICE,&dip);
+}
+
+int p347ClientWrapper::deInitDevice(bool async) {
+	return _executeFunction(async, CW_IF_DEINIT_DEVICE);
+}
+
+/*
 int p347ClientWrapper::createChannelManager(bool async, 
 		const channel_manager::ChannelManagerInitParams & cmip, 
 		const task_manager::DSPEmulInitParams & dspeip) {
 	return _executeFunction(async, CW_IF_CREATE_CM,&cmip,&dspeip);
 }
 
-/*		
-int p347ClientWrapper::createChannelManager(bool async, int reserved_parameter) {
-	return _executeFunction(async, CW_IF_CREATE_CM,reserved_parameter);
-}
-
-int p347ClientWrapper::createDSPEmul(bool async, const task_manager::DSPEmulInitParams & dspeip) {
-	return _executeFunction(async, CW_IF_CREATE_DE, &dspeip);
-}
-*/
 int p347ClientWrapper::deleteChannelManager(bool async) {
 	return _executeFunction(async, CW_IF_DELETE_CM);
 }
-/*
-int p347ClientWrapper::deleteDSPEmul(bool async) {
-	return _executeFunction(async, CW_IF_DELETE_DE);
-}
-*/
-//------------------------------------------------------------------------------------
-/*
-int p347ClientWrapper::initChannelManager(bool async, const channel_manager::ChannelManagerInitParams & cmip) {
-	return _executeFunction(async, CW_IF_INIT_CM, &cmip);
-}
-
-int p347ClientWrapper::exitChannelManager(bool async) {
-	return _executeFunction(async, CW_IF_EXIT_CM);
-}
-*/
 int p347ClientWrapper::initMultiplexer(bool async, const channel_manager::MultiplexerInitParams & mip) {
 	return _executeFunction(async, CW_IF_INIT_MUX, &mip);
 }
@@ -156,7 +141,7 @@ int p347ClientWrapper::initMultiplexer(bool async, const channel_manager::Multip
 int p347ClientWrapper::deinitMultiplexer(bool async) {
 	return _executeFunction(async, CW_IF_DEINIT_MUX);
 }	
-
+*/
 int p347ClientWrapper::FPGADriverReload(bool async, const std::string & old_name,const std::string & new_path) {
 	return _executeFunction(async, CW_IF_FPGA_DRELOAD, &old_name, &new_path);
 }
@@ -164,11 +149,6 @@ int p347ClientWrapper::FPGADriverReload(bool async, const std::string & old_name
 int p347ClientWrapper::checkFPGAStatus(bool async) {
 	return _executeFunction(async, CW_IF_CHECKFPGA);
 }
-/*
-int p347ClientWrapper::bindChannelToEmul(bool async, int ch_idx, int emu_idx) {
-	return _executeFunction(async, CW_IF_BINDCHEMUL, ch_idx, emu_idx);
-}
-*/
 //------------------------------------------------------------------------------------
 
 int p347ClientWrapper::readRotData(bool async, unsigned char ch_idx, channel_manager::RotData* ret_value) {
@@ -449,6 +429,9 @@ int p347ClientWrapper::setVibegTaskParams(bool async, int emu_idx, task_manager:
 	return _executeFunction(async, CW_IF_SETVIBEGTP, emu_idx, &avtp);
 }
 
+int p347ClientWrapper::setDefaultDSPEmulParams(bool async, int emu_idx) {
+	return _executeFunction(async, CW_IF_SETDEFAULTDSPPARAMS, emu_idx);
+}
 
 //----------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------
@@ -633,6 +616,30 @@ int p347ClientWrapper::_executeFunction(bool async, int if_code, ...) {
 	try {
 	
 		switch (if_code) {
+			case CW_IF_INIT_DEVICE: {
+				va_start(ap,if_code);
+				p347_conf::DeviceInitParams* initpars = va_arg(ap,p347_conf::DeviceInitParams*);
+				va_end(ap);
+				if (async) {
+					fRet_int = client->initDevice(CALLBACK_FUNC, *initpars);
+					logMessage(LOG_LEVEL_FULL,"async initDevice called\n");
+				} else {	
+					fRet_int = client->initDevice(*initpars);
+					logMessage(LOG_LEVEL_FULL,"sync initDevice called\n");
+					while (!fRet_int.ready()) RCF::sleepMs(100);				
+				}				
+			break; }
+			case CW_IF_DEINIT_DEVICE: {
+				if (async) {
+					fRet_int = client->deinitDevice(CALLBACK_FUNC);
+					logMessage(LOG_LEVEL_FULL,"async deinitDevice called\n");
+				} else {	
+					fRet_int = client->deinitDevice();
+					logMessage(LOG_LEVEL_FULL,"sync deinitDevice called\n");
+					while (!fRet_int.ready()) RCF::sleepMs(100);				
+				}
+			break; }			
+/*		
 			case CW_IF_CREATE_CM: {
 				va_start(ap,if_code);
 				channel_manager::ChannelManagerInitParams* initpars = va_arg(ap,channel_manager::ChannelManagerInitParams*);
@@ -649,22 +656,6 @@ int p347ClientWrapper::_executeFunction(bool async, int if_code, ...) {
 					while (!fRet_int.ready()) RCF::sleepMs(100);				
 				}
 			break; }
-			/*
-			case CW_IF_CREATE_DE: {
-				va_start(ap,if_code);
-				task_manager::DSPEmulInitParams* dspemuli = va_arg(ap,task_manager::DSPEmulInitParams*);
-				//int reserved_parameter = va_arg(ap,int);
-				va_end(ap);
-				if (async) {
-					fRet_int = client->createDSPEmul(CALLBACK_FUNC, *dspemuli);
-					logMessage(LOG_LEVEL_FULL,"async createDSPEmul called\n");
-				} else {	
-					fRet_int = client->createDSPEmul(*dspemuli);
-					logMessage(LOG_LEVEL_FULL,"sync createDSPEmul called\n");
-					while (!fRet_int.ready()) RCF::sleepMs(100);				
-				}
-			break; }
-			*/
 			case CW_IF_DELETE_CM: {
 				if (async) {
 					fRet_int = client->deleteChannelManager(CALLBACK_FUNC);
@@ -672,59 +663,6 @@ int p347ClientWrapper::_executeFunction(bool async, int if_code, ...) {
 				} else {	
 					fRet_int = client->deleteChannelManager();
 					logMessage(LOG_LEVEL_FULL,"sync deleteChannelManager called\n");
-					while (!fRet_int.ready()) RCF::sleepMs(100);				
-				}
-			break; }
-			/*
-			case CW_IF_DELETE_DE: {
-				if (async) {
-					fRet_int = client->deleteDSPEmul(CALLBACK_FUNC);
-					logMessage(LOG_LEVEL_FULL,"async deleteDSPEmul called\n");
-				} else {	
-					fRet_int = client->deleteDSPEmul();
-					logMessage(LOG_LEVEL_FULL,"sync deleteDSPEmul called\n");
-					while (!fRet_int.ready()) RCF::sleepMs(100);				
-				}
-			break; }
-			case CW_IF_INIT_CM: {
-				va_start(ap,if_code);
-				channel_manager::ChannelManagerInitParams* initpars = va_arg(ap,channel_manager::ChannelManagerInitParams*);
-				va_end(ap);
-				if (initpars != nullptr) {
-					if (async) {
-						fRet_int = client->initChannelManager(CALLBACK_FUNC, *initpars);
-						logMessage(LOG_LEVEL_FULL,"async initChannelManager called\n");
-					} else {	
-						fRet_int = client->initChannelManager(*initpars);
-						logMessage(LOG_LEVEL_FULL,"sync initChannelManager called\n");
-						while (!fRet_int.ready()) RCF::sleepMs(100);				
-					}
-				} else {
-					logMessage(LOG_LEVEL_CRITICAL,"CW_IF_INIT_CM - initpars is NULL\n");
-					return TCP_VOID_INITPARS;
-				}
-			break; }
-			case CW_IF_EXIT_CM: {
-				if (async) {
-					fRet_int = client->exitChannelManager( CALLBACK_FUNC );
-					logMessage(LOG_LEVEL_FULL,"async exitChannelManager called\n");
-				} else {	
-					fRet_int = client->exitChannelManager();
-					logMessage(LOG_LEVEL_FULL,"sync exitChannelManager called\n");
-					while (!fRet_int.ready()) RCF::sleepMs(100);				
-				}
-			break; }
-			*/
-			case CW_IF_TEST_SLEEP: {
-				va_start(ap,if_code);
-				int sleep_sec = va_arg(ap,int);
-				va_end(ap);
-				if (async) {
-					fRet_int = client->remoteSleep(CALLBACK_FUNC, sleep_sec );
-					logMessage(LOG_LEVEL_FULL,"async remoteSleep called\n");
-				} else {	
-					fRet_int = client->remoteSleep(sleep_sec);
-					logMessage(LOG_LEVEL_FULL,"sync remoteSleep called\n");
 					while (!fRet_int.ready()) RCF::sleepMs(100);				
 				}
 			break; }
@@ -751,6 +689,7 @@ int p347ClientWrapper::_executeFunction(bool async, int if_code, ...) {
 					while (!fRet_int.ready()) RCF::sleepMs(100);				
 				}
 			break; }
+*/
 			case CW_IF_FPGA_DRELOAD: {
 				va_start(ap,if_code);
 				std::string* old_name = va_arg(ap,std::string*);
@@ -1777,6 +1716,19 @@ int p347ClientWrapper::_executeFunction(bool async, int if_code, ...) {
 				} else {
 					fRet_int = client->setVibegTaskParams(emu_idx,*vtp);
 					logMessage(LOG_LEVEL_FULL,"sync setVibegTaskParams called\n");
+					while (!fRet_int.ready()) RCF::sleepMs(100);
+				}
+			break; }
+			case CW_IF_SETDEFAULTDSPPARAMS: {
+				va_start(ap,if_code);
+				int emu_idx = va_arg(ap,int);
+				va_end(ap);
+				if (async) {
+					fRet_int = client->setDefaultDSPEmulParams(CALLBACK_FUNC,emu_idx);
+					logMessage(LOG_LEVEL_FULL,"async setDefaultDSPEmulParams\n");
+				} else {
+					fRet_int = client->setDefaultDSPEmulParams(emu_idx);
+					logMessage(LOG_LEVEL_FULL,"sync setDefaultDSPEmulParams called\n");
 					while (!fRet_int.ready()) RCF::sleepMs(100);
 				}
 			break; }

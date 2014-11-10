@@ -77,6 +77,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* RBitem_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   RBitem_reflection_ = NULL;
+const ::google::protobuf::Descriptor* Spectr_data_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  Spectr_data_reflection_ = NULL;
 const ::google::protobuf::Descriptor* Vharmonic_data_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Vharmonic_data_reflection_ = NULL;
@@ -485,7 +488,32 @@ void protobuf_AssignDesc_task_5fmanager_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(RBitem));
-  Vharmonic_data_descriptor_ = file->message_type(19);
+  Spectr_data_descriptor_ = file->message_type(19);
+  static const int Spectr_data_offsets_[11] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Spectr_data, ftype_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Spectr_data, flpfilter_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Spectr_data, fbpfilter_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Spectr_data, fstatrot_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Spectr_data, favgcount_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Spectr_data, fbegfreq_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Spectr_data, ffreqstep_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Spectr_data, flinescnt_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Spectr_data, fampunit_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Spectr_data, famp_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Spectr_data, fsiamp_),
+  };
+  Spectr_data_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      Spectr_data_descriptor_,
+      Spectr_data::default_instance_,
+      Spectr_data_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Spectr_data, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Spectr_data, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(Spectr_data));
+  Vharmonic_data_descriptor_ = file->message_type(20);
   static const int Vharmonic_data_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Vharmonic_data, amp_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Vharmonic_data, ph_),
@@ -504,7 +532,7 @@ void protobuf_AssignDesc_task_5fmanager_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Vharmonic_data));
-  StatKurtosis_data_descriptor_ = file->message_type(20);
+  StatKurtosis_data_descriptor_ = file->message_type(21);
   static const int StatKurtosis_data_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StatKurtosis_data, min_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StatKurtosis_data, max_),
@@ -526,7 +554,7 @@ void protobuf_AssignDesc_task_5fmanager_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(StatKurtosis_data));
-  StatTimeSig_data_descriptor_ = file->message_type(21);
+  StatTimeSig_data_descriptor_ = file->message_type(22);
   static const int StatTimeSig_data_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StatTimeSig_data, min_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StatTimeSig_data, max_),
@@ -548,7 +576,7 @@ void protobuf_AssignDesc_task_5fmanager_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(StatTimeSig_data));
-  QualityTimeSig_data_descriptor_ = file->message_type(22);
+  QualityTimeSig_data_descriptor_ = file->message_type(23);
   static const int QualityTimeSig_data_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(QualityTimeSig_data, sigoverflow_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(QualityTimeSig_data, sigtoolow_),
@@ -570,7 +598,7 @@ void protobuf_AssignDesc_task_5fmanager_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(QualityTimeSig_data));
-  SaveTimeSig_data_descriptor_ = file->message_type(23);
+  SaveTimeSig_data_descriptor_ = file->message_type(24);
   static const int SaveTimeSig_data_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SaveTimeSig_data, statrot_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SaveTimeSig_data, avgcount_),
@@ -586,7 +614,7 @@ void protobuf_AssignDesc_task_5fmanager_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SaveTimeSig_data));
-  VsensorFrot_data_descriptor_ = file->message_type(24);
+  VsensorFrot_data_descriptor_ = file->message_type(25);
   static const int VsensorFrot_data_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VsensorFrot_data, frot_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VsensorFrot_data, statrot_),
@@ -603,7 +631,7 @@ void protobuf_AssignDesc_task_5fmanager_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(VsensorFrot_data));
-  DecimTimeSig_data_descriptor_ = file->message_type(25);
+  DecimTimeSig_data_descriptor_ = file->message_type(26);
   static const int DecimTimeSig_data_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DecimTimeSig_data, statrot_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DecimTimeSig_data, avgcount_),
@@ -619,8 +647,8 @@ void protobuf_AssignDesc_task_5fmanager_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(DecimTimeSig_data));
-  AnyTaskResult_descriptor_ = file->message_type(26);
-  static const int AnyTaskResult_offsets_[8] = {
+  AnyTaskResult_descriptor_ = file->message_type(27);
+  static const int AnyTaskResult_offsets_[9] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AnyTaskResult, error_code_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AnyTaskResult, harmonic_res_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AnyTaskResult, kurtosis_res_),
@@ -629,6 +657,7 @@ void protobuf_AssignDesc_task_5fmanager_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AnyTaskResult, savetimesig_res_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AnyTaskResult, vsensorfrot_res_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AnyTaskResult, decim_res_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AnyTaskResult, spectr_res_),
   };
   AnyTaskResult_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -641,7 +670,7 @@ void protobuf_AssignDesc_task_5fmanager_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(AnyTaskResult));
-  CommonTaskParams_descriptor_ = file->message_type(27);
+  CommonTaskParams_descriptor_ = file->message_type(28);
   static const int CommonTaskParams_offsets_[32] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CommonTaskParams, offset_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CommonTaskParams, deltaoffset_),
@@ -687,7 +716,7 @@ void protobuf_AssignDesc_task_5fmanager_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CommonTaskParams));
-  SpectrTaskParams_descriptor_ = file->message_type(28);
+  SpectrTaskParams_descriptor_ = file->message_type(29);
   static const int SpectrTaskParams_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SpectrTaskParams, cmn_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SpectrTaskParams, spectrclasscode_),
@@ -706,7 +735,7 @@ void protobuf_AssignDesc_task_5fmanager_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SpectrTaskParams));
-  VharmonicTaskParams_descriptor_ = file->message_type(29);
+  VharmonicTaskParams_descriptor_ = file->message_type(30);
   static const int VharmonicTaskParams_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VharmonicTaskParams, stp_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VharmonicTaskParams, cmn_),
@@ -725,7 +754,7 @@ void protobuf_AssignDesc_task_5fmanager_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(VharmonicTaskParams));
-  StatKurtosisTaskParams_descriptor_ = file->message_type(30);
+  StatKurtosisTaskParams_descriptor_ = file->message_type(31);
   static const int StatKurtosisTaskParams_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StatKurtosisTaskParams, cmn_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StatKurtosisTaskParams, onemeastimesiglength_),
@@ -743,7 +772,7 @@ void protobuf_AssignDesc_task_5fmanager_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(StatKurtosisTaskParams));
-  StatTimeSigTaskParams_descriptor_ = file->message_type(31);
+  StatTimeSigTaskParams_descriptor_ = file->message_type(32);
   static const int StatTimeSigTaskParams_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StatTimeSigTaskParams, cmn_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StatTimeSigTaskParams, onemeastimesiglength_),
@@ -761,7 +790,7 @@ void protobuf_AssignDesc_task_5fmanager_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(StatTimeSigTaskParams));
-  PlayerTimeSigTaskParams_descriptor_ = file->message_type(32);
+  PlayerTimeSigTaskParams_descriptor_ = file->message_type(33);
   static const int PlayerTimeSigTaskParams_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayerTimeSigTaskParams, cmn_),
   };
@@ -776,7 +805,7 @@ void protobuf_AssignDesc_task_5fmanager_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(PlayerTimeSigTaskParams));
-  VibegTaskParams_descriptor_ = file->message_type(33);
+  VibegTaskParams_descriptor_ = file->message_type(34);
   static const int VibegTaskParams_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VibegTaskParams, cmn_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VibegTaskParams, frot_base_),
@@ -793,7 +822,7 @@ void protobuf_AssignDesc_task_5fmanager_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(VibegTaskParams));
-  QualityTimeSigTaskParams_descriptor_ = file->message_type(34);
+  QualityTimeSigTaskParams_descriptor_ = file->message_type(35);
   static const int QualityTimeSigTaskParams_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(QualityTimeSigTaskParams, cmn_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(QualityTimeSigTaskParams, onemeastimesiglength_),
@@ -813,7 +842,7 @@ void protobuf_AssignDesc_task_5fmanager_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(QualityTimeSigTaskParams));
-  SaveTimeSigTaskParams_descriptor_ = file->message_type(35);
+  SaveTimeSigTaskParams_descriptor_ = file->message_type(36);
   static const int SaveTimeSigTaskParams_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SaveTimeSigTaskParams, cmn_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SaveTimeSigTaskParams, filename_),
@@ -833,7 +862,7 @@ void protobuf_AssignDesc_task_5fmanager_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SaveTimeSigTaskParams));
-  VsensorFrotTaskParams_descriptor_ = file->message_type(36);
+  VsensorFrotTaskParams_descriptor_ = file->message_type(37);
   static const int VsensorFrotTaskParams_offsets_[10] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VsensorFrotTaskParams, cmn_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VsensorFrotTaskParams, stp_),
@@ -857,7 +886,7 @@ void protobuf_AssignDesc_task_5fmanager_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(VsensorFrotTaskParams));
-  DecimTimeSigTaskParams_descriptor_ = file->message_type(37);
+  DecimTimeSigTaskParams_descriptor_ = file->message_type(38);
   static const int DecimTimeSigTaskParams_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DecimTimeSigTaskParams, cmn_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DecimTimeSigTaskParams, oneparttimesiglength_),
@@ -874,7 +903,7 @@ void protobuf_AssignDesc_task_5fmanager_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(DecimTimeSigTaskParams));
-  AnyTaskParams_descriptor_ = file->message_type(38);
+  AnyTaskParams_descriptor_ = file->message_type(39);
   static const int AnyTaskParams_offsets_[11] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AnyTaskParams, error_code_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AnyTaskParams, spect_par_),
@@ -949,6 +978,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
     TFrotLimits_descriptor_, &TFrotLimits::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     RBitem_descriptor_, &RBitem::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    Spectr_data_descriptor_, &Spectr_data::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Vharmonic_data_descriptor_, &Vharmonic_data::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
@@ -1032,6 +1063,8 @@ void protobuf_ShutdownFile_task_5fmanager_2eproto() {
   delete TFrotLimits_reflection_;
   delete RBitem::default_instance_;
   delete RBitem_reflection_;
+  delete Spectr_data::default_instance_;
+  delete Spectr_data_reflection_;
   delete Vharmonic_data::default_instance_;
   delete Vharmonic_data_reflection_;
   delete StatKurtosis_data::default_instance_;
@@ -1085,159 +1118,168 @@ void protobuf_AddDesc_task_5fmanager_2eproto() {
     "SPEmulInitParams\022\016\n\006ATSDTC\030\001 \002(\r\022\034\n\024AIni"
     "tSigBufferLength\030\002 \002(\r\022\033\n\023ASigBufferIncr"
     "ement\030\003 \002(\r\022\034\n\024AInitRotBufferLength\030\004 \002("
-    "\r\022\033\n\023ARotBufferIncrement\030\005 \002(\r\"\032\n\010IntArr"
-    "ay\022\016\n\006values\030\001 \003(\005\"7\n\010LPFilter\022\r\n\005Index\030"
-    "\001 \002(\005\022\r\n\005MFreq\030\002 \002(\001\022\r\n\005RFreq\030\003 \002(\005\"m\n\017L"
-    "PFilter_params\022\025\n\rLPFilterIndex\030\001 \002(\005\022\025\n"
-    "\rLPFilterDecim\030\002 \002(\r\022\024\n\014LPFilterType\030\003 \002"
-    "(\005\022\026\n\016LPFilterUsualW\030\004 \002(\010\"\201\001\n\010BPFilter\022"
-    "\r\n\005Index\030\001 \002(\005\022\r\n\005CFreq\030\002 \002(\005\022\r\n\005Width\030\003"
-    " \002(\005\022\013\n\003Oct\030\004 \002(\005\022\013\n\003Dec\030\005 \002(\005\022\016\n\006PreDec"
-    "\030\006 \002(\005\022\r\n\005BPDec\030\007 \002(\005\022\017\n\007EnvType\030\010 \002(\005\"V"
-    "\n\017BPFilter_params\022\025\n\rBPFilterIndex\030\001 \002(\005"
-    "\022\024\n\014BPFilterType\030\002 \002(\005\022\026\n\016BPFilterUsualW"
-    "\030\003 \002(\010\"[\n\nRSMPFilter\022\r\n\005Index\030\001 \002(\005\022\016\n\006I"
-    "nterp\030\002 \002(\005\022\013\n\003Dec\030\003 \002(\005\022\013\n\003Rel\030\004 \002(\001\022\024\n"
-    "\014ResampleType\030\005 \002(\005\"^\n\021RSMPFilter_params"
-    "\022\027\n\017RSMPFilterIndex\030\001 \002(\005\022\026\n\016RSMPFilterT"
-    "ype\030\002 \002(\005\022\030\n\020RSMPFilterUsualW\030\003 \002(\010\"W\n\010H"
-    "PFilter\022\r\n\005Index\030\001 \002(\005\022\r\n\005SFreq\030\002 \002(\001\022\r\n"
-    "\005MFreq\030\003 \002(\001\022\r\n\005RFreq\030\004 \002(\005\022\017\n\007HPFType\030\005"
-    " \002(\005\"V\n\017HPFilter_params\022\025\n\rHPFilterIndex"
-    "\030\001 \002(\005\022\024\n\014HPFilterType\030\002 \002(\005\022\026\n\016HPFilter"
-    "Param1\030\003 \002(\001\"9\n\010SPFilter\022\r\n\005Index\030\001 \002(\005\022"
-    "\r\n\005RFreq\030\002 \002(\005\022\017\n\007SPFType\030\003 \002(\005\"V\n\017SPFil"
-    "ter_params\022\025\n\rSPFilterIndex\030\001 \002(\005\022\024\n\014SPF"
-    "ilterType\030\002 \002(\005\022\026\n\016SPFilterUsualW\030\003 \002(\010\""
-    ".\n\nINTGFilter\022\r\n\005Index\030\001 \002(\005\022\021\n\tINTGFTyp"
-    "e\030\002 \002(\005\"D\n\021INTGFilter_params\022\027\n\017INTGFilt"
-    "erIndex\030\001 \002(\005\022\026\n\016INTGFilterType\030\002 \002(\005\"\247\002"
-    "\n\007FParams\022\014\n\004Type\030\001 \002(\005\022*\n\003LPF\030\002 \001(\0132\035.t"
-    "ask_manager.LPFilter_params\022*\n\003BPF\030\003 \001(\013"
-    "2\035.task_manager.BPFilter_params\022.\n\005RSMPF"
-    "\030\004 \001(\0132\037.task_manager.RSMPFilter_params\022"
-    "*\n\003HPF\030\005 \001(\0132\035.task_manager.HPFilter_par"
-    "ams\022*\n\003SPF\030\006 \001(\0132\035.task_manager.SPFilter"
-    "_params\022.\n\005INTGF\030\007 \001(\0132\037.task_manager.IN"
-    "TGFilter_params\"A\n\010TStatRot\022\016\n\006AvgCnt\030\001 "
-    "\002(\005\022\013\n\003Avg\030\002 \002(\001\022\013\n\003Min\030\003 \002(\001\022\013\n\003Max\030\004 \002"
-    "(\001\"&\n\007TOffset\022\014\n\004Type\030\001 \002(\005\022\r\n\005Value\030\002 \002"
-    "(\003\"e\n\013TFrotLimits\022\020\n\010Frot_min\030\001 \002(\001\022\020\n\010F"
-    "rot_max\030\002 \002(\001\022\030\n\020DeltaFrotOneMeas\030\003 \002(\001\022"
-    "\030\n\020DeltaFrotAllMeas\030\004 \002(\001\"`\n\006RBitem\022\016\n\006V"
-    "alueY\030\001 \002(\001\022\016\n\006ValueX\030\002 \002(\001\022\023\n\013ValidExte"
-    "rn\030\003 \002(\010\022\r\n\005Valid\030\004 \002(\010\022\022\n\nValidRough\030\005 "
-    "\002(\010\"r\n\016Vharmonic_data\022\013\n\003amp\030\001 \002(\001\022\n\n\002ph"
-    "\030\002 \002(\001\022\014\n\004freq\030\003 \002(\001\022\'\n\007StatRot\030\004 \002(\0132\026."
-    "task_manager.TStatRot\022\020\n\010AvgCount\030\005 \002(\r\""
-    "\252\001\n\021StatKurtosis_data\022\013\n\003min\030\001 \002(\001\022\013\n\003ma"
-    "x\030\002 \002(\001\022\014\n\004mean\030\003 \002(\001\022\013\n\003std\030\004 \002(\001\022\020\n\010ku"
-    "rtosis\030\005 \002(\001\022\023\n\013peak_factor\030\006 \002(\001\022\'\n\007Sta"
-    "tRot\030\007 \002(\0132\026.task_manager.TStatRot\022\020\n\010Av"
-    "gCount\030\010 \002(\r\"\251\001\n\020StatTimeSig_data\022\013\n\003min"
-    "\030\001 \002(\001\022\013\n\003max\030\002 \002(\001\022\014\n\004mean\030\003 \002(\001\022\013\n\003std"
-    "\030\004 \002(\001\022\020\n\010kurtosis\030\005 \002(\001\022\023\n\013peak_factor\030"
-    "\006 \002(\001\022\'\n\007StatRot\030\007 \002(\0132\026.task_manager.TS"
-    "tatRot\022\020\n\010AvgCount\030\010 \002(\r\"\325\001\n\023QualityTime"
-    "Sig_data\022\023\n\013SigOverFlow\030\001 \002(\010\022\021\n\tSigTooL"
-    "ow\030\002 \002(\010\022\022\n\nSigTooHigh\030\003 \002(\010\022\031\n\021AmpPeakT"
-    "oPeakCalc\030\004 \002(\001\022\022\n\nAmpStdCalc\030\005 \002(\001\022\030\n\020S"
-    "igOverFlowCount\030\006 \002(\005\022\'\n\007StatRot\030\007 \002(\0132\026"
-    ".task_manager.TStatRot\022\020\n\010AvgCount\030\010 \002(\r"
-    "\"M\n\020SaveTimeSig_data\022\'\n\007StatRot\030\001 \002(\0132\026."
-    "task_manager.TStatRot\022\020\n\010AvgCount\030\002 \002(\r\""
-    "q\n\020VsensorFrot_data\022\"\n\004Frot\030\001 \002(\0132\024.task"
-    "_manager.RBitem\022\'\n\007StatRot\030\002 \002(\0132\026.task_"
-    "manager.TStatRot\022\020\n\010AvgCount\030\003 \002(\r\"N\n\021De"
-    "cimTimeSig_data\022\'\n\007StatRot\030\001 \002(\0132\026.task_"
-    "manager.TStatRot\022\020\n\010AvgCount\030\002 \002(\r\"\245\003\n\rA"
-    "nyTaskResult\022\022\n\nerror_code\030\001 \002(\005\0222\n\014harm"
-    "onic_res\030\002 \001(\0132\034.task_manager.Vharmonic_"
-    "data\0225\n\014kurtosis_res\030\003 \001(\0132\037.task_manage"
-    "r.StatKurtosis_data\0227\n\017stattimesig_res\030\004"
-    " \001(\0132\036.task_manager.StatTimeSig_data\0226\n\013"
-    "quality_res\030\005 \001(\0132!.task_manager.Quality"
-    "TimeSig_data\0227\n\017savetimesig_res\030\006 \001(\0132\036."
-    "task_manager.SaveTimeSig_data\0227\n\017vsensor"
-    "frot_res\030\007 \001(\0132\036.task_manager.VsensorFro"
-    "t_data\0222\n\tdecim_res\030\010 \001(\0132\037.task_manager"
-    ".DecimTimeSig_data\"\261\006\n\020CommonTaskParams\022"
-    "%\n\006OffSet\030\001 \002(\0132\025.task_manager.TOffset\022*"
-    "\n\013DeltaOffSet\030\002 \002(\0132\025.task_manager.TOffs"
-    "et\022\022\n\nMonitoring\030\003 \002(\010\022\023\n\013TimesigType\030\004 "
-    "\002(\005\022\025\n\rLPFilterIndex\030\005 \002(\005\022\025\n\rLPFilterDe"
-    "cim\030\006 \002(\r\022\024\n\014LPFilterType\030\007 \002(\005\022\026\n\016LPFil"
-    "terUsualW\030\010 \002(\010\022\025\n\rBPFilterIndex\030\t \002(\005\022\024"
-    "\n\014BPFilterType\030\n \002(\005\022\026\n\016BPFilterUsualW\030\013"
-    " \002(\010\022\027\n\017RSMPFilterIndex\030\014 \002(\005\022\026\n\016RSMPFil"
-    "terType\030\r \002(\005\022\030\n\020RSMPFilterUsualW\030\016 \002(\010\022"
-    "\025\n\rHPFilterIndex\030\017 \002(\005\022\024\n\014HPFilterType\030\020"
-    " \002(\005\022\026\n\016HPFilterParam1\030\021 \002(\001\022*\n\013FParamsL"
-    "ist\030\022 \003(\0132\025.task_manager.FParams\022\024\n\014FPar"
-    "amsCount\030\023 \002(\005\022\020\n\010AvgCount\030\024 \002(\005\022-\n\nFrot"
-    "Limits\030\025 \002(\0132\031.task_manager.TFrotLimits\022"
-    "\030\n\020FrotLimitsActive\030\026 \002(\010\022\023\n\013StabControl"
-    "\030\027 \002(\010\022\022\n\nRotControl\030\030 \002(\010\022\035\n\025WaitPeriod"
-    "ForRotMetka\030\031 \002(\001\022\026\n\016TimeSigSrcType\030\032 \002("
-    "\005\022\021\n\tTimeSigID\030\033 \002(\005\022\025\n\rInitTaskState\030\034 "
-    "\002(\005\022\026\n\016FinalTaskState\030\035 \002(\005\022\r\n\005TSDTC\030\036 \002"
-    "(\005\022\025\n\rCalcTypeTSDTC\030\037 \002(\005\022\013\n\003TDE\030  \002(\005\"\241"
-    "\001\n\020SpectrTaskParams\022+\n\003CMN\030\001 \002(\0132\036.task_"
-    "manager.CommonTaskParams\022\027\n\017SpectrClassC"
-    "ode\030\002 \002(\005\022\032\n\022SpectLinesArrIndex\030\003 \002(\005\022\024\n"
-    "\014SpectAmpUnit\030\004 \002(\r\022\025\n\rRemoveAvgLine\030\005 \002"
-    "(\010\"\300\001\n\023VharmonicTaskParams\022+\n\003STP\030\001 \001(\0132"
-    "\036.task_manager.SpectrTaskParams\022+\n\003CMN\030\002"
-    " \002(\0132\036.task_manager.CommonTaskParams\022\027\n\017"
-    "VHarmonicsCount\030\003 \002(\005\022\032\n\022VHarmonicsAvgCo"
-    "unt\030\004 \001(\005\022\032\n\022SpectLinesArrIndex\030\005 \002(\005\"\211\001"
-    "\n\026StatKurtosisTaskParams\022+\n\003CMN\030\001 \002(\0132\036."
+    "\r\022\033\n\023ARotBufferIncrement\030\005 \002(\r\"\036\n\010IntArr"
+    "ay\022\022\n\006values\030\001 \003(\005B\002\020\001\"7\n\010LPFilter\022\r\n\005In"
+    "dex\030\001 \002(\005\022\r\n\005MFreq\030\002 \002(\001\022\r\n\005RFreq\030\003 \002(\005\""
+    "m\n\017LPFilter_params\022\025\n\rLPFilterIndex\030\001 \002("
+    "\005\022\025\n\rLPFilterDecim\030\002 \002(\r\022\024\n\014LPFilterType"
+    "\030\003 \002(\005\022\026\n\016LPFilterUsualW\030\004 \002(\010\"\201\001\n\010BPFil"
+    "ter\022\r\n\005Index\030\001 \002(\005\022\r\n\005CFreq\030\002 \002(\005\022\r\n\005Wid"
+    "th\030\003 \002(\005\022\013\n\003Oct\030\004 \002(\005\022\013\n\003Dec\030\005 \002(\005\022\016\n\006Pr"
+    "eDec\030\006 \002(\005\022\r\n\005BPDec\030\007 \002(\005\022\017\n\007EnvType\030\010 \002"
+    "(\005\"V\n\017BPFilter_params\022\025\n\rBPFilterIndex\030\001"
+    " \002(\005\022\024\n\014BPFilterType\030\002 \002(\005\022\026\n\016BPFilterUs"
+    "ualW\030\003 \002(\010\"[\n\nRSMPFilter\022\r\n\005Index\030\001 \002(\005\022"
+    "\016\n\006Interp\030\002 \002(\005\022\013\n\003Dec\030\003 \002(\005\022\013\n\003Rel\030\004 \002("
+    "\001\022\024\n\014ResampleType\030\005 \002(\005\"^\n\021RSMPFilter_pa"
+    "rams\022\027\n\017RSMPFilterIndex\030\001 \002(\005\022\026\n\016RSMPFil"
+    "terType\030\002 \002(\005\022\030\n\020RSMPFilterUsualW\030\003 \002(\010\""
+    "W\n\010HPFilter\022\r\n\005Index\030\001 \002(\005\022\r\n\005SFreq\030\002 \002("
+    "\001\022\r\n\005MFreq\030\003 \002(\001\022\r\n\005RFreq\030\004 \002(\005\022\017\n\007HPFTy"
+    "pe\030\005 \002(\005\"V\n\017HPFilter_params\022\025\n\rHPFilterI"
+    "ndex\030\001 \002(\005\022\024\n\014HPFilterType\030\002 \002(\005\022\026\n\016HPFi"
+    "lterParam1\030\003 \002(\001\"9\n\010SPFilter\022\r\n\005Index\030\001 "
+    "\002(\005\022\r\n\005RFreq\030\002 \002(\005\022\017\n\007SPFType\030\003 \002(\005\"V\n\017S"
+    "PFilter_params\022\025\n\rSPFilterIndex\030\001 \002(\005\022\024\n"
+    "\014SPFilterType\030\002 \002(\005\022\026\n\016SPFilterUsualW\030\003 "
+    "\002(\010\".\n\nINTGFilter\022\r\n\005Index\030\001 \002(\005\022\021\n\tINTG"
+    "FType\030\002 \002(\005\"D\n\021INTGFilter_params\022\027\n\017INTG"
+    "FilterIndex\030\001 \002(\005\022\026\n\016INTGFilterType\030\002 \002("
+    "\005\"\247\002\n\007FParams\022\014\n\004Type\030\001 \002(\005\022*\n\003LPF\030\002 \001(\013"
+    "2\035.task_manager.LPFilter_params\022*\n\003BPF\030\003"
+    " \001(\0132\035.task_manager.BPFilter_params\022.\n\005R"
+    "SMPF\030\004 \001(\0132\037.task_manager.RSMPFilter_par"
+    "ams\022*\n\003HPF\030\005 \001(\0132\035.task_manager.HPFilter"
+    "_params\022*\n\003SPF\030\006 \001(\0132\035.task_manager.SPFi"
+    "lter_params\022.\n\005INTGF\030\007 \001(\0132\037.task_manage"
+    "r.INTGFilter_params\"A\n\010TStatRot\022\016\n\006AvgCn"
+    "t\030\001 \002(\005\022\013\n\003Avg\030\002 \002(\001\022\013\n\003Min\030\003 \002(\001\022\013\n\003Max"
+    "\030\004 \002(\001\"&\n\007TOffset\022\014\n\004Type\030\001 \002(\005\022\r\n\005Value"
+    "\030\002 \002(\003\"e\n\013TFrotLimits\022\020\n\010Frot_min\030\001 \002(\001\022"
+    "\020\n\010Frot_max\030\002 \002(\001\022\030\n\020DeltaFrotOneMeas\030\003 "
+    "\002(\001\022\030\n\020DeltaFrotAllMeas\030\004 \002(\001\"`\n\006RBitem\022"
+    "\016\n\006ValueY\030\001 \002(\001\022\016\n\006ValueX\030\002 \002(\001\022\023\n\013Valid"
+    "Extern\030\003 \002(\010\022\r\n\005Valid\030\004 \002(\010\022\022\n\nValidRoug"
+    "h\030\005 \002(\010\"\237\002\n\013Spectr_data\022\r\n\005FType\030\001 \002(\r\022)"
+    "\n\tFLPFilter\030\002 \002(\0132\026.task_manager.LPFilte"
+    "r\022)\n\tFBPFilter\030\003 \002(\0132\026.task_manager.BPFi"
+    "lter\022(\n\010FStatRot\030\004 \002(\0132\026.task_manager.TS"
+    "tatRot\022\021\n\tFAvgCount\030\005 \002(\r\022\020\n\010FBegFreq\030\006 "
+    "\002(\001\022\021\n\tFFreqStep\030\007 \002(\001\022\021\n\tFLinesCnt\030\010 \002("
+    "\r\022\020\n\010FAmpUnit\030\t \002(\r\022\020\n\004FAmp\030\n \003(\001B\002\020\001\022\022\n"
+    "\006FSIAmp\030\013 \003(\001B\002\020\001\"r\n\016Vharmonic_data\022\013\n\003a"
+    "mp\030\001 \002(\001\022\n\n\002ph\030\002 \002(\001\022\014\n\004freq\030\003 \002(\001\022\'\n\007St"
+    "atRot\030\004 \002(\0132\026.task_manager.TStatRot\022\020\n\010A"
+    "vgCount\030\005 \002(\r\"\252\001\n\021StatKurtosis_data\022\013\n\003m"
+    "in\030\001 \002(\001\022\013\n\003max\030\002 \002(\001\022\014\n\004mean\030\003 \002(\001\022\013\n\003s"
+    "td\030\004 \002(\001\022\020\n\010kurtosis\030\005 \002(\001\022\023\n\013peak_facto"
+    "r\030\006 \002(\001\022\'\n\007StatRot\030\007 \002(\0132\026.task_manager."
+    "TStatRot\022\020\n\010AvgCount\030\010 \002(\r\"\251\001\n\020StatTimeS"
+    "ig_data\022\013\n\003min\030\001 \002(\001\022\013\n\003max\030\002 \002(\001\022\014\n\004mea"
+    "n\030\003 \002(\001\022\013\n\003std\030\004 \002(\001\022\020\n\010kurtosis\030\005 \002(\001\022\023"
+    "\n\013peak_factor\030\006 \002(\001\022\'\n\007StatRot\030\007 \002(\0132\026.t"
+    "ask_manager.TStatRot\022\020\n\010AvgCount\030\010 \002(\r\"\325"
+    "\001\n\023QualityTimeSig_data\022\023\n\013SigOverFlow\030\001 "
+    "\002(\010\022\021\n\tSigTooLow\030\002 \002(\010\022\022\n\nSigTooHigh\030\003 \002"
+    "(\010\022\031\n\021AmpPeakToPeakCalc\030\004 \002(\001\022\022\n\nAmpStdC"
+    "alc\030\005 \002(\001\022\030\n\020SigOverFlowCount\030\006 \002(\005\022\'\n\007S"
+    "tatRot\030\007 \002(\0132\026.task_manager.TStatRot\022\020\n\010"
+    "AvgCount\030\010 \002(\r\"M\n\020SaveTimeSig_data\022\'\n\007St"
+    "atRot\030\001 \002(\0132\026.task_manager.TStatRot\022\020\n\010A"
+    "vgCount\030\002 \002(\r\"q\n\020VsensorFrot_data\022\"\n\004Fro"
+    "t\030\001 \002(\0132\024.task_manager.RBitem\022\'\n\007StatRot"
+    "\030\002 \002(\0132\026.task_manager.TStatRot\022\020\n\010AvgCou"
+    "nt\030\003 \002(\r\"N\n\021DecimTimeSig_data\022\'\n\007StatRot"
+    "\030\001 \002(\0132\026.task_manager.TStatRot\022\020\n\010AvgCou"
+    "nt\030\002 \002(\r\"\324\003\n\rAnyTaskResult\022\022\n\nerror_code"
+    "\030\001 \002(\005\0222\n\014harmonic_res\030\002 \001(\0132\034.task_mana"
+    "ger.Vharmonic_data\0225\n\014kurtosis_res\030\003 \001(\013"
+    "2\037.task_manager.StatKurtosis_data\0227\n\017sta"
+    "ttimesig_res\030\004 \001(\0132\036.task_manager.StatTi"
+    "meSig_data\0226\n\013quality_res\030\005 \001(\0132!.task_m"
+    "anager.QualityTimeSig_data\0227\n\017savetimesi"
+    "g_res\030\006 \001(\0132\036.task_manager.SaveTimeSig_d"
+    "ata\0227\n\017vsensorfrot_res\030\007 \001(\0132\036.task_mana"
+    "ger.VsensorFrot_data\0222\n\tdecim_res\030\010 \001(\0132"
+    "\037.task_manager.DecimTimeSig_data\022-\n\nspec"
+    "tr_res\030\t \001(\0132\031.task_manager.Spectr_data\""
+    "\261\006\n\020CommonTaskParams\022%\n\006OffSet\030\001 \002(\0132\025.t"
+    "ask_manager.TOffset\022*\n\013DeltaOffSet\030\002 \002(\013"
+    "2\025.task_manager.TOffset\022\022\n\nMonitoring\030\003 "
+    "\002(\010\022\023\n\013TimesigType\030\004 \002(\005\022\025\n\rLPFilterInde"
+    "x\030\005 \002(\005\022\025\n\rLPFilterDecim\030\006 \002(\r\022\024\n\014LPFilt"
+    "erType\030\007 \002(\005\022\026\n\016LPFilterUsualW\030\010 \002(\010\022\025\n\r"
+    "BPFilterIndex\030\t \002(\005\022\024\n\014BPFilterType\030\n \002("
+    "\005\022\026\n\016BPFilterUsualW\030\013 \002(\010\022\027\n\017RSMPFilterI"
+    "ndex\030\014 \002(\005\022\026\n\016RSMPFilterType\030\r \002(\005\022\030\n\020RS"
+    "MPFilterUsualW\030\016 \002(\010\022\025\n\rHPFilterIndex\030\017 "
+    "\002(\005\022\024\n\014HPFilterType\030\020 \002(\005\022\026\n\016HPFilterPar"
+    "am1\030\021 \002(\001\022*\n\013FParamsList\030\022 \003(\0132\025.task_ma"
+    "nager.FParams\022\024\n\014FParamsCount\030\023 \002(\005\022\020\n\010A"
+    "vgCount\030\024 \002(\005\022-\n\nFrotLimits\030\025 \002(\0132\031.task"
+    "_manager.TFrotLimits\022\030\n\020FrotLimitsActive"
+    "\030\026 \002(\010\022\023\n\013StabControl\030\027 \002(\010\022\022\n\nRotContro"
+    "l\030\030 \002(\010\022\035\n\025WaitPeriodForRotMetka\030\031 \002(\001\022\026"
+    "\n\016TimeSigSrcType\030\032 \002(\005\022\021\n\tTimeSigID\030\033 \002("
+    "\005\022\025\n\rInitTaskState\030\034 \002(\005\022\026\n\016FinalTaskSta"
+    "te\030\035 \002(\005\022\r\n\005TSDTC\030\036 \002(\005\022\025\n\rCalcTypeTSDTC"
+    "\030\037 \002(\005\022\013\n\003TDE\030  \002(\005\"\241\001\n\020SpectrTaskParams"
+    "\022+\n\003CMN\030\001 \002(\0132\036.task_manager.CommonTaskP"
+    "arams\022\027\n\017SpectrClassCode\030\002 \002(\005\022\032\n\022SpectL"
+    "inesArrIndex\030\003 \002(\005\022\024\n\014SpectAmpUnit\030\004 \002(\r"
+    "\022\025\n\rRemoveAvgLine\030\005 \002(\010\"\300\001\n\023VharmonicTas"
+    "kParams\022+\n\003STP\030\001 \001(\0132\036.task_manager.Spec"
+    "trTaskParams\022+\n\003CMN\030\002 \002(\0132\036.task_manager"
+    ".CommonTaskParams\022\027\n\017VHarmonicsCount\030\003 \002"
+    "(\005\022\032\n\022VHarmonicsAvgCount\030\004 \001(\005\022\032\n\022SpectL"
+    "inesArrIndex\030\005 \002(\005\"\211\001\n\026StatKurtosisTaskP"
+    "arams\022+\n\003CMN\030\001 \002(\0132\036.task_manager.Common"
+    "TaskParams\022\034\n\024OneMeasTimeSigLength\030\002 \002(\005"
+    "\022\021\n\tMeasCount\030\003 \002(\005\022\021\n\tCoefCover\030\004 \002(\001\"\222"
+    "\001\n\025StatTimeSigTaskParams\022+\n\003CMN\030\001 \002(\0132\036."
     "task_manager.CommonTaskParams\022\034\n\024OneMeas"
-    "TimeSigLength\030\002 \002(\005\022\021\n\tMeasCount\030\003 \002(\005\022\021"
-    "\n\tCoefCover\030\004 \002(\001\"\222\001\n\025StatTimeSigTaskPar"
-    "ams\022+\n\003CMN\030\001 \002(\0132\036.task_manager.CommonTa"
-    "skParams\022\034\n\024OneMeasTimeSigLength\030\002 \002(\005\022\017"
-    "\n\007AmpUnit\030\003 \002(\r\022\035\n\025IntegrateInTimeDomain"
-    "\030\004 \002(\010\"F\n\027PlayerTimeSigTaskParams\022+\n\003CMN"
-    "\030\001 \002(\0132\036.task_manager.CommonTaskParams\"m"
-    "\n\017VibegTaskParams\022+\n\003CMN\030\001 \002(\0132\036.task_ma"
-    "nager.CommonTaskParams\022\021\n\tFrot_base\030\002 \002("
-    "\001\022\032\n\022FrotAvgMetkasCount\030\003 \002(\r\"\277\001\n\030Qualit"
-    "yTimeSigTaskParams\022+\n\003CMN\030\001 \002(\0132\036.task_m"
-    "anager.CommonTaskParams\022\034\n\024OneMeasTimeSi"
-    "gLength\030\002 \002(\005\022\030\n\020AmpPeakToPeakMin\030\003 \002(\001\022"
-    "\030\n\020AmpPeakToPeakMax\030\004 \002(\001\022\021\n\tAmpStdMin\030\005"
-    " \002(\001\022\021\n\tAmpStdMax\030\006 \002(\001\"\273\001\n\025SaveTimeSigT"
-    "askParams\022+\n\003CMN\030\001 \002(\0132\036.task_manager.Co"
-    "mmonTaskParams\022\020\n\010FileName\030\002 \002(\t\022\034\n\024OneP"
-    "artTimeSigLength\030\003 \002(\r\022\032\n\022TotalTimeSigLe"
-    "ngth\030\004 \002(\r\022\032\n\022SigLengthWithFsSrc\030\005 \002(\010\022\r"
-    "\n\005TSDTC\030\006 \002(\r\"\227\002\n\025VsensorFrotTaskParams\022"
-    "+\n\003CMN\030\001 \001(\0132\036.task_manager.CommonTaskPa"
-    "rams\022+\n\003STP\030\002 \001(\0132\036.task_manager.SpectrT"
-    "askParams\022\030\n\020DeltaOffSetInSec\030\003 \002(\001\022\025\n\rS"
-    "caleKoeffFFt\030\004 \002(\r\022\017\n\007FrotMin\030\005 \002(\001\022\017\n\007F"
-    "rotMax\030\006 \002(\001\022\024\n\014FrotAccelMax\030\007 \002(\001\022\023\n\013Am"
-    "pModulMin\030\010 \002(\001\022\016\n\006STDMin\030\t \002(\001\022\026\n\016RBFil"
-    "terLength\030\n \002(\005\"x\n\026DecimTimeSigTaskParam"
-    "s\022+\n\003CMN\030\001 \002(\0132\036.task_manager.CommonTask"
-    "Params\022\034\n\024OnePartTimeSigLength\030\002 \002(\r\022\023\n\013"
-    "ForgetFsSrc\030\003 \002(\010\"\350\004\n\rAnyTaskParams\022\022\n\ne"
-    "rror_code\030\001 \002(\005\0221\n\tspect_par\030\002 \001(\0132\036.tas"
-    "k_manager.SpectrTaskParams\0227\n\014harmonic_p"
-    "ar\030\003 \001(\0132!.task_manager.VharmonicTaskPar"
-    "ams\022:\n\014kurtosis_par\030\004 \001(\0132$.task_manager"
-    ".StatKurtosisTaskParams\022<\n\017stattimesig_p"
-    "ar\030\005 \001(\0132#.task_manager.StatTimeSigTaskP"
-    "arams\0229\n\nplayer_par\030\006 \001(\0132%.task_manager"
-    ".PlayerTimeSigTaskParams\0220\n\tvibeg_par\030\007 "
-    "\001(\0132\035.task_manager.VibegTaskParams\022;\n\013qu"
-    "ality_par\030\010 \001(\0132&.task_manager.QualityTi"
-    "meSigTaskParams\022<\n\017savetimesig_par\030\t \001(\013"
-    "2#.task_manager.SaveTimeSigTaskParams\022<\n"
-    "\017vsensorfrot_par\030\n \001(\0132#.task_manager.Vs"
-    "ensorFrotTaskParams\0227\n\tdecim_par\030\013 \001(\0132$"
-    ".task_manager.DecimTimeSigTaskParams", 6276);
+    "TimeSigLength\030\002 \002(\005\022\017\n\007AmpUnit\030\003 \002(\r\022\035\n\025"
+    "IntegrateInTimeDomain\030\004 \002(\010\"F\n\027PlayerTim"
+    "eSigTaskParams\022+\n\003CMN\030\001 \002(\0132\036.task_manag"
+    "er.CommonTaskParams\"m\n\017VibegTaskParams\022+"
+    "\n\003CMN\030\001 \002(\0132\036.task_manager.CommonTaskPar"
+    "ams\022\021\n\tFrot_base\030\002 \002(\001\022\032\n\022FrotAvgMetkasC"
+    "ount\030\003 \002(\r\"\277\001\n\030QualityTimeSigTaskParams\022"
+    "+\n\003CMN\030\001 \002(\0132\036.task_manager.CommonTaskPa"
+    "rams\022\034\n\024OneMeasTimeSigLength\030\002 \002(\005\022\030\n\020Am"
+    "pPeakToPeakMin\030\003 \002(\001\022\030\n\020AmpPeakToPeakMax"
+    "\030\004 \002(\001\022\021\n\tAmpStdMin\030\005 \002(\001\022\021\n\tAmpStdMax\030\006"
+    " \002(\001\"\273\001\n\025SaveTimeSigTaskParams\022+\n\003CMN\030\001 "
+    "\002(\0132\036.task_manager.CommonTaskParams\022\020\n\010F"
+    "ileName\030\002 \002(\t\022\034\n\024OnePartTimeSigLength\030\003 "
+    "\002(\r\022\032\n\022TotalTimeSigLength\030\004 \002(\r\022\032\n\022SigLe"
+    "ngthWithFsSrc\030\005 \002(\010\022\r\n\005TSDTC\030\006 \002(\r\"\227\002\n\025V"
+    "sensorFrotTaskParams\022+\n\003CMN\030\001 \001(\0132\036.task"
+    "_manager.CommonTaskParams\022+\n\003STP\030\002 \001(\0132\036"
+    ".task_manager.SpectrTaskParams\022\030\n\020DeltaO"
+    "ffSetInSec\030\003 \002(\001\022\025\n\rScaleKoeffFFt\030\004 \002(\r\022"
+    "\017\n\007FrotMin\030\005 \002(\001\022\017\n\007FrotMax\030\006 \002(\001\022\024\n\014Fro"
+    "tAccelMax\030\007 \002(\001\022\023\n\013AmpModulMin\030\010 \002(\001\022\016\n\006"
+    "STDMin\030\t \002(\001\022\026\n\016RBFilterLength\030\n \002(\005\"x\n\026"
+    "DecimTimeSigTaskParams\022+\n\003CMN\030\001 \002(\0132\036.ta"
+    "sk_manager.CommonTaskParams\022\034\n\024OnePartTi"
+    "meSigLength\030\002 \002(\r\022\023\n\013ForgetFsSrc\030\003 \002(\010\"\350"
+    "\004\n\rAnyTaskParams\022\022\n\nerror_code\030\001 \002(\005\0221\n\t"
+    "spect_par\030\002 \001(\0132\036.task_manager.SpectrTas"
+    "kParams\0227\n\014harmonic_par\030\003 \001(\0132!.task_man"
+    "ager.VharmonicTaskParams\022:\n\014kurtosis_par"
+    "\030\004 \001(\0132$.task_manager.StatKurtosisTaskPa"
+    "rams\022<\n\017stattimesig_par\030\005 \001(\0132#.task_man"
+    "ager.StatTimeSigTaskParams\0229\n\nplayer_par"
+    "\030\006 \001(\0132%.task_manager.PlayerTimeSigTaskP"
+    "arams\0220\n\tvibeg_par\030\007 \001(\0132\035.task_manager."
+    "VibegTaskParams\022;\n\013quality_par\030\010 \001(\0132&.t"
+    "ask_manager.QualityTimeSigTaskParams\022<\n\017"
+    "savetimesig_par\030\t \001(\0132#.task_manager.Sav"
+    "eTimeSigTaskParams\022<\n\017vsensorfrot_par\030\n "
+    "\001(\0132#.task_manager.VsensorFrotTaskParams"
+    "\0227\n\tdecim_par\030\013 \001(\0132$.task_manager.Decim"
+    "TimeSigTaskParams", 6617);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "task_manager.proto", &protobuf_RegisterTypes);
   DSPEmulInitParams::default_instance_ = new DSPEmulInitParams();
@@ -1259,6 +1301,7 @@ void protobuf_AddDesc_task_5fmanager_2eproto() {
   TOffset::default_instance_ = new TOffset();
   TFrotLimits::default_instance_ = new TFrotLimits();
   RBitem::default_instance_ = new RBitem();
+  Spectr_data::default_instance_ = new Spectr_data();
   Vharmonic_data::default_instance_ = new Vharmonic_data();
   StatKurtosis_data::default_instance_ = new StatKurtosis_data();
   StatTimeSig_data::default_instance_ = new StatTimeSig_data();
@@ -1298,6 +1341,7 @@ void protobuf_AddDesc_task_5fmanager_2eproto() {
   TOffset::default_instance_->InitAsDefaultInstance();
   TFrotLimits::default_instance_->InitAsDefaultInstance();
   RBitem::default_instance_->InitAsDefaultInstance();
+  Spectr_data::default_instance_->InitAsDefaultInstance();
   Vharmonic_data::default_instance_->InitAsDefaultInstance();
   StatKurtosis_data::default_instance_->InitAsDefaultInstance();
   StatTimeSig_data::default_instance_->InitAsDefaultInstance();
@@ -1793,21 +1837,19 @@ bool IntArray::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated int32 values = 1;
+      // repeated int32 values = 1 [packed = true];
       case 1: {
-        if (tag == 8) {
-         parse_values:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 1, 8, input, this->mutable_values())));
-        } else if (tag == 10) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+        if (tag == 10) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, this->mutable_values())));
+        } else if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 1, 10, input, this->mutable_values())));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(8)) goto parse_values;
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -1837,10 +1879,14 @@ failure:
 void IntArray::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:task_manager.IntArray)
-  // repeated int32 values = 1;
+  // repeated int32 values = 1 [packed = true];
+  if (this->values_size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteTag(1, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
+    output->WriteVarint32(_values_cached_byte_size_);
+  }
   for (int i = 0; i < this->values_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(
-      1, this->values(i), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32NoTag(
+      this->values(i), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -1853,10 +1899,18 @@ void IntArray::SerializeWithCachedSizes(
 ::google::protobuf::uint8* IntArray::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:task_manager.IntArray)
-  // repeated int32 values = 1;
+  // repeated int32 values = 1 [packed = true];
+  if (this->values_size() > 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
+      1,
+      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
+      target);
+    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
+      _values_cached_byte_size_, target);
+  }
   for (int i = 0; i < this->values_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteInt32ToArray(1, this->values(i), target);
+      WriteInt32NoTagToArray(this->values(i), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1870,14 +1924,21 @@ void IntArray::SerializeWithCachedSizes(
 int IntArray::ByteSize() const {
   int total_size = 0;
 
-  // repeated int32 values = 1;
+  // repeated int32 values = 1 [packed = true];
   {
     int data_size = 0;
     for (int i = 0; i < this->values_size(); i++) {
       data_size += ::google::protobuf::internal::WireFormatLite::
         Int32Size(this->values(i));
     }
-    total_size += 1 * this->values_size() + data_size;
+    if (data_size > 0) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(data_size);
+    }
+    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+    _values_cached_byte_size_ = data_size;
+    GOOGLE_SAFE_CONCURRENT_WRITES_END();
+    total_size += data_size;
   }
 
   if (!unknown_fields().empty()) {
@@ -7846,6 +7907,698 @@ void RBitem::Swap(RBitem* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
+const int Spectr_data::kFTypeFieldNumber;
+const int Spectr_data::kFLPFilterFieldNumber;
+const int Spectr_data::kFBPFilterFieldNumber;
+const int Spectr_data::kFStatRotFieldNumber;
+const int Spectr_data::kFAvgCountFieldNumber;
+const int Spectr_data::kFBegFreqFieldNumber;
+const int Spectr_data::kFFreqStepFieldNumber;
+const int Spectr_data::kFLinesCntFieldNumber;
+const int Spectr_data::kFAmpUnitFieldNumber;
+const int Spectr_data::kFAmpFieldNumber;
+const int Spectr_data::kFSIAmpFieldNumber;
+#endif  // !_MSC_VER
+
+Spectr_data::Spectr_data()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:task_manager.Spectr_data)
+}
+
+void Spectr_data::InitAsDefaultInstance() {
+  flpfilter_ = const_cast< ::task_manager::LPFilter*>(&::task_manager::LPFilter::default_instance());
+  fbpfilter_ = const_cast< ::task_manager::BPFilter*>(&::task_manager::BPFilter::default_instance());
+  fstatrot_ = const_cast< ::task_manager::TStatRot*>(&::task_manager::TStatRot::default_instance());
+}
+
+Spectr_data::Spectr_data(const Spectr_data& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:task_manager.Spectr_data)
+}
+
+void Spectr_data::SharedCtor() {
+  _cached_size_ = 0;
+  ftype_ = 0u;
+  flpfilter_ = NULL;
+  fbpfilter_ = NULL;
+  fstatrot_ = NULL;
+  favgcount_ = 0u;
+  fbegfreq_ = 0;
+  ffreqstep_ = 0;
+  flinescnt_ = 0u;
+  fampunit_ = 0u;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+Spectr_data::~Spectr_data() {
+  // @@protoc_insertion_point(destructor:task_manager.Spectr_data)
+  SharedDtor();
+}
+
+void Spectr_data::SharedDtor() {
+  if (this != default_instance_) {
+    delete flpfilter_;
+    delete fbpfilter_;
+    delete fstatrot_;
+  }
+}
+
+void Spectr_data::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* Spectr_data::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return Spectr_data_descriptor_;
+}
+
+const Spectr_data& Spectr_data::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_task_5fmanager_2eproto();
+  return *default_instance_;
+}
+
+Spectr_data* Spectr_data::default_instance_ = NULL;
+
+Spectr_data* Spectr_data::New() const {
+  return new Spectr_data;
+}
+
+void Spectr_data::Clear() {
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<Spectr_data*>(16)->f) - \
+   reinterpret_cast<char*>(16))
+
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
+
+  if (_has_bits_[0 / 32] & 255) {
+    ZR_(ftype_, favgcount_);
+    ZR_(fbegfreq_, flinescnt_);
+    if (has_flpfilter()) {
+      if (flpfilter_ != NULL) flpfilter_->::task_manager::LPFilter::Clear();
+    }
+    if (has_fbpfilter()) {
+      if (fbpfilter_ != NULL) fbpfilter_->::task_manager::BPFilter::Clear();
+    }
+    if (has_fstatrot()) {
+      if (fstatrot_ != NULL) fstatrot_->::task_manager::TStatRot::Clear();
+    }
+  }
+  fampunit_ = 0u;
+
+#undef OFFSET_OF_FIELD_
+#undef ZR_
+
+  famp_.Clear();
+  fsiamp_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool Spectr_data::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:task_manager.Spectr_data)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required uint32 FType = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &ftype_)));
+          set_has_ftype();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_FLPFilter;
+        break;
+      }
+
+      // required .task_manager.LPFilter FLPFilter = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_FLPFilter:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_flpfilter()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_FBPFilter;
+        break;
+      }
+
+      // required .task_manager.BPFilter FBPFilter = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_FBPFilter:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_fbpfilter()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(34)) goto parse_FStatRot;
+        break;
+      }
+
+      // required .task_manager.TStatRot FStatRot = 4;
+      case 4: {
+        if (tag == 34) {
+         parse_FStatRot:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_fstatrot()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(40)) goto parse_FAvgCount;
+        break;
+      }
+
+      // required uint32 FAvgCount = 5;
+      case 5: {
+        if (tag == 40) {
+         parse_FAvgCount:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &favgcount_)));
+          set_has_favgcount();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(49)) goto parse_FBegFreq;
+        break;
+      }
+
+      // required double FBegFreq = 6;
+      case 6: {
+        if (tag == 49) {
+         parse_FBegFreq:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                 input, &fbegfreq_)));
+          set_has_fbegfreq();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(57)) goto parse_FFreqStep;
+        break;
+      }
+
+      // required double FFreqStep = 7;
+      case 7: {
+        if (tag == 57) {
+         parse_FFreqStep:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                 input, &ffreqstep_)));
+          set_has_ffreqstep();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(64)) goto parse_FLinesCnt;
+        break;
+      }
+
+      // required uint32 FLinesCnt = 8;
+      case 8: {
+        if (tag == 64) {
+         parse_FLinesCnt:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &flinescnt_)));
+          set_has_flinescnt();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(72)) goto parse_FAmpUnit;
+        break;
+      }
+
+      // required uint32 FAmpUnit = 9;
+      case 9: {
+        if (tag == 72) {
+         parse_FAmpUnit:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &fampunit_)));
+          set_has_fampunit();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(82)) goto parse_FAmp;
+        break;
+      }
+
+      // repeated double FAmp = 10 [packed = true];
+      case 10: {
+        if (tag == 82) {
+         parse_FAmp:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                 input, this->mutable_famp())));
+        } else if (tag == 81) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                 1, 82, input, this->mutable_famp())));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(90)) goto parse_FSIAmp;
+        break;
+      }
+
+      // repeated double FSIAmp = 11 [packed = true];
+      case 11: {
+        if (tag == 90) {
+         parse_FSIAmp:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                 input, this->mutable_fsiamp())));
+        } else if (tag == 89) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                 1, 90, input, this->mutable_fsiamp())));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:task_manager.Spectr_data)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:task_manager.Spectr_data)
+  return false;
+#undef DO_
+}
+
+void Spectr_data::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:task_manager.Spectr_data)
+  // required uint32 FType = 1;
+  if (has_ftype()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->ftype(), output);
+  }
+
+  // required .task_manager.LPFilter FLPFilter = 2;
+  if (has_flpfilter()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, this->flpfilter(), output);
+  }
+
+  // required .task_manager.BPFilter FBPFilter = 3;
+  if (has_fbpfilter()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, this->fbpfilter(), output);
+  }
+
+  // required .task_manager.TStatRot FStatRot = 4;
+  if (has_fstatrot()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      4, this->fstatrot(), output);
+  }
+
+  // required uint32 FAvgCount = 5;
+  if (has_favgcount()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->favgcount(), output);
+  }
+
+  // required double FBegFreq = 6;
+  if (has_fbegfreq()) {
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(6, this->fbegfreq(), output);
+  }
+
+  // required double FFreqStep = 7;
+  if (has_ffreqstep()) {
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(7, this->ffreqstep(), output);
+  }
+
+  // required uint32 FLinesCnt = 8;
+  if (has_flinescnt()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(8, this->flinescnt(), output);
+  }
+
+  // required uint32 FAmpUnit = 9;
+  if (has_fampunit()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(9, this->fampunit(), output);
+  }
+
+  // repeated double FAmp = 10 [packed = true];
+  if (this->famp_size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteTag(10, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
+    output->WriteVarint32(_famp_cached_byte_size_);
+  }
+  for (int i = 0; i < this->famp_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteDoubleNoTag(
+      this->famp(i), output);
+  }
+
+  // repeated double FSIAmp = 11 [packed = true];
+  if (this->fsiamp_size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteTag(11, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
+    output->WriteVarint32(_fsiamp_cached_byte_size_);
+  }
+  for (int i = 0; i < this->fsiamp_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteDoubleNoTag(
+      this->fsiamp(i), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:task_manager.Spectr_data)
+}
+
+::google::protobuf::uint8* Spectr_data::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:task_manager.Spectr_data)
+  // required uint32 FType = 1;
+  if (has_ftype()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->ftype(), target);
+  }
+
+  // required .task_manager.LPFilter FLPFilter = 2;
+  if (has_flpfilter()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        2, this->flpfilter(), target);
+  }
+
+  // required .task_manager.BPFilter FBPFilter = 3;
+  if (has_fbpfilter()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        3, this->fbpfilter(), target);
+  }
+
+  // required .task_manager.TStatRot FStatRot = 4;
+  if (has_fstatrot()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        4, this->fstatrot(), target);
+  }
+
+  // required uint32 FAvgCount = 5;
+  if (has_favgcount()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->favgcount(), target);
+  }
+
+  // required double FBegFreq = 6;
+  if (has_fbegfreq()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(6, this->fbegfreq(), target);
+  }
+
+  // required double FFreqStep = 7;
+  if (has_ffreqstep()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(7, this->ffreqstep(), target);
+  }
+
+  // required uint32 FLinesCnt = 8;
+  if (has_flinescnt()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(8, this->flinescnt(), target);
+  }
+
+  // required uint32 FAmpUnit = 9;
+  if (has_fampunit()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(9, this->fampunit(), target);
+  }
+
+  // repeated double FAmp = 10 [packed = true];
+  if (this->famp_size() > 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
+      10,
+      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
+      target);
+    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
+      _famp_cached_byte_size_, target);
+  }
+  for (int i = 0; i < this->famp_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteDoubleNoTagToArray(this->famp(i), target);
+  }
+
+  // repeated double FSIAmp = 11 [packed = true];
+  if (this->fsiamp_size() > 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
+      11,
+      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
+      target);
+    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
+      _fsiamp_cached_byte_size_, target);
+  }
+  for (int i = 0; i < this->fsiamp_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteDoubleNoTagToArray(this->fsiamp(i), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:task_manager.Spectr_data)
+  return target;
+}
+
+int Spectr_data::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // required uint32 FType = 1;
+    if (has_ftype()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->ftype());
+    }
+
+    // required .task_manager.LPFilter FLPFilter = 2;
+    if (has_flpfilter()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->flpfilter());
+    }
+
+    // required .task_manager.BPFilter FBPFilter = 3;
+    if (has_fbpfilter()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->fbpfilter());
+    }
+
+    // required .task_manager.TStatRot FStatRot = 4;
+    if (has_fstatrot()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->fstatrot());
+    }
+
+    // required uint32 FAvgCount = 5;
+    if (has_favgcount()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->favgcount());
+    }
+
+    // required double FBegFreq = 6;
+    if (has_fbegfreq()) {
+      total_size += 1 + 8;
+    }
+
+    // required double FFreqStep = 7;
+    if (has_ffreqstep()) {
+      total_size += 1 + 8;
+    }
+
+    // required uint32 FLinesCnt = 8;
+    if (has_flinescnt()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->flinescnt());
+    }
+
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // required uint32 FAmpUnit = 9;
+    if (has_fampunit()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->fampunit());
+    }
+
+  }
+  // repeated double FAmp = 10 [packed = true];
+  {
+    int data_size = 0;
+    data_size = 8 * this->famp_size();
+    if (data_size > 0) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(data_size);
+    }
+    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+    _famp_cached_byte_size_ = data_size;
+    GOOGLE_SAFE_CONCURRENT_WRITES_END();
+    total_size += data_size;
+  }
+
+  // repeated double FSIAmp = 11 [packed = true];
+  {
+    int data_size = 0;
+    data_size = 8 * this->fsiamp_size();
+    if (data_size > 0) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(data_size);
+    }
+    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+    _fsiamp_cached_byte_size_ = data_size;
+    GOOGLE_SAFE_CONCURRENT_WRITES_END();
+    total_size += data_size;
+  }
+
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void Spectr_data::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const Spectr_data* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const Spectr_data*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void Spectr_data::MergeFrom(const Spectr_data& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  famp_.MergeFrom(from.famp_);
+  fsiamp_.MergeFrom(from.fsiamp_);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_ftype()) {
+      set_ftype(from.ftype());
+    }
+    if (from.has_flpfilter()) {
+      mutable_flpfilter()->::task_manager::LPFilter::MergeFrom(from.flpfilter());
+    }
+    if (from.has_fbpfilter()) {
+      mutable_fbpfilter()->::task_manager::BPFilter::MergeFrom(from.fbpfilter());
+    }
+    if (from.has_fstatrot()) {
+      mutable_fstatrot()->::task_manager::TStatRot::MergeFrom(from.fstatrot());
+    }
+    if (from.has_favgcount()) {
+      set_favgcount(from.favgcount());
+    }
+    if (from.has_fbegfreq()) {
+      set_fbegfreq(from.fbegfreq());
+    }
+    if (from.has_ffreqstep()) {
+      set_ffreqstep(from.ffreqstep());
+    }
+    if (from.has_flinescnt()) {
+      set_flinescnt(from.flinescnt());
+    }
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    if (from.has_fampunit()) {
+      set_fampunit(from.fampunit());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void Spectr_data::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Spectr_data::CopyFrom(const Spectr_data& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Spectr_data::IsInitialized() const {
+  if ((_has_bits_[0] & 0x000001ff) != 0x000001ff) return false;
+
+  if (has_flpfilter()) {
+    if (!this->flpfilter().IsInitialized()) return false;
+  }
+  if (has_fbpfilter()) {
+    if (!this->fbpfilter().IsInitialized()) return false;
+  }
+  if (has_fstatrot()) {
+    if (!this->fstatrot().IsInitialized()) return false;
+  }
+  return true;
+}
+
+void Spectr_data::Swap(Spectr_data* other) {
+  if (other != this) {
+    std::swap(ftype_, other->ftype_);
+    std::swap(flpfilter_, other->flpfilter_);
+    std::swap(fbpfilter_, other->fbpfilter_);
+    std::swap(fstatrot_, other->fstatrot_);
+    std::swap(favgcount_, other->favgcount_);
+    std::swap(fbegfreq_, other->fbegfreq_);
+    std::swap(ffreqstep_, other->ffreqstep_);
+    std::swap(flinescnt_, other->flinescnt_);
+    std::swap(fampunit_, other->fampunit_);
+    famp_.Swap(&other->famp_);
+    fsiamp_.Swap(&other->fsiamp_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata Spectr_data::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = Spectr_data_descriptor_;
+  metadata.reflection = Spectr_data_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
 const int Vharmonic_data::kAmpFieldNumber;
 const int Vharmonic_data::kPhFieldNumber;
 const int Vharmonic_data::kFreqFieldNumber;
@@ -10623,6 +11376,7 @@ const int AnyTaskResult::kQualityResFieldNumber;
 const int AnyTaskResult::kSavetimesigResFieldNumber;
 const int AnyTaskResult::kVsensorfrotResFieldNumber;
 const int AnyTaskResult::kDecimResFieldNumber;
+const int AnyTaskResult::kSpectrResFieldNumber;
 #endif  // !_MSC_VER
 
 AnyTaskResult::AnyTaskResult()
@@ -10639,6 +11393,7 @@ void AnyTaskResult::InitAsDefaultInstance() {
   savetimesig_res_ = const_cast< ::task_manager::SaveTimeSig_data*>(&::task_manager::SaveTimeSig_data::default_instance());
   vsensorfrot_res_ = const_cast< ::task_manager::VsensorFrot_data*>(&::task_manager::VsensorFrot_data::default_instance());
   decim_res_ = const_cast< ::task_manager::DecimTimeSig_data*>(&::task_manager::DecimTimeSig_data::default_instance());
+  spectr_res_ = const_cast< ::task_manager::Spectr_data*>(&::task_manager::Spectr_data::default_instance());
 }
 
 AnyTaskResult::AnyTaskResult(const AnyTaskResult& from)
@@ -10658,6 +11413,7 @@ void AnyTaskResult::SharedCtor() {
   savetimesig_res_ = NULL;
   vsensorfrot_res_ = NULL;
   decim_res_ = NULL;
+  spectr_res_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -10675,6 +11431,7 @@ void AnyTaskResult::SharedDtor() {
     delete savetimesig_res_;
     delete vsensorfrot_res_;
     delete decim_res_;
+    delete spectr_res_;
   }
 }
 
@@ -10723,6 +11480,9 @@ void AnyTaskResult::Clear() {
     if (has_decim_res()) {
       if (decim_res_ != NULL) decim_res_->::task_manager::DecimTimeSig_data::Clear();
     }
+  }
+  if (has_spectr_res()) {
+    if (spectr_res_ != NULL) spectr_res_->::task_manager::Spectr_data::Clear();
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -10839,6 +11599,19 @@ bool AnyTaskResult::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(74)) goto parse_spectr_res;
+        break;
+      }
+
+      // optional .task_manager.Spectr_data spectr_res = 9;
+      case 9: {
+        if (tag == 74) {
+         parse_spectr_res:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_spectr_res()));
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -10915,6 +11688,12 @@ void AnyTaskResult::SerializeWithCachedSizes(
       8, this->decim_res(), output);
   }
 
+  // optional .task_manager.Spectr_data spectr_res = 9;
+  if (has_spectr_res()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      9, this->spectr_res(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -10977,6 +11756,13 @@ void AnyTaskResult::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         8, this->decim_res(), target);
+  }
+
+  // optional .task_manager.Spectr_data spectr_res = 9;
+  if (has_spectr_res()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        9, this->spectr_res(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -11048,6 +11834,15 @@ int AnyTaskResult::ByteSize() const {
     }
 
   }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional .task_manager.Spectr_data spectr_res = 9;
+    if (has_spectr_res()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->spectr_res());
+    }
+
+  }
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -11099,6 +11894,11 @@ void AnyTaskResult::MergeFrom(const AnyTaskResult& from) {
       mutable_decim_res()->::task_manager::DecimTimeSig_data::MergeFrom(from.decim_res());
     }
   }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    if (from.has_spectr_res()) {
+      mutable_spectr_res()->::task_manager::Spectr_data::MergeFrom(from.spectr_res());
+    }
+  }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -11138,6 +11938,9 @@ bool AnyTaskResult::IsInitialized() const {
   if (has_decim_res()) {
     if (!this->decim_res().IsInitialized()) return false;
   }
+  if (has_spectr_res()) {
+    if (!this->spectr_res().IsInitialized()) return false;
+  }
   return true;
 }
 
@@ -11151,6 +11954,7 @@ void AnyTaskResult::Swap(AnyTaskResult* other) {
     std::swap(savetimesig_res_, other->savetimesig_res_);
     std::swap(vsensorfrot_res_, other->vsensorfrot_res_);
     std::swap(decim_res_, other->decim_res_);
+    std::swap(spectr_res_, other->spectr_res_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

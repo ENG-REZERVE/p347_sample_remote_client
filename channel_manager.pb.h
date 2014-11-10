@@ -1072,35 +1072,35 @@ class ADCChannelInitParams : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 rot_idx() const;
   inline void set_rot_idx(::google::protobuf::uint32 value);
 
-  // required uint32 drv_buf_size = 3 [default = 32768];
+  // optional uint32 drv_buf_size = 3 [default = 32768];
   inline bool has_drv_buf_size() const;
   inline void clear_drv_buf_size();
   static const int kDrvBufSizeFieldNumber = 3;
   inline ::google::protobuf::uint32 drv_buf_size() const;
   inline void set_drv_buf_size(::google::protobuf::uint32 value);
 
-  // required uint32 usr_proc_len = 4 [default = 32768];
+  // optional uint32 usr_proc_len = 4 [default = 32768];
   inline bool has_usr_proc_len() const;
   inline void clear_usr_proc_len();
   static const int kUsrProcLenFieldNumber = 4;
   inline ::google::protobuf::uint32 usr_proc_len() const;
   inline void set_usr_proc_len(::google::protobuf::uint32 value);
 
-  // required uint32 usr_proc_cnt = 5 [default = 0];
+  // optional uint32 usr_proc_cnt = 5 [default = 0];
   inline bool has_usr_proc_cnt() const;
   inline void clear_usr_proc_cnt();
   static const int kUsrProcCntFieldNumber = 5;
   inline ::google::protobuf::uint32 usr_proc_cnt() const;
   inline void set_usr_proc_cnt(::google::protobuf::uint32 value);
 
-  // required uint32 sen_filter_id = 6 [default = 0];
+  // optional uint32 sen_filter_id = 6 [default = 0];
   inline bool has_sen_filter_id() const;
   inline void clear_sen_filter_id();
   static const int kSenFilterIdFieldNumber = 6;
   inline ::google::protobuf::uint32 sen_filter_id() const;
   inline void set_sen_filter_id(::google::protobuf::uint32 value);
 
-  // required .channel_manager.ADCParams ap = 7;
+  // optional .channel_manager.ADCParams ap = 7;
   inline bool has_ap() const;
   inline void clear_ap();
   static const int kApFieldNumber = 7;
@@ -1218,7 +1218,7 @@ class SynctaskChannels : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
       mutable_adc_ch_idx();
 
-  // required uint32 sync_reg = 3;
+  // optional uint32 sync_reg = 3;
   inline bool has_sync_reg() const;
   inline void clear_sync_reg();
   static const int kSyncRegFieldNumber = 3;
@@ -1308,28 +1308,28 @@ class RotChannelInitParams : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 rot_idx() const;
   inline void set_rot_idx(::google::protobuf::uint32 value);
 
-  // required uint32 av_num = 2 [default = 1];
+  // optional uint32 av_num = 2 [default = 1];
   inline bool has_av_num() const;
   inline void clear_av_num();
   static const int kAvNumFieldNumber = 2;
   inline ::google::protobuf::uint32 av_num() const;
   inline void set_av_num(::google::protobuf::uint32 value);
 
-  // required uint32 pw_min_us = 3 [default = 25];
+  // optional uint32 pw_min_us = 3 [default = 25];
   inline bool has_pw_min_us() const;
   inline void clear_pw_min_us();
   static const int kPwMinUsFieldNumber = 3;
   inline ::google::protobuf::uint32 pw_min_us() const;
   inline void set_pw_min_us(::google::protobuf::uint32 value);
 
-  // required uint32 period_min_us = 4 [default = 8333];
+  // optional uint32 period_min_us = 4 [default = 8333];
   inline bool has_period_min_us() const;
   inline void clear_period_min_us();
   static const int kPeriodMinUsFieldNumber = 4;
   inline ::google::protobuf::uint32 period_min_us() const;
   inline void set_period_min_us(::google::protobuf::uint32 value);
 
-  // required uint32 period_max_us = 5 [default = 1000000];
+  // optional uint32 period_max_us = 5 [default = 1000000];
   inline bool has_period_max_us() const;
   inline void clear_period_max_us();
   static const int kPeriodMaxUsFieldNumber = 5;
@@ -2940,7 +2940,7 @@ inline void ADCChannelInitParams::set_rot_idx(::google::protobuf::uint32 value) 
   // @@protoc_insertion_point(field_set:channel_manager.ADCChannelInitParams.rot_idx)
 }
 
-// required uint32 drv_buf_size = 3 [default = 32768];
+// optional uint32 drv_buf_size = 3 [default = 32768];
 inline bool ADCChannelInitParams::has_drv_buf_size() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -2964,7 +2964,7 @@ inline void ADCChannelInitParams::set_drv_buf_size(::google::protobuf::uint32 va
   // @@protoc_insertion_point(field_set:channel_manager.ADCChannelInitParams.drv_buf_size)
 }
 
-// required uint32 usr_proc_len = 4 [default = 32768];
+// optional uint32 usr_proc_len = 4 [default = 32768];
 inline bool ADCChannelInitParams::has_usr_proc_len() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
@@ -2988,7 +2988,7 @@ inline void ADCChannelInitParams::set_usr_proc_len(::google::protobuf::uint32 va
   // @@protoc_insertion_point(field_set:channel_manager.ADCChannelInitParams.usr_proc_len)
 }
 
-// required uint32 usr_proc_cnt = 5 [default = 0];
+// optional uint32 usr_proc_cnt = 5 [default = 0];
 inline bool ADCChannelInitParams::has_usr_proc_cnt() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
@@ -3012,7 +3012,7 @@ inline void ADCChannelInitParams::set_usr_proc_cnt(::google::protobuf::uint32 va
   // @@protoc_insertion_point(field_set:channel_manager.ADCChannelInitParams.usr_proc_cnt)
 }
 
-// required uint32 sen_filter_id = 6 [default = 0];
+// optional uint32 sen_filter_id = 6 [default = 0];
 inline bool ADCChannelInitParams::has_sen_filter_id() const {
   return (_has_bits_[0] & 0x00000020u) != 0;
 }
@@ -3036,7 +3036,7 @@ inline void ADCChannelInitParams::set_sen_filter_id(::google::protobuf::uint32 v
   // @@protoc_insertion_point(field_set:channel_manager.ADCChannelInitParams.sen_filter_id)
 }
 
-// required .channel_manager.ADCParams ap = 7;
+// optional .channel_manager.ADCParams ap = 7;
 inline bool ADCChannelInitParams::has_ap() const {
   return (_has_bits_[0] & 0x00000040u) != 0;
 }
@@ -3135,7 +3135,7 @@ SynctaskChannels::mutable_adc_ch_idx() {
   return &adc_ch_idx_;
 }
 
-// required uint32 sync_reg = 3;
+// optional uint32 sync_reg = 3;
 inline bool SynctaskChannels::has_sync_reg() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -3187,7 +3187,7 @@ inline void RotChannelInitParams::set_rot_idx(::google::protobuf::uint32 value) 
   // @@protoc_insertion_point(field_set:channel_manager.RotChannelInitParams.rot_idx)
 }
 
-// required uint32 av_num = 2 [default = 1];
+// optional uint32 av_num = 2 [default = 1];
 inline bool RotChannelInitParams::has_av_num() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -3211,7 +3211,7 @@ inline void RotChannelInitParams::set_av_num(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:channel_manager.RotChannelInitParams.av_num)
 }
 
-// required uint32 pw_min_us = 3 [default = 25];
+// optional uint32 pw_min_us = 3 [default = 25];
 inline bool RotChannelInitParams::has_pw_min_us() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -3235,7 +3235,7 @@ inline void RotChannelInitParams::set_pw_min_us(::google::protobuf::uint32 value
   // @@protoc_insertion_point(field_set:channel_manager.RotChannelInitParams.pw_min_us)
 }
 
-// required uint32 period_min_us = 4 [default = 8333];
+// optional uint32 period_min_us = 4 [default = 8333];
 inline bool RotChannelInitParams::has_period_min_us() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
@@ -3259,7 +3259,7 @@ inline void RotChannelInitParams::set_period_min_us(::google::protobuf::uint32 v
   // @@protoc_insertion_point(field_set:channel_manager.RotChannelInitParams.period_min_us)
 }
 
-// required uint32 period_max_us = 5 [default = 1000000];
+// optional uint32 period_max_us = 5 [default = 1000000];
 inline bool RotChannelInitParams::has_period_max_us() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }

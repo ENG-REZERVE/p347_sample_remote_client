@@ -1,5 +1,6 @@
 #include "qt_client_wrapper.hpp"
-#include "DSPEmulDefines.h"
+#include "dfilter.h"
+//#include "DSPEmulDefines.h"
 
 QClientWrapper::QClientWrapper(QObject* parent) : 
 	QObject(parent), p347ClientWrapper()
@@ -190,38 +191,41 @@ int QClientWrapper::qt_getServerVersion(bool async){
 	return getServerVersion(async,&s_version);
 }	
 	
-int QClientWrapper::qt_createChannelManager(bool async) {
+//int QClientWrapper::qt_createChannelManager(bool async) {
+int QClientWrapper::qt_initDevice(bool async) {
 	UPDATE_BUSY
 
-	channel_manager::ChannelManagerInitParams initpars;
+	p347_conf::DeviceInitParams dip;
+	/*
+	channel_manager::ChannelManagerInitParams* initpars = dip.mutable_cm_init();
 	
-		//manager logging
-	initpars.set_log_level_file(0);
-	initpars.set_log_level_console(3);
-	initpars.set_log_level_daemon(0);
+	//manager logging
+	initpars->set_log_level_file(0);
+	initpars->set_log_level_console(3);
+	initpars->set_log_level_daemon(0);
     //dsp helper logging
-	initpars.set_dsph_level_file(0);
-	initpars.set_dsph_level_console(3);
-	initpars.set_dsph_level_daemon(0);
+	initpars->set_dsph_level_file(0);
+	initpars->set_dsph_level_console(3);
+	initpars->set_dsph_level_daemon(0);
     //initial parameters
-	initpars.set_base_timing(1000);
-	initpars.set_drv_buf_size(32768);
-	initpars.set_usr_proc_len(32768);
-	initpars.set_spi_speed_hz(93750);
-	initpars.set_main_sleep_us(500);
-	initpars.set_idle_sleep_us(1000);
+	initpars->set_base_timing(1000);
+	initpars->set_drv_buf_size(32768);
+	initpars->set_usr_proc_len(32768);
+	initpars->set_spi_speed_hz(93750);
+	initpars->set_main_sleep_us(500);
+	initpars->set_idle_sleep_us(1000);
 
-	initpars.set_daemon_ipc_path("/mnt/share");
-	initpars.set_daemon_ipc_key(45);
-	initpars.set_reset_at_open(true);
+	initpars->set_daemon_ipc_path("/mnt/share");
+	initpars->set_daemon_ipc_key(45);
+	initpars->set_reset_at_open(true);
 
     for (int i=0; i<p347_ADC_CHANNELS_CNT; i++) {
-    	initpars.add_chan_level_file(0);
-    	initpars.add_chan_level_console(3);
-    	initpars.add_chan_level_daemon(0);
+    	initpars->add_chan_level_file(0);
+    	initpars->add_chan_level_console(3);
+    	initpars->add_chan_level_daemon(0);
     }
 
-    channel_manager::DriverTimings* drt = initpars.mutable_driver_timings();
+    channel_manager::DriverTimings* drt = initpars->mutable_driver_timings();
     drt->set_rot_run(1000);
     drt->set_adc_set_params1(500);
     drt->set_adc_set_params2(100);
@@ -229,107 +233,47 @@ int QClientWrapper::qt_createChannelManager(bool async) {
     drt->set_adc_run(100);
     drt->set_adc_run_sync(100);
 	
-	task_manager::DSPEmulInitParams dip;
-	dip.set_atsdtc(TSDTC_24DATA_8STATUS);
-    dip.set_ainitsigbufferlength(8*20*65536);
-    dip.set_asigbufferincrement(8*5*65536);
-    dip.set_ainitrotbufferlength(1024);
-    dip.set_arotbufferincrement(1024);
-    //dip.set_achannelscount(p347_ADC_CHANNELS_CNT);
-	
-	return createChannelManager(async,initpars,dip);
+	task_manager::DSPEmulInitParams* dspip = dip.mutable_dspemul_init();
+	dspip->set_atsdtc(TSDTC_24DATA_8STATUS);
+    dspip->set_ainitsigbufferlength(8*20*65536);
+    dspip->set_asigbufferincrement(8*5*65536);
+    dspip->set_ainitrotbufferlength(1024);
+    dspip->set_arotbufferincrement(1024);
+
+	channel_manager::MultiplexerInitParams* muxip = dip.mutable_mux_init();
+	muxip->set_dev_name("/dev/ttyO2");
+	muxip->set_speed(115200);
+	muxip->set_params("8N1");
+	*/
+	//return createChannelManager(async,initpars,dip);
+	return initDevice(async,dip);
 }
 
+
+int QClientWrapper::qt_deInitDevice(bool async) {
+	UPDATE_BUSY
+	return deInitDevice(async);
+}
+
+/*
 int QClientWrapper::qt_deleteChannelManager(bool async) {
 	UPDATE_BUSY
 	return deleteChannelManager(async);
 }
-
-/*
-int QClientWrapper::qt_createDSPEmul(bool async) {
-	UPDATE_BUSY
-	task_manager::DSPEmulInitParams dip;
-	dip.set_atsdtc(TSDTC_24DATA_8STATUS);
-    dip.set_ainitsigbufferlength(8*20*65536);
-    dip.set_asigbufferincrement(8*5*65536);
-    dip.set_ainitrotbufferlength(1024);
-    dip.set_arotbufferincrement(1024);
-    dip.set_achannelscount(p347_ADC_CHANNELS_CNT);
-	
-	return createDSPEmul(async,dip);
-}
-
-int QClientWrapper::qt_deleteDSPEmul(bool async) {
-	UPDATE_BUSY
-	return deleteDSPEmul(async);
-}
 */
-int	QClientWrapper::qt_sleepTest(bool async) {
-	UPDATE_BUSY
-	return callRemoteSleepTest(async);
-}
 
-//---------------------------------------------------------------------------------------
-
-/*
-int QClientWrapper::qt_initChannelManager(bool async) {
-	UPDATE_BUSY
-	channel_manager::ChannelManagerInitParams initpars;
-	
-		//manager logging
-	initpars.set_log_level_file(0);
-	initpars.set_log_level_console(3);
-	initpars.set_log_level_daemon(0);
-    //dsp helper logging
-	initpars.set_dsph_level_file(0);
-	initpars.set_dsph_level_console(3);
-	initpars.set_dsph_level_daemon(0);
-    //initial parameters
-	initpars.set_base_timing(1000);
-	initpars.set_drv_buf_size(32768);
-	initpars.set_usr_proc_len(32768);
-	initpars.set_spi_speed_hz(93750);
-	initpars.set_main_sleep_us(500);
-	initpars.set_idle_sleep_us(1000);
-
-	initpars.set_daemon_ipc_path("/mnt/share");
-	initpars.set_daemon_ipc_key(45);
-	initpars.set_reset_at_open(true);
-
-    for (int i=0; i<p347_ADC_CHANNELS_CNT; i++) {
-    	initpars.add_chan_level_file(0);
-    	initpars.add_chan_level_console(3);
-    	initpars.add_chan_level_daemon(0);
-    }
-
-    channel_manager::DriverTimings* drt = initpars.mutable_driver_timings();
-    drt->set_rot_run(1000);
-    drt->set_adc_set_params1(500);
-    drt->set_adc_set_params2(100);
-    drt->set_adc_set_params3(100);
-    drt->set_adc_run(100);
-    drt->set_adc_run_sync(100);
-	
-	return initChannelManager(async, initpars);
-}
-
-int	QClientWrapper::qt_exitChannelManager(bool async) {
-	UPDATE_BUSY
-	exitChannelManager(async);
-	return 0;
-}
-*/
 //---------------------------------------------------------------------------------ROT
 
 int	QClientWrapper::qt_doStartRotChannel(bool async, int ch_idx) {
 	UPDATE_BUSY
 	channel_manager::RotChannelInitParams rcip;
 	rcip.set_rot_idx(ch_idx);
+	/*
 	rcip.set_av_num(5);
 	rcip.set_pw_min_us(25);
 	rcip.set_period_min_us(8333);
 	rcip.set_period_max_us(1000000);
-	
+	*/
 	return doStartRotChannel(async, rcip);
 }
 
@@ -380,6 +324,7 @@ int QClientWrapper::qt_doSetupAdcChannel(bool async, int ch_idx) {
 	
 	adccip.set_ch_idx(ch_idx);
 	adccip.set_rot_idx(0);
+	/*
 	adccip.set_drv_buf_size(32768);
 	adccip.set_usr_proc_len(32768);
 	adccip.set_usr_proc_cnt(0);
@@ -392,6 +337,7 @@ int QClientWrapper::qt_doSetupAdcChannel(bool async, int ch_idx) {
 	ap->set_gain(0x8000);
 	ap->set_overrange(0xCCCC);
 	ap->set_ch_settings(0x001D);
+	*/
 	
 	return doSetupAdcChannel(async, adccip);
 }
@@ -424,7 +370,7 @@ int QClientWrapper::qt_doStartSyncChannels(bool async) {
 	tsc.set_adc_ch_cnt(2);
 	tsc.add_adc_ch_idx(3);
 	tsc.add_adc_ch_idx(4);
-	tsc.set_sync_reg(0x1501021D);
+	//tsc.set_sync_reg(0x1501021D);
 
 	return doStartSyncChannels(async, tsc);
 }
@@ -437,7 +383,7 @@ int QClientWrapper::qt_doStopSyncChannels(bool async) {
 	tsc.set_adc_ch_cnt(2);
 	tsc.add_adc_ch_idx(3);
 	tsc.add_adc_ch_idx(4);
-	tsc.set_sync_reg(0x1501021D);
+	//tsc.set_sync_reg(0x1501021D);
 	
 	return doStopSyncChannels(async, tsc, false, false);
 }
@@ -448,7 +394,7 @@ int QClientWrapper::qt_readADCTimeOffsets(bool async) {
 }
 
 //------------------------------------------------------------------------------MUX
-
+/*
 int QClientWrapper::qt_initMultiplexer(bool async) {
 	UPDATE_BUSY
 	channel_manager::MultiplexerInitParams mip;
@@ -463,7 +409,7 @@ int QClientWrapper::qt_deinitMultiplexer(bool async) {
 	UPDATE_BUSY
 	return deinitMultiplexer(async);
 };
-	
+*/	
 int QClientWrapper::qt_switchCommutatorOn(bool async) {
 	UPDATE_BUSY
 	return switchCommutatorOn(async);
@@ -490,3 +436,158 @@ int QClientWrapper::qt_getTotalTasksProgress(bool async, int ch_idx) {
 	UPDATE_BUSY
 	return getTotalTasksProgress(async,ch_idx,false);
 };
+
+int QClientWrapper::qt_getTaskResult(bool async, int ch_idx, int task_idx) {
+	UPDATE_BUSY
+	int ret = getTaskResult(async,ch_idx,task_idx,EMUL_TASK_TYPE_QUALITY,0,&anyres);
+
+	printf("async=%d, error_code =%d\n",async,anyres.error_code());
+	
+	return ret;
+};
+
+int QClientWrapper::qt_addQualityTask(bool async, int ch_idx) {
+	UPDATE_BUSY
+	
+	setGain(async, ch_idx,5);
+	setSensitivity(async, ch_idx,70);
+	setRotLabelsCount(async, ch_idx,1);
+	setBegSigOffSet(async, ch_idx,0);
+	setBegRotOffSet(async, ch_idx,0);
+	setSrcSamplingFreq(async, ch_idx, 72000);
+	
+	//-------------------------------------------------------------------------
+	task_manager::AnyTaskParams	any_task_params;
+	any_task_params.set_error_code(0);
+	
+	task_manager::StatTimeSigTaskParams* stattimesig_task_params = any_task_params.mutable_stattimesig_par();
+	stattimesig_task_params->set_onemeastimesiglength(65536); //(s_freq*1125/1024)*realization_time/1000;
+	stattimesig_task_params->set_ampunit(TU_AMP_A_M_S2);
+	stattimesig_task_params->set_integrateintimedomain(false);
+	//common task params for stat
+	task_manager::CommonTaskParams* stat_CMN_task_params = stattimesig_task_params->mutable_cmn();
+	stat_CMN_task_params->set_monitoring(false);
+	stat_CMN_task_params->set_timesigtype(TS_DIRECT);      // = SpectrType
+	stat_CMN_task_params->set_lpfilterindex(8);	//25600+¡ - ò ýþòv¿ øýôõú¸ð¿
+	stat_CMN_task_params->set_lpfilterdecim(0);	//ø¸ÿþû¹÷ºõª¸  LPFilterIndex
+	stat_CMN_task_params->set_lpfiltertype(TF_SLIDING_LOWPASS_FIR);
+	stat_CMN_task_params->set_lpfilterusualw(false);   // = LPFilterGenW
+	stat_CMN_task_params->set_bpfilterindex(0);
+	stat_CMN_task_params->set_bpfiltertype(TF_NONE);
+	stat_CMN_task_params->set_bpfilterusualw(false);
+	stat_CMN_task_params->set_rsmpfilterindex(5);
+	stat_CMN_task_params->set_rsmpfiltertype(TF_SLIDING_RESAMPLE_FIR);
+	stat_CMN_task_params->set_rsmpfilterusualw(false); // = RSMPFilterGenW
+	stat_CMN_task_params->set_hpfilterindex(0);	//HPFT_01_1_40_002_4096
+	stat_CMN_task_params->set_hpfiltertype(0);	//
+	double stat_CMN_Alfa = 0.9985;
+	stat_CMN_task_params->set_hpfilterparam1(stat_CMN_Alfa);
+	stat_CMN_task_params->set_fparamscount(0);
+	stat_CMN_task_params->set_avgcount(1);			// = SpectAvgCount
+	stat_CMN_task_params->set_frotlimitsactive(false);
+	stat_CMN_task_params->set_stabcontrol(false);
+	stat_CMN_task_params->set_rotcontrol(false);
+	stat_CMN_task_params->set_waitperiodforrotmetka(0);
+	stat_CMN_task_params->set_timesigsrctype(TSST_ORIGINAL);
+	stat_CMN_task_params->set_timesigid(TSST_ORIGINAL);
+	stat_CMN_task_params->set_inittaskstate(TTS_PLAY);
+	stat_CMN_task_params->set_finaltaskstate(TTS_STOP);
+	stat_CMN_task_params->set_tsdtc(TSDTC_LONGDOUBLE);
+	stat_CMN_task_params->set_calctypetsdtc(TSDTC_LONGDOUBLE);
+	stat_CMN_task_params->set_tde(TDE_P347ADC24);
+	//offset
+	task_manager::TOffset* stat_offset = stat_CMN_task_params->mutable_offset();
+	stat_offset->set_type(OFFST_SAMPLES);
+	stat_offset->set_value(TOSA_FROM_END_TS);
+	//delta offset
+	task_manager::TOffset* stat_delta_offset = stat_CMN_task_params->mutable_deltaoffset();
+	stat_delta_offset->set_type(OFFST_SAMPLES);
+	stat_delta_offset->set_value(0);
+	//task_manager::FParams* stat_filter_params = stat_CMN_task_params->add_fparamslist();
+	//filter params
+	//stat_filter_params->set_type(FPARAMS_NONE);
+	//frot limits
+	task_manager::TFrotLimits* stat_frot_limits = stat_CMN_task_params->mutable_frotlimits();
+	stat_frot_limits->set_frot_min(0);
+	stat_frot_limits->set_frot_max(1000000);
+	stat_frot_limits->set_deltafrotonemeas(0);
+	stat_frot_limits->set_deltafrotallmeas(0);
+	//add task stat
+	int ret = addTask(async, ch_idx, any_task_params);
+	printf("addtask stattimesig ret %d\n",ret);
+
+	//-----------------------------------------------------------------quality
+	task_manager::AnyTaskParams	atp;
+	atp.set_error_code(0);
+	
+	task_manager::QualityTimeSigTaskParams* quality_task_params = atp.mutable_quality_par();
+	quality_task_params->set_onemeastimesiglength(65536); //(s_freq*1125/1024)*realization_time/1000;
+	quality_task_params->set_amppeaktopeakmin(0);
+	quality_task_params->set_amppeaktopeakmax(100);
+	quality_task_params->set_ampstdmin(0.015);
+	quality_task_params->set_ampstdmax(2);
+	//common task params for vharm
+	task_manager::CommonTaskParams* quality_CMN_task_params = quality_task_params->mutable_cmn();
+	quality_CMN_task_params->set_monitoring(false);
+	quality_CMN_task_params->set_timesigtype(TS_DIRECT);      // = SpectrType
+	quality_CMN_task_params->set_lpfilterindex(8);	//25600+¡ - ò ýþòv¿ øýôõú¸ð¿
+	quality_CMN_task_params->set_lpfilterdecim(0);	//ø¸ÿþû¹÷ºõª¸  LPFilterIndex
+	quality_CMN_task_params->set_lpfiltertype(TF_SLIDING_LOWPASS_FIR);
+	quality_CMN_task_params->set_lpfilterusualw(false);   // = LPFilterGenW
+	quality_CMN_task_params->set_bpfilterindex(0);
+	quality_CMN_task_params->set_bpfiltertype(TF_NONE);
+	quality_CMN_task_params->set_bpfilterusualw(false);
+	quality_CMN_task_params->set_rsmpfilterindex(5);
+	quality_CMN_task_params->set_rsmpfiltertype(TF_SLIDING_RESAMPLE_FIR);
+	quality_CMN_task_params->set_rsmpfilterusualw(false); // = RSMPFilterGenW
+	quality_CMN_task_params->set_hpfilterindex(0);	//HPFT_01_1_40_002_4096
+	quality_CMN_task_params->set_hpfiltertype(0);	//
+	double quality_CMN_Alfa = 0.9985;
+	quality_CMN_task_params->set_hpfilterparam1(quality_CMN_Alfa);
+	quality_CMN_task_params->set_fparamscount(0);
+	quality_CMN_task_params->set_avgcount(1);			// = SpectAvgCount
+	quality_CMN_task_params->set_frotlimitsactive(false);
+	quality_CMN_task_params->set_stabcontrol(false);
+	quality_CMN_task_params->set_rotcontrol(false);
+	quality_CMN_task_params->set_waitperiodforrotmetka(0);
+	quality_CMN_task_params->set_timesigsrctype(TSST_ORIGINAL);
+	quality_CMN_task_params->set_timesigid(TSST_ORIGINAL);
+	quality_CMN_task_params->set_inittaskstate(TTS_PLAY);
+	quality_CMN_task_params->set_finaltaskstate(TTS_STOP);
+	quality_CMN_task_params->set_tsdtc(TSDTC_LONGDOUBLE);
+	quality_CMN_task_params->set_calctypetsdtc(TSDTC_LONGDOUBLE);
+	quality_CMN_task_params->set_tde(TDE_P347ADC24);
+	//offset
+	task_manager::TOffset* quality_offset = quality_CMN_task_params->mutable_offset();
+	quality_offset->set_type(OFFST_SAMPLES);
+	quality_offset->set_value(TOSA_FROM_END_TS);
+	//delta offset
+	task_manager::TOffset* quality_delta_offset = quality_CMN_task_params->mutable_deltaoffset();
+	quality_delta_offset->set_type(OFFST_SAMPLES);
+	quality_delta_offset->set_value(0);
+	//task_manager::FParams* filter_params = quality_CMN_task_params->add_fparamslist();
+	//filter params
+	//quality_filter_params->set_type(FPARAMS_NONE);
+	//frot limits
+	task_manager::TFrotLimits* quality_frot_limits = quality_CMN_task_params->mutable_frotlimits();
+	quality_frot_limits->set_frot_min(0);
+	quality_frot_limits->set_frot_max(1000000);
+	quality_frot_limits->set_deltafrotonemeas(0);
+	quality_frot_limits->set_deltafrotallmeas(0);	
+	
+	return addTask(async,ch_idx,atp);
+};
+
+int QClientWrapper::qt_timesigOpen(bool async, int ch_idx) {
+	return timesigOpen(async, ch_idx);
+}
+
+int QClientWrapper::qt_timesigClose(bool async, int ch_idx) {
+	return timesigClose(async, ch_idx);
+}
+
+int	QClientWrapper::qt_loadConfiguration(int conf_id) {
+	if (configurator == NULL) return -EINVAL;
+	
+	return configurator->loadConfig(conf_id);
+}
