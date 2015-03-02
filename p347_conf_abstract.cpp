@@ -96,8 +96,8 @@ int p347AbstractConfigurator::copyDSPEmulInitParams(task_manager::DSPEmulInitPar
 }
 */
 //---------------poi
-int p347AbstractConfigurator::getObjectMapPtr(p347_conf::ObjectMap* map_ptr) {
-	map_ptr = wconf.mutable_object_map();
+int p347AbstractConfigurator::getObjectMapPtr(p347_conf::ObjectMap** map_ptr) {
+	*map_ptr = wconf.mutable_object_map();
 
 	return 0;
 }
@@ -162,16 +162,15 @@ int p347AbstractConfigurator::getDotVibroPtrList(std::vector<p347_conf::DotVibro
 	return 0;
 }
 
-int p347AbstractConfigurator::getDotVibroPtrByIdx(unsigned int dot_vibro_idx, p347_conf::DotVibro* dst_ptr) {
+int p347AbstractConfigurator::getDotVibroPtrByIdx(unsigned int dot_vibro_idx, p347_conf::DotVibro** dst_ptr) {
 	int sz = wconf.dots_vibro_list_size();
-	dst_ptr = NULL;
 
 	if (sz > 0)
 		for (int i=0; i<sz; i++) {
 			p347_conf::DotVibro* tmp_ptr = wconf.mutable_dots_vibro_list(i);
 			if (tmp_ptr != NULL) {
 				if (tmp_ptr->dot_idx() == dot_vibro_idx) {
-					dst_ptr = tmp_ptr;
+					*dst_ptr = tmp_ptr;
 					return 0;
 				}
 			}
@@ -180,16 +179,15 @@ int p347AbstractConfigurator::getDotVibroPtrByIdx(unsigned int dot_vibro_idx, p3
 	return -ENOENT;
 }
 
-int p347AbstractConfigurator::getDotRotPtrByIdx(unsigned int dot_rot_idx, p347_conf::DotRot* dst_ptr) {
+int p347AbstractConfigurator::getDotRotPtrByIdx(unsigned int dot_rot_idx, p347_conf::DotRot** dst_ptr) {
 	int sz = wconf.dots_rot_list_size();
-	dst_ptr = NULL;
 
 	if (sz > 0)
 		for (int i=0; i<sz; i++) {
 			p347_conf::DotRot* tmp_ptr = wconf.mutable_dots_rot_list(i);
 			if (tmp_ptr != NULL) {
 				if (tmp_ptr->dot_idx() == dot_rot_idx) {
-					dst_ptr = tmp_ptr;
+					*dst_ptr = tmp_ptr;
 					return 0;
 				}
 			}

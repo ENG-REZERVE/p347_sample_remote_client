@@ -6,7 +6,9 @@ TARGET = client_test
 
 INCLUDEPATH += C:\protobuf-2.6.0\src \
     C:\RCF-2.0.1.101\include \
-	C:\boost_1_55_0
+	C:\boost_1_55_0 \
+	pbjson \
+	pbjson\rapidjson
 
 HEADERS += channel_manager.pb.h \
 	task_manager.pb.h \
@@ -28,7 +30,17 @@ HEADERS += channel_manager.pb.h \
 	list.h \
 	FixedPoint.h \
 	RobastAnalisis.h \
-	p347_pwr_user.h
+	p347_pwr_user.h \
+	protobuf_convertors.h \
+	TSpectr.h \
+	dfilter.h \
+	p347_conf.pb.h \
+	json2pb_interface.hpp \
+        p347_conf_abstract.hpp \
+	p347_conf_json_file.hpp \
+	ckdr.h \
+	pbjson\pbjson.hpp \
+	pbjson\bin2ascii.h
 	
 #	calib_data_structures.h \
 #	calib_enums.h \
@@ -50,7 +62,14 @@ SOURCES += main.cpp \
 	thread.cpp \
 	qt_client_wrapper.cpp \
 	qt_hwmon_wrapper.cpp \
-	list.cpp
+	list.cpp \
+	protobuf_convertors.cpp \
+	TSpectr.cpp \
+	DSPEmulDefines.cpp \
+	p347_conf_pb.cpp \
+	p347_conf_abstract.cpp \
+	p347_conf_json_file.cpp \
+	pbjson\pbjson.cpp
 
 RESOURCES += qml.qrc
 
@@ -60,7 +79,7 @@ QMAKE_CXX = C:\Qt\Qt5.3.1\Tools\mingw482_32\bin\g++.exe
 QMAKE_CFLAGS += -DRCF_USE_PROTOBUF -DWIN32_LEAN_AND_MEAN -Wno-unused-parameter -Wno-unused-variable -Wno-unused-local-typedefs -Wno-deprecated-declarations -std=c++11 -ggdb -O0
 QMAKE_CXXFLAGS += -DRCF_USE_PROTOBUF -DWIN32_LEAN_AND_MEAN -Wno-unused-parameter -Wno-unused-variable -Wno-unused-local-typedefs -Wno-deprecated-declarations -std=c++11 -ggdb -O0
 
-QMAKE_LIBS += -LC:\Qt\Qt5.3.1\Tools\QtCreator\bin\test123 -lrcf_win32 -lprotobuf-9
+QMAKE_LIBS += -LC:\Qt\Qt5.3.1\Tools\QtCreator\bin\test123 -lrcf_win32 -lprotobuf-9 -lckdr
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =

@@ -39,13 +39,13 @@ public:
 	int copyDSPEmulInitParams(task_manager::DSPEmulInitParams* par_dst);
 	//---------------poi
 	*/
-	int getObjectMapPtr(p347_conf::ObjectMap* map_ptr);
+	int getObjectMapPtr(p347_conf::ObjectMap** map_ptr);
 	int getChainsPtrList(std::vector<p347_conf::DotChain*>* list_ptr);
 	int getGroupsPtrListOfChain(unsigned int chain_number, std::vector<p347_conf::DotGroup*>* list_ptr);
 	int getDotsPtrListOfGroup(unsigned int chain_number, unsigned int group_number, std::vector<p347_conf::DotConf*>* list_ptr);
 	int getDotVibroPtrList(std::vector<p347_conf::DotVibro*>* list_ptr);
-	int getDotVibroPtrByIdx(unsigned int dot_vibro_idx, p347_conf::DotVibro* dst_ptr);
-	int getDotRotPtrByIdx(unsigned int dot_rot_idx, p347_conf::DotRot* dst_ptr);
+	int getDotVibroPtrByIdx(unsigned int dot_vibro_idx, p347_conf::DotVibro** dst_ptr);
+	int getDotRotPtrByIdx(unsigned int dot_rot_idx, p347_conf::DotRot** dst_ptr);
 	//---------------ckdr
 	int fillKdrINParamsForDot(p347_conf::DotVibro* dot, kdrINParams_t* dst);
 protected:

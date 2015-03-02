@@ -35,6 +35,8 @@ RCF_BEGIN(PUB_hwmon,"PUB_hwmon")
 	RCF_METHOD_V1(void, batteryData, const hardware_monitor::BatteryInformation &)
 	RCF_METHOD_V1(void, cpuTemperatureData, const hardware_monitor::TemperatureInformation &)
 	RCF_METHOD_V1(void, buttonData, const hardware_monitor::ButtonInformation &)
+	RCF_METHOD_V1(void, localTime, const hardware_monitor::TimeTM &)
+	RCF_METHOD_V1(void, devMem, const hardware_monitor::DeviceMemory &)
 RCF_END(PUB_connection)
 
 #endif /* RCF_BIND_CHANNEL_MANAGER_HPP_ */

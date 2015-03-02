@@ -18,6 +18,7 @@
 #include "p347_pwr_user.h"
 #include "ckdr.h"
 #include "TSpectr.h"
+#include <time.h>
 
 extern int extractLPFilter(task_manager::LPFilter* proto_src, TLPFilter* data_dst);
 extern int extractBPFilter(task_manager::BPFilter* proto_src, TBPFilter* data_dst);
@@ -86,5 +87,13 @@ extern int extractReducer(p347_conf::Reducer* proto_src, kdrReducer_t* data_dst)
 
 extern int packBearing(p347_conf::Bearing* proto_dst, kdrBearing_t* data_src);
 extern int packReducer(p347_conf::Reducer* proto_dst, kdrReducer_t* data_src);
+
+//--------------------------------------------------------------------------------------------------------------------------------
+
+extern int extractTimeTM(hardware_monitor::TimeTM* proto_src, struct tm* data_dst);
+extern int packTimeTM(hardware_monitor::TimeTM* proto_dst, struct tm* data_src);
+
+extern int extractDevMem(hardware_monitor::DeviceMemory* proto_src, t_device_memory* data_dst);
+extern int packDevMem(hardware_monitor::DeviceMemory* proto_dst, t_device_memory* data_src);
 
 #endif /* PROTOBUF_CONVERTORS_HPP_ */

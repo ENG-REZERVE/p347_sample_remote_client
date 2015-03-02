@@ -40,6 +40,8 @@ class HardwareMonitoringClientInitParams;
 class HwmonLoggingParams;
 class SubscriptionMask;
 class ServerVersion;
+class TimeTM;
+class DeviceMemory;
 
 // ===================================================================
 
@@ -864,6 +866,20 @@ class SubscriptionMask : public ::google::protobuf::Message {
   inline bool pbutton_action() const;
   inline void set_pbutton_action(bool value);
 
+  // optional bool local_time = 6;
+  inline bool has_local_time() const;
+  inline void clear_local_time();
+  static const int kLocalTimeFieldNumber = 6;
+  inline bool local_time() const;
+  inline void set_local_time(bool value);
+
+  // optional bool device_memory = 7;
+  inline bool has_device_memory() const;
+  inline void clear_device_memory();
+  static const int kDeviceMemoryFieldNumber = 7;
+  inline bool device_memory() const;
+  inline void set_device_memory(bool value);
+
   // @@protoc_insertion_point(class_scope:hardware_monitor.SubscriptionMask)
  private:
   inline void set_has_error_code();
@@ -876,6 +892,10 @@ class SubscriptionMask : public ::google::protobuf::Message {
   inline void clear_has_pbutton_info();
   inline void set_has_pbutton_action();
   inline void clear_has_pbutton_action();
+  inline void set_has_local_time();
+  inline void clear_has_local_time();
+  inline void set_has_device_memory();
+  inline void clear_has_device_memory();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -886,6 +906,8 @@ class SubscriptionMask : public ::google::protobuf::Message {
   bool cpu_temperature_;
   bool pbutton_info_;
   bool pbutton_action_;
+  bool local_time_;
+  bool device_memory_;
   friend void  protobuf_AddDesc_hardware_5fmonitor_2eproto();
   friend void protobuf_AssignDesc_hardware_5fmonitor_2eproto();
   friend void protobuf_ShutdownFile_hardware_5fmonitor_2eproto();
@@ -1006,6 +1028,294 @@ class ServerVersion : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static ServerVersion* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TimeTM : public ::google::protobuf::Message {
+ public:
+  TimeTM();
+  virtual ~TimeTM();
+
+  TimeTM(const TimeTM& from);
+
+  inline TimeTM& operator=(const TimeTM& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TimeTM& default_instance();
+
+  void Swap(TimeTM* other);
+
+  // implements Message ----------------------------------------------
+
+  TimeTM* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TimeTM& from);
+  void MergeFrom(const TimeTM& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required sint32 error_code = 1;
+  inline bool has_error_code() const;
+  inline void clear_error_code();
+  static const int kErrorCodeFieldNumber = 1;
+  inline ::google::protobuf::int32 error_code() const;
+  inline void set_error_code(::google::protobuf::int32 value);
+
+  // optional uint32 tm_sec = 2;
+  inline bool has_tm_sec() const;
+  inline void clear_tm_sec();
+  static const int kTmSecFieldNumber = 2;
+  inline ::google::protobuf::uint32 tm_sec() const;
+  inline void set_tm_sec(::google::protobuf::uint32 value);
+
+  // optional uint32 tm_min = 3;
+  inline bool has_tm_min() const;
+  inline void clear_tm_min();
+  static const int kTmMinFieldNumber = 3;
+  inline ::google::protobuf::uint32 tm_min() const;
+  inline void set_tm_min(::google::protobuf::uint32 value);
+
+  // optional uint32 tm_hour = 4;
+  inline bool has_tm_hour() const;
+  inline void clear_tm_hour();
+  static const int kTmHourFieldNumber = 4;
+  inline ::google::protobuf::uint32 tm_hour() const;
+  inline void set_tm_hour(::google::protobuf::uint32 value);
+
+  // optional uint32 tm_mday = 5;
+  inline bool has_tm_mday() const;
+  inline void clear_tm_mday();
+  static const int kTmMdayFieldNumber = 5;
+  inline ::google::protobuf::uint32 tm_mday() const;
+  inline void set_tm_mday(::google::protobuf::uint32 value);
+
+  // optional uint32 tm_mon = 6;
+  inline bool has_tm_mon() const;
+  inline void clear_tm_mon();
+  static const int kTmMonFieldNumber = 6;
+  inline ::google::protobuf::uint32 tm_mon() const;
+  inline void set_tm_mon(::google::protobuf::uint32 value);
+
+  // optional uint32 tm_year = 7;
+  inline bool has_tm_year() const;
+  inline void clear_tm_year();
+  static const int kTmYearFieldNumber = 7;
+  inline ::google::protobuf::uint32 tm_year() const;
+  inline void set_tm_year(::google::protobuf::uint32 value);
+
+  // optional uint32 tm_wday = 8;
+  inline bool has_tm_wday() const;
+  inline void clear_tm_wday();
+  static const int kTmWdayFieldNumber = 8;
+  inline ::google::protobuf::uint32 tm_wday() const;
+  inline void set_tm_wday(::google::protobuf::uint32 value);
+
+  // optional uint32 tm_yday = 9;
+  inline bool has_tm_yday() const;
+  inline void clear_tm_yday();
+  static const int kTmYdayFieldNumber = 9;
+  inline ::google::protobuf::uint32 tm_yday() const;
+  inline void set_tm_yday(::google::protobuf::uint32 value);
+
+  // optional uint32 tm_isdst = 10;
+  inline bool has_tm_isdst() const;
+  inline void clear_tm_isdst();
+  static const int kTmIsdstFieldNumber = 10;
+  inline ::google::protobuf::uint32 tm_isdst() const;
+  inline void set_tm_isdst(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:hardware_monitor.TimeTM)
+ private:
+  inline void set_has_error_code();
+  inline void clear_has_error_code();
+  inline void set_has_tm_sec();
+  inline void clear_has_tm_sec();
+  inline void set_has_tm_min();
+  inline void clear_has_tm_min();
+  inline void set_has_tm_hour();
+  inline void clear_has_tm_hour();
+  inline void set_has_tm_mday();
+  inline void clear_has_tm_mday();
+  inline void set_has_tm_mon();
+  inline void clear_has_tm_mon();
+  inline void set_has_tm_year();
+  inline void clear_has_tm_year();
+  inline void set_has_tm_wday();
+  inline void clear_has_tm_wday();
+  inline void set_has_tm_yday();
+  inline void clear_has_tm_yday();
+  inline void set_has_tm_isdst();
+  inline void clear_has_tm_isdst();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 error_code_;
+  ::google::protobuf::uint32 tm_sec_;
+  ::google::protobuf::uint32 tm_min_;
+  ::google::protobuf::uint32 tm_hour_;
+  ::google::protobuf::uint32 tm_mday_;
+  ::google::protobuf::uint32 tm_mon_;
+  ::google::protobuf::uint32 tm_year_;
+  ::google::protobuf::uint32 tm_wday_;
+  ::google::protobuf::uint32 tm_yday_;
+  ::google::protobuf::uint32 tm_isdst_;
+  friend void  protobuf_AddDesc_hardware_5fmonitor_2eproto();
+  friend void protobuf_AssignDesc_hardware_5fmonitor_2eproto();
+  friend void protobuf_ShutdownFile_hardware_5fmonitor_2eproto();
+
+  void InitAsDefaultInstance();
+  static TimeTM* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class DeviceMemory : public ::google::protobuf::Message {
+ public:
+  DeviceMemory();
+  virtual ~DeviceMemory();
+
+  DeviceMemory(const DeviceMemory& from);
+
+  inline DeviceMemory& operator=(const DeviceMemory& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const DeviceMemory& default_instance();
+
+  void Swap(DeviceMemory* other);
+
+  // implements Message ----------------------------------------------
+
+  DeviceMemory* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const DeviceMemory& from);
+  void MergeFrom(const DeviceMemory& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required sint32 error_code = 1;
+  inline bool has_error_code() const;
+  inline void clear_error_code();
+  static const int kErrorCodeFieldNumber = 1;
+  inline ::google::protobuf::int32 error_code() const;
+  inline void set_error_code(::google::protobuf::int32 value);
+
+  // optional uint32 ram_total = 2;
+  inline bool has_ram_total() const;
+  inline void clear_ram_total();
+  static const int kRamTotalFieldNumber = 2;
+  inline ::google::protobuf::uint32 ram_total() const;
+  inline void set_ram_total(::google::protobuf::uint32 value);
+
+  // optional uint32 ram_free = 3;
+  inline bool has_ram_free() const;
+  inline void clear_ram_free();
+  static const int kRamFreeFieldNumber = 3;
+  inline ::google::protobuf::uint32 ram_free() const;
+  inline void set_ram_free(::google::protobuf::uint32 value);
+
+  // optional uint32 flash_total = 4;
+  inline bool has_flash_total() const;
+  inline void clear_flash_total();
+  static const int kFlashTotalFieldNumber = 4;
+  inline ::google::protobuf::uint32 flash_total() const;
+  inline void set_flash_total(::google::protobuf::uint32 value);
+
+  // optional uint32 flash_free = 5;
+  inline bool has_flash_free() const;
+  inline void clear_flash_free();
+  static const int kFlashFreeFieldNumber = 5;
+  inline ::google::protobuf::uint32 flash_free() const;
+  inline void set_flash_free(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:hardware_monitor.DeviceMemory)
+ private:
+  inline void set_has_error_code();
+  inline void clear_has_error_code();
+  inline void set_has_ram_total();
+  inline void clear_has_ram_total();
+  inline void set_has_ram_free();
+  inline void clear_has_ram_free();
+  inline void set_has_flash_total();
+  inline void clear_has_flash_total();
+  inline void set_has_flash_free();
+  inline void clear_has_flash_free();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 error_code_;
+  ::google::protobuf::uint32 ram_total_;
+  ::google::protobuf::uint32 ram_free_;
+  ::google::protobuf::uint32 flash_total_;
+  ::google::protobuf::uint32 flash_free_;
+  friend void  protobuf_AddDesc_hardware_5fmonitor_2eproto();
+  friend void protobuf_AssignDesc_hardware_5fmonitor_2eproto();
+  friend void protobuf_ShutdownFile_hardware_5fmonitor_2eproto();
+
+  void InitAsDefaultInstance();
+  static DeviceMemory* default_instance_;
 };
 // ===================================================================
 
@@ -2198,6 +2508,54 @@ inline void SubscriptionMask::set_pbutton_action(bool value) {
   // @@protoc_insertion_point(field_set:hardware_monitor.SubscriptionMask.pbutton_action)
 }
 
+// optional bool local_time = 6;
+inline bool SubscriptionMask::has_local_time() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void SubscriptionMask::set_has_local_time() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void SubscriptionMask::clear_has_local_time() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void SubscriptionMask::clear_local_time() {
+  local_time_ = false;
+  clear_has_local_time();
+}
+inline bool SubscriptionMask::local_time() const {
+  // @@protoc_insertion_point(field_get:hardware_monitor.SubscriptionMask.local_time)
+  return local_time_;
+}
+inline void SubscriptionMask::set_local_time(bool value) {
+  set_has_local_time();
+  local_time_ = value;
+  // @@protoc_insertion_point(field_set:hardware_monitor.SubscriptionMask.local_time)
+}
+
+// optional bool device_memory = 7;
+inline bool SubscriptionMask::has_device_memory() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void SubscriptionMask::set_has_device_memory() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void SubscriptionMask::clear_has_device_memory() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void SubscriptionMask::clear_device_memory() {
+  device_memory_ = false;
+  clear_has_device_memory();
+}
+inline bool SubscriptionMask::device_memory() const {
+  // @@protoc_insertion_point(field_get:hardware_monitor.SubscriptionMask.device_memory)
+  return device_memory_;
+}
+inline void SubscriptionMask::set_device_memory(bool value) {
+  set_has_device_memory();
+  device_memory_ = value;
+  // @@protoc_insertion_point(field_set:hardware_monitor.SubscriptionMask.device_memory)
+}
+
 // -------------------------------------------------------------------
 
 // ServerVersion
@@ -2348,6 +2706,374 @@ inline void ServerVersion::set_allocated_build(::std::string* build) {
     build_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
   // @@protoc_insertion_point(field_set_allocated:hardware_monitor.ServerVersion.build)
+}
+
+// -------------------------------------------------------------------
+
+// TimeTM
+
+// required sint32 error_code = 1;
+inline bool TimeTM::has_error_code() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TimeTM::set_has_error_code() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TimeTM::clear_has_error_code() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TimeTM::clear_error_code() {
+  error_code_ = 0;
+  clear_has_error_code();
+}
+inline ::google::protobuf::int32 TimeTM::error_code() const {
+  // @@protoc_insertion_point(field_get:hardware_monitor.TimeTM.error_code)
+  return error_code_;
+}
+inline void TimeTM::set_error_code(::google::protobuf::int32 value) {
+  set_has_error_code();
+  error_code_ = value;
+  // @@protoc_insertion_point(field_set:hardware_monitor.TimeTM.error_code)
+}
+
+// optional uint32 tm_sec = 2;
+inline bool TimeTM::has_tm_sec() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void TimeTM::set_has_tm_sec() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void TimeTM::clear_has_tm_sec() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void TimeTM::clear_tm_sec() {
+  tm_sec_ = 0u;
+  clear_has_tm_sec();
+}
+inline ::google::protobuf::uint32 TimeTM::tm_sec() const {
+  // @@protoc_insertion_point(field_get:hardware_monitor.TimeTM.tm_sec)
+  return tm_sec_;
+}
+inline void TimeTM::set_tm_sec(::google::protobuf::uint32 value) {
+  set_has_tm_sec();
+  tm_sec_ = value;
+  // @@protoc_insertion_point(field_set:hardware_monitor.TimeTM.tm_sec)
+}
+
+// optional uint32 tm_min = 3;
+inline bool TimeTM::has_tm_min() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void TimeTM::set_has_tm_min() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void TimeTM::clear_has_tm_min() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void TimeTM::clear_tm_min() {
+  tm_min_ = 0u;
+  clear_has_tm_min();
+}
+inline ::google::protobuf::uint32 TimeTM::tm_min() const {
+  // @@protoc_insertion_point(field_get:hardware_monitor.TimeTM.tm_min)
+  return tm_min_;
+}
+inline void TimeTM::set_tm_min(::google::protobuf::uint32 value) {
+  set_has_tm_min();
+  tm_min_ = value;
+  // @@protoc_insertion_point(field_set:hardware_monitor.TimeTM.tm_min)
+}
+
+// optional uint32 tm_hour = 4;
+inline bool TimeTM::has_tm_hour() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void TimeTM::set_has_tm_hour() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void TimeTM::clear_has_tm_hour() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void TimeTM::clear_tm_hour() {
+  tm_hour_ = 0u;
+  clear_has_tm_hour();
+}
+inline ::google::protobuf::uint32 TimeTM::tm_hour() const {
+  // @@protoc_insertion_point(field_get:hardware_monitor.TimeTM.tm_hour)
+  return tm_hour_;
+}
+inline void TimeTM::set_tm_hour(::google::protobuf::uint32 value) {
+  set_has_tm_hour();
+  tm_hour_ = value;
+  // @@protoc_insertion_point(field_set:hardware_monitor.TimeTM.tm_hour)
+}
+
+// optional uint32 tm_mday = 5;
+inline bool TimeTM::has_tm_mday() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void TimeTM::set_has_tm_mday() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void TimeTM::clear_has_tm_mday() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void TimeTM::clear_tm_mday() {
+  tm_mday_ = 0u;
+  clear_has_tm_mday();
+}
+inline ::google::protobuf::uint32 TimeTM::tm_mday() const {
+  // @@protoc_insertion_point(field_get:hardware_monitor.TimeTM.tm_mday)
+  return tm_mday_;
+}
+inline void TimeTM::set_tm_mday(::google::protobuf::uint32 value) {
+  set_has_tm_mday();
+  tm_mday_ = value;
+  // @@protoc_insertion_point(field_set:hardware_monitor.TimeTM.tm_mday)
+}
+
+// optional uint32 tm_mon = 6;
+inline bool TimeTM::has_tm_mon() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void TimeTM::set_has_tm_mon() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void TimeTM::clear_has_tm_mon() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void TimeTM::clear_tm_mon() {
+  tm_mon_ = 0u;
+  clear_has_tm_mon();
+}
+inline ::google::protobuf::uint32 TimeTM::tm_mon() const {
+  // @@protoc_insertion_point(field_get:hardware_monitor.TimeTM.tm_mon)
+  return tm_mon_;
+}
+inline void TimeTM::set_tm_mon(::google::protobuf::uint32 value) {
+  set_has_tm_mon();
+  tm_mon_ = value;
+  // @@protoc_insertion_point(field_set:hardware_monitor.TimeTM.tm_mon)
+}
+
+// optional uint32 tm_year = 7;
+inline bool TimeTM::has_tm_year() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void TimeTM::set_has_tm_year() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void TimeTM::clear_has_tm_year() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void TimeTM::clear_tm_year() {
+  tm_year_ = 0u;
+  clear_has_tm_year();
+}
+inline ::google::protobuf::uint32 TimeTM::tm_year() const {
+  // @@protoc_insertion_point(field_get:hardware_monitor.TimeTM.tm_year)
+  return tm_year_;
+}
+inline void TimeTM::set_tm_year(::google::protobuf::uint32 value) {
+  set_has_tm_year();
+  tm_year_ = value;
+  // @@protoc_insertion_point(field_set:hardware_monitor.TimeTM.tm_year)
+}
+
+// optional uint32 tm_wday = 8;
+inline bool TimeTM::has_tm_wday() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void TimeTM::set_has_tm_wday() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void TimeTM::clear_has_tm_wday() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void TimeTM::clear_tm_wday() {
+  tm_wday_ = 0u;
+  clear_has_tm_wday();
+}
+inline ::google::protobuf::uint32 TimeTM::tm_wday() const {
+  // @@protoc_insertion_point(field_get:hardware_monitor.TimeTM.tm_wday)
+  return tm_wday_;
+}
+inline void TimeTM::set_tm_wday(::google::protobuf::uint32 value) {
+  set_has_tm_wday();
+  tm_wday_ = value;
+  // @@protoc_insertion_point(field_set:hardware_monitor.TimeTM.tm_wday)
+}
+
+// optional uint32 tm_yday = 9;
+inline bool TimeTM::has_tm_yday() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void TimeTM::set_has_tm_yday() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void TimeTM::clear_has_tm_yday() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void TimeTM::clear_tm_yday() {
+  tm_yday_ = 0u;
+  clear_has_tm_yday();
+}
+inline ::google::protobuf::uint32 TimeTM::tm_yday() const {
+  // @@protoc_insertion_point(field_get:hardware_monitor.TimeTM.tm_yday)
+  return tm_yday_;
+}
+inline void TimeTM::set_tm_yday(::google::protobuf::uint32 value) {
+  set_has_tm_yday();
+  tm_yday_ = value;
+  // @@protoc_insertion_point(field_set:hardware_monitor.TimeTM.tm_yday)
+}
+
+// optional uint32 tm_isdst = 10;
+inline bool TimeTM::has_tm_isdst() const {
+  return (_has_bits_[0] & 0x00000200u) != 0;
+}
+inline void TimeTM::set_has_tm_isdst() {
+  _has_bits_[0] |= 0x00000200u;
+}
+inline void TimeTM::clear_has_tm_isdst() {
+  _has_bits_[0] &= ~0x00000200u;
+}
+inline void TimeTM::clear_tm_isdst() {
+  tm_isdst_ = 0u;
+  clear_has_tm_isdst();
+}
+inline ::google::protobuf::uint32 TimeTM::tm_isdst() const {
+  // @@protoc_insertion_point(field_get:hardware_monitor.TimeTM.tm_isdst)
+  return tm_isdst_;
+}
+inline void TimeTM::set_tm_isdst(::google::protobuf::uint32 value) {
+  set_has_tm_isdst();
+  tm_isdst_ = value;
+  // @@protoc_insertion_point(field_set:hardware_monitor.TimeTM.tm_isdst)
+}
+
+// -------------------------------------------------------------------
+
+// DeviceMemory
+
+// required sint32 error_code = 1;
+inline bool DeviceMemory::has_error_code() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void DeviceMemory::set_has_error_code() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void DeviceMemory::clear_has_error_code() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void DeviceMemory::clear_error_code() {
+  error_code_ = 0;
+  clear_has_error_code();
+}
+inline ::google::protobuf::int32 DeviceMemory::error_code() const {
+  // @@protoc_insertion_point(field_get:hardware_monitor.DeviceMemory.error_code)
+  return error_code_;
+}
+inline void DeviceMemory::set_error_code(::google::protobuf::int32 value) {
+  set_has_error_code();
+  error_code_ = value;
+  // @@protoc_insertion_point(field_set:hardware_monitor.DeviceMemory.error_code)
+}
+
+// optional uint32 ram_total = 2;
+inline bool DeviceMemory::has_ram_total() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void DeviceMemory::set_has_ram_total() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void DeviceMemory::clear_has_ram_total() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void DeviceMemory::clear_ram_total() {
+  ram_total_ = 0u;
+  clear_has_ram_total();
+}
+inline ::google::protobuf::uint32 DeviceMemory::ram_total() const {
+  // @@protoc_insertion_point(field_get:hardware_monitor.DeviceMemory.ram_total)
+  return ram_total_;
+}
+inline void DeviceMemory::set_ram_total(::google::protobuf::uint32 value) {
+  set_has_ram_total();
+  ram_total_ = value;
+  // @@protoc_insertion_point(field_set:hardware_monitor.DeviceMemory.ram_total)
+}
+
+// optional uint32 ram_free = 3;
+inline bool DeviceMemory::has_ram_free() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void DeviceMemory::set_has_ram_free() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void DeviceMemory::clear_has_ram_free() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void DeviceMemory::clear_ram_free() {
+  ram_free_ = 0u;
+  clear_has_ram_free();
+}
+inline ::google::protobuf::uint32 DeviceMemory::ram_free() const {
+  // @@protoc_insertion_point(field_get:hardware_monitor.DeviceMemory.ram_free)
+  return ram_free_;
+}
+inline void DeviceMemory::set_ram_free(::google::protobuf::uint32 value) {
+  set_has_ram_free();
+  ram_free_ = value;
+  // @@protoc_insertion_point(field_set:hardware_monitor.DeviceMemory.ram_free)
+}
+
+// optional uint32 flash_total = 4;
+inline bool DeviceMemory::has_flash_total() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void DeviceMemory::set_has_flash_total() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void DeviceMemory::clear_has_flash_total() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void DeviceMemory::clear_flash_total() {
+  flash_total_ = 0u;
+  clear_has_flash_total();
+}
+inline ::google::protobuf::uint32 DeviceMemory::flash_total() const {
+  // @@protoc_insertion_point(field_get:hardware_monitor.DeviceMemory.flash_total)
+  return flash_total_;
+}
+inline void DeviceMemory::set_flash_total(::google::protobuf::uint32 value) {
+  set_has_flash_total();
+  flash_total_ = value;
+  // @@protoc_insertion_point(field_set:hardware_monitor.DeviceMemory.flash_total)
+}
+
+// optional uint32 flash_free = 5;
+inline bool DeviceMemory::has_flash_free() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void DeviceMemory::set_has_flash_free() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void DeviceMemory::clear_has_flash_free() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void DeviceMemory::clear_flash_free() {
+  flash_free_ = 0u;
+  clear_has_flash_free();
+}
+inline ::google::protobuf::uint32 DeviceMemory::flash_free() const {
+  // @@protoc_insertion_point(field_get:hardware_monitor.DeviceMemory.flash_free)
+  return flash_free_;
+}
+inline void DeviceMemory::set_flash_free(::google::protobuf::uint32 value) {
+  set_has_flash_free();
+  flash_free_ = value;
+  // @@protoc_insertion_point(field_set:hardware_monitor.DeviceMemory.flash_free)
 }
 
 

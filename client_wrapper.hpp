@@ -247,7 +247,7 @@ public:
 	int setVibeg(bool async, int emu_idx, bool AVibeg);
 	int getVibegTaskParams(bool async, int emu_idx, task_manager::AnyTaskParams* ret_value);
 	int setVibegTaskParams(bool async, int emu_idx, task_manager::VibegTaskParams & avtp);
-	int setDefaultDSPEmulParams(bool async, int emu_idx);
+	int setDefaultDSPEmulParams(bool async, int emu_idx, int mode_gain);
 	//-------------------------------------------------------
 	void getErrorString(int error_code, std::string* dst_string);
 	int getLastExceptionInfo(std::string* dst_string);

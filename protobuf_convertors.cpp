@@ -1067,6 +1067,16 @@ int packSpectrResult(task_manager::Spectr_data* proto_dst, TSimpleSpectr* class_
     TStatRot* tsrc = class_src->GetStatRot();
     packStatRot(tsr,tsrc);
 
+    if (tsrc == NULL) {
+		printf("Packing TStatRot: \n");
+		printf("AvgCnt = %.5f\n",tsrc->AvgCnt);
+		printf("Avg = %.5f\n",tsrc->Avg);
+		printf("Min = %.5f\n",tsrc->Min);
+		printf("Max = %.5f\n",tsrc->Max);
+    } else {
+    	printf("No FStatRot in TSimpleSpectr!\n");
+	}
+
     proto_dst->set_favgcount(class_src->GetAvgCount());
     proto_dst->set_fbegfreq(class_src->GetBegFreq());
     proto_dst->set_ffreqstep(class_src->GetFreqStep());
@@ -1165,3 +1175,71 @@ int packReducer(p347_conf::Reducer* proto_dst, kdrReducer_t* data_src) {
 	return 0;
 }
 
+//--------------------------------------------------------------------------------------------------------------------------------
+
+int extractTimeTM(hardware_monitor::TimeTM* proto_src, struct tm* data_dst) {
+	if ((proto_src == NULL) || (data_dst == NULL)) return -EINVAL;
+
+	if (proto_src->has_tm_sec())
+		data_dst->tm_sec = proto_src->tm_sec();
+	if (proto_src->has_tm_min())
+		data_dst->tm_min = proto_src->tm_min();
+	if (proto_src->has_tm_hour())
+		data_dst->tm_hour = proto_src->tm_hour();
+	if (proto_src->has_tm_mday())
+		data_dst->tm_mday = proto_src->tm_mday();
+	if (proto_src->has_tm_mon())
+		data_dst->tm_mon = proto_src->tm_mon();
+	if (proto_src->has_tm_year())
+		data_dst->tm_year = proto_src->tm_year();
+	if (proto_src->has_tm_wday())
+		data_dst->tm_wday = proto_src->tm_wday();
+	if (proto_src->has_tm_yday())
+		data_dst->tm_yday = proto_src->tm_yday();
+	if (proto_src->has_tm_isdst())
+		data_dst->tm_isdst = proto_src->tm_isdst();
+
+	return 0;
+}
+
+int packTimeTM(hardware_monitor::TimeTM* proto_dst, struct tm* data_src) {
+	if ((proto_dst == NULL) || (data_src == NULL)) return -EINVAL;
+
+	proto_dst->set_tm_sec(data_src->tm_sec);
+	proto_dst->set_tm_min(data_src->tm_min);
+	proto_dst->set_tm_hour(data_src->tm_hour);
+	proto_dst->set_tm_mday(data_src->tm_mday);
+	proto_dst->set_tm_mon(data_src->tm_mon);
+	proto_dst->set_tm_year(data_src->tm_year);
+	proto_dst->set_tm_wday(data_src->tm_wday);
+	proto_dst->set_tm_yday(data_src->tm_yday);
+	proto_dst->set_tm_isdst(data_src->tm_isdst);
+
+	return 0;
+}
+
+int extractDevMem(hardware_monitor::DeviceMemory* proto_src, t_device_memory* data_dst) {
+	if ((proto_src == NULL) || (data_dst == NULL)) return -EINVAL;
+
+	if (proto_src->has_ram_total())
+		data_dst->ram_total = proto_src->ram_total();
+	if (proto_src->has_ram_free())
+		data_dst->ram_free = proto_src->ram_free();
+	if (proto_src->has_flash_total())
+		data_dst->flash_total = proto_src->flash_total();
+	if (proto_src->has_flash_free())
+		data_dst->flash_free = proto_src->flash_free();
+
+	return 0;
+}
+
+int packDevMem(hardware_monitor::DeviceMemory* proto_dst, t_device_memory* data_src) {
+	if ((proto_dst == NULL) || (data_src == NULL)) return -EINVAL;
+
+	proto_dst->set_ram_total(data_src->ram_total);
+	proto_dst->set_ram_free(data_src->ram_free);
+	proto_dst->set_flash_total(data_src->flash_total);
+	proto_dst->set_flash_free(data_src->flash_free);
+
+	return 0;
+}

@@ -27,6 +27,15 @@
 #define EMUL_TASK_TYPE_VSENSORFROT		9
 #define EMUL_TASK_TYPE_DECIM			10
 
+#define CH_MODE_GAIN_X1					1
+#define CH_MODE_GAIN_X10				2
+
+#define CH_MODE_INPUT_LINE				1
+#define CH_MODE_INPUT_ICP				2
+#define CH_MODE_INPUT_VREF				3
+#define CH_MODE_INPUT_VREF_DIV10		4
+#define CH_MODE_INPUT_GND				5
+
 RCF_BEGIN(CM_connection,"CM_connection")
 	//---test
 	//RCF_METHOD_R1(int,remoteSleep, int)
@@ -121,7 +130,7 @@ RCF_BEGIN(CM_connection,"CM_connection")
 	RCF_METHOD_R1(int,getInterp,int)
 
 	//setBegSigOffSet, setRotMetkasFromSig, setBegRotOffSet, setSrcSamplingFreq, setGain, setSensitivity
-	RCF_METHOD_R1(int,setDefaultDSPEmulParams,int)
+	RCF_METHOD_R2(int,setDefaultDSPEmulParams,int,int)
 
 	//TODO: common?
 	RCF_METHOD_R1(bool,getVibeg,int)

@@ -84,13 +84,55 @@ ApplicationWindow {
                     }
                 }
             }
+
+            Rectangle {
+                id: rect_row_config
+                color: "lightgray"
+                height: sr_row_config.height
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.top: rect_row_info.bottom
+                anchors.topMargin: 3
+
+                Row {
+                    id: sr_row_config
+                    spacing: 5
+                    Text {
+                        id: sr_text_config
+                        text: "Client configurator: "
+                    }
+                    SpinBox {
+                        id: conf_idx_val
+                        maximumValue: 999
+                        minimumValue: 1
+                        value: 1
+                        width: 60
+                        anchors.leftMargin: 5
+                    }
+                    Button {
+                        id: sr_button_loadconf
+                        text: "Load Config"
+                        onClicked: {
+                            rett_loadconf.text = clientWrapper.qt_loadConfiguration(conf_idx_val.value);
+                        }
+                    }
+                    Text {
+                        id: rett_loadconf
+                        text: "-"
+                        anchors.leftMargin: 2
+                        anchors.rightMargin: 2
+                    }
+
+                }
+            }
+
             Rectangle {
                 id: rect_row_command
                 color: "lightgray"
                 height: sr_row_command.height
                 anchors.left: parent.left
                 anchors.right: parent.right
-                anchors.top: rect_row_info.bottom
+                anchors.top: rect_row_config.bottom
                 anchors.topMargin: 3
 
                 Row {
@@ -156,10 +198,10 @@ ApplicationWindow {
 
                     Button {
                         id: sr_button_create_cm
-                        text: "Create channel manager"
+                        text: "Init Device"
                         enabled: !clientWrapper.isAsyncRunning
                         onClicked: {
-                            rett_createcm.text = clientWrapper.qt_createChannelManager(sr_async_cb.checked);
+                            rett_createcm.text = clientWrapper.qt_initDevice(sr_async_cb.checked);
                         }
                     }
                     Text {
@@ -170,10 +212,10 @@ ApplicationWindow {
                     }
                     Button {
                         id: sr_button_delete_cm
-                        text: "Delete channel manager"
+                        text: "Deinit Device"
                         enabled: !clientWrapper.isAsyncRunning
                         onClicked: {
-                            rett_deletecm.text = clientWrapper.qt_deleteChannelManager(sr_async_cb.checked);
+                            rett_deletecm.text = clientWrapper.qt_deInitDevice(sr_async_cb.checked);
                         }
                     }
                     Text {
@@ -606,6 +648,82 @@ ApplicationWindow {
                         anchors.leftMargin: 2
                         anchors.rightMargin: 2
                     }
+
+                }
+            }
+
+            //--------------------------------------------------------------------Tasks
+
+            Rectangle {
+                id: rect_row_task
+                color: "lightgray"
+                height: sr_row_task.height
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.top: rect_row_adcs.bottom
+                anchors.topMargin: 3
+
+                Row {
+                    id: sr_row_task
+                    //anchors.top: sr_row_info.bottom
+                    spacing: 5
+
+                    Text {
+                        id: task_idx_text
+                        text: "Task index: "
+                    }
+                    SpinBox {
+                        id: task_idx_val
+                        maximumValue: 4
+                        minimumValue: 1
+                        value: 1
+                        width: 60
+                        anchors.leftMargin: 5
+                    }
+                    Button {
+                        id: sr_tsopen
+                        text: "timesig open"
+                        enabled: !clientWrapper.isAsyncRunning
+                        onClicked: {
+                            rett_tsopen.text = clientWrapper.qt_timesigOpen(sr_async_cb.checked, adc_idx_val.value);
+                        }
+                    }
+                    Text {
+                        id: rett_tsopen
+                        text: "-"
+                        anchors.leftMargin: 2
+                        anchors.rightMargin: 2
+                    }
+                    Button {
+                        id: sr_tsclose
+                        text: "timesig close"
+                        enabled: !clientWrapper.isAsyncRunning
+                        onClicked: {
+                            rett_tsclose.text = clientWrapper.qt_timesigClose(sr_async_cb.checked, adc_idx_val.value);
+                        }
+                    }
+                    Text {
+                        id: rett_tsclose
+                        text: "-"
+                        anchors.leftMargin: 2
+                        anchors.rightMargin: 2
+                    }
+
+                    Button {
+                        id: sr_addtask
+                        text: "add quality task"
+                        enabled: !clientWrapper.isAsyncRunning
+                        onClicked: {
+                            rett_addtask.text = clientWrapper.qt_addQualityTask(sr_async_cb.checked, adc_idx_val.value);
+                        }
+                    }
+                    Text {
+                        id: rett_addtask
+                        text: "-"
+                        anchors.leftMargin: 2
+                        anchors.rightMargin: 2
+                    }
+
                     Button {
                         id: sr_gttp
                         text: "getTotalTasksProgress"
@@ -620,14 +738,20 @@ ApplicationWindow {
                         anchors.leftMargin: 2
                         anchors.rightMargin: 2
                     }
-                    /*
+                    Button {
+                        id: sr_gtr_quality
+                        text: "getTaskResult - Quality"
+                        enabled: !clientWrapper.isAsyncRunning
+                        onClicked: {
+                            rett_gtr_quality.text = clientWrapper.qt_getTaskResult(sr_async_cb.checked, adc_idx_val.value, task_idx_val.value);
+                        }
+                    }
                     Text {
-                        id: val_gttp
-                        text: clientWrapper.totalTasksProgress
+                        id: rett_gtr_quality
+                        text: "-"
                         anchors.leftMargin: 2
                         anchors.rightMargin: 2
                     }
-                    */
                 }
             }
 
@@ -639,7 +763,7 @@ ApplicationWindow {
                 height: sr_row_adcm.height
                 anchors.left: parent.left
                 anchors.right: parent.right
-                anchors.top: rect_row_adcs.bottom
+                anchors.top: rect_row_task.bottom
                 anchors.topMargin: 3
 
                 Row {

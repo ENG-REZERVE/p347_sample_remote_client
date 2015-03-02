@@ -429,8 +429,8 @@ int p347ClientWrapper::setVibegTaskParams(bool async, int emu_idx, task_manager:
 	return _executeFunction(async, CW_IF_SETVIBEGTP, emu_idx, &avtp);
 }
 
-int p347ClientWrapper::setDefaultDSPEmulParams(bool async, int emu_idx) {
-	return _executeFunction(async, CW_IF_SETDEFAULTDSPPARAMS, emu_idx);
+int p347ClientWrapper::setDefaultDSPEmulParams(bool async, int emu_idx, int mode_gain) {
+	return _executeFunction(async, CW_IF_SETDEFAULTDSPPARAMS, emu_idx, mode_gain);
 }
 
 //----------------------------------------------------------------------------------------------------------------
@@ -1722,12 +1722,13 @@ int p347ClientWrapper::_executeFunction(bool async, int if_code, ...) {
 			case CW_IF_SETDEFAULTDSPPARAMS: {
 				va_start(ap,if_code);
 				int emu_idx = va_arg(ap,int);
+				int mode_gain = va_arg(ap,int);
 				va_end(ap);
 				if (async) {
-					fRet_int = client->setDefaultDSPEmulParams(CALLBACK_FUNC,emu_idx);
+					fRet_int = client->setDefaultDSPEmulParams(CALLBACK_FUNC,emu_idx,mode_gain);
 					logMessage(LOG_LEVEL_FULL,"async setDefaultDSPEmulParams\n");
 				} else {
-					fRet_int = client->setDefaultDSPEmulParams(emu_idx);
+					fRet_int = client->setDefaultDSPEmulParams(emu_idx,mode_gain);
 					logMessage(LOG_LEVEL_FULL,"sync setDefaultDSPEmulParams called\n");
 					while (!fRet_int.ready()) RCF::sleepMs(100);
 				}
